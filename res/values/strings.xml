@@ -3,7 +3,7 @@
 
     <string name="app_name">Haqq</string>
     <string name="action_exit">Exit</string>
-    <string name="dummy">Dummy</string>
+    <string name="dummy"></string>
     <string name="title_sura">Sura</string>
     <string name="title_record">Record</string>
     <string name="title_result">Result</string>

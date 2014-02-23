@@ -12,8 +12,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import slab.haqq.R;
-import slab.haqq.lib.GlobalController;
-import slab.haqq.lib.GlobalController.Sura;
+import slab.haqq.lib.adapter.model.Sura;
 
 /**
  * @author rasxen
@@ -21,7 +20,7 @@ import slab.haqq.lib.GlobalController.Sura;
  */
 public class SuraAdapter extends BaseAdapter {
 	
-	private List<GlobalController.Sura> suraList;
+	private List<Sura> suraList;
 	private Context context;
 	private static LayoutInflater inflater;
 	

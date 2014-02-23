@@ -9,15 +9,25 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".SplashHaqq" >
 
-    <com.caverock.androidsvg.SVGImageView
+    <ImageView
         android:id="@+id/backgroundSplash"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
         android:contentDescription="@string/splash"
-        android:scaleType="fitCenter"
-        svgimageview:svg="svg/Background.svg" />
+        android:scaleType="fitXY"
+        android:src="@drawable/background" />
 
+    <com.caverock.androidsvg.SVGImageView
+        android:id="@+id/projectLogoSplash"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignLeft="@+id/projectNameSplash"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="125dp"
+        android:contentDescription="@string/logo"
+        svgimageview:svg="svg/Haqq_reverse.svg" />
+    
     <TextView
         android:id="@+id/projectNameSplash"
         android:layout_width="200dp"
@@ -29,14 +39,25 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/darkGreenCMYK" />
 
-    <com.caverock.androidsvg.SVGImageView
-        android:id="@+id/projectLogoSplash"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_alignLeft="@+id/projectNameSplash"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="125dp"
-        android:contentDescription="@string/logo"
-        svgimageview:svg="svg/Haqq_reverse.svg" />
+    <TextView
+        android:id="@+id/splashMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/splashTag"
+        android:layout_centerHorizontal="true"
+        android:text="@string/dummy"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/darkGreenCMYK" />
+
+    <TextView
+        android:id="@+id/splashTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/projectNameSplash"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/dummy"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/darkGreenCMYK" />
 
 </RelativeLayout>
