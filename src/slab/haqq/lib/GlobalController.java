@@ -30,6 +30,18 @@ public final class GlobalController {
 	public final static String BUILDING_MODEL = "Adding Data to Model";
 	public final static String FINISHING = "Put Finishing Touch";
 
+	public final static String AUDIO_RECORDER_FOLDER = "sounds";
+
+	public final static String AUDIO_RECORDER_FILE_EXT_WAV = ".wav";
+
+	public final static String AUDIO_RECORDER_TEMP_FILE = "record_temp.raw";
+	public final static int RECORDER_CHANNELS = 0xc;
+	public final static int RECORDER_SAMPLERATE = 0xac44;
+	public final static int RECORDER_AUDIO_ENCODING = 0x2;
+	public final static int RECORDER_BPP = 0x10;
+
+	public static String PREFIX = "HAQQ_";
+
 	// Splash screen timer
 	public static int SPLASH_TIME_OUT = 3000;
 	// SuraList
@@ -52,6 +64,7 @@ public final class GlobalController {
 			initMessage = "Parsing Qur'an Properties";
 			initCode = PARSING_XML_CODE;
 			new QuranPropertiesReader(context);
+			new UthmaniTextReader(context);
 			Log.v("init",
 					String.valueOf(QuranPropertiesReader.sProperties.size()));
 			initMessage = "Parsing Qur'an Data From Tanzil";

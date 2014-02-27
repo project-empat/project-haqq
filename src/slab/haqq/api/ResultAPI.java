@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 /**
  * @author rasxen
- *
+ * 
  */
 public class ResultAPI extends Fragment {
 
@@ -20,8 +20,8 @@ public class ResultAPI extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		View rootView = inflater.inflate(R.layout.activity_result,
-				container, false);
+		View rootView = inflater.inflate(R.layout.activity_result, container,
+				false);
 		return rootView;
 	}
 }

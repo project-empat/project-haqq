@@ -2,6 +2,7 @@ package slab.haqq;
 
 import java.util.Locale;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -37,12 +38,12 @@ public class HaqqMain extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		/*
 		 * Init
 		 */
 		GlobalController.init(this);
-		
+
 		setContentView(R.layout.activity_haqq_main);
 
 		// Create the adapter that will return a fragment for each of the three
@@ -62,7 +63,7 @@ public class HaqqMain extends FragmentActivity {
 		getMenuInflater().inflate(R.menu.haqq_main, menu);
 		return true;
 	}
-	
+
 	/**
 	 * 
 	 */
@@ -70,6 +71,12 @@ public class HaqqMain extends FragmentActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// TODO Auto-generated method stub
 		switch (item.getItemId()) {
+		case R.id.action_goto:
+			Intent intent = new Intent(this, GotoAyaActivity.class);
+			startActivity(intent);
+			break;
+		case R.id.action_settings:
+			break;
 		case R.id.action_exit:
 			this.finish();
 			break;
@@ -113,7 +120,8 @@ public class HaqqMain extends FragmentActivity {
 			default:
 				fragment = new DummySectionFragment();
 				Bundle args = new Bundle();
-				args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position + 1);
+				args.putInt(DummySectionFragment.ARG_SECTION_NUMBER,
+						position + 1);
 				fragment.setArguments(args);
 				break;
 			}

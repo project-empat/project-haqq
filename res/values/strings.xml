@@ -15,5 +15,10 @@
     <string name="title_activity_splash_haqq">Splash</string>
     <string name="action_settings">Settings</string>
     <string name="splash">Splash</string>
+    <string name="title_activity_aya_list">AyaList</string>
+    <string name="action_goto">Go To</string>
+    <string name="title_activity_read_aya">ReadAya</string>
+    <string name="title_activity_goto">GotoActivity</string>
+    <string name="title_activity_goto_aya">GotoAyaActivity</string>
 
 </resources>

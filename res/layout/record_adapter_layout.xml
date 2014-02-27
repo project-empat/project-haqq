@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/recordName"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:text="@string/dummy"
+        android:textSize="24sp"
+        android:textColor="@color/darkGreenCMYK" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/timeStampRecord"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_marginLeft="5dp"
+            android:text="@string/dummy"
+            android:textColor="@color/darkGreenCMYK" />
+
+        <TextView
+            android:id="@+id/suraNumberRecord"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_marginLeft="5dp"
+            android:text="@string/dummy"
+            android:textColor="@color/darkGreenCMYK" />
+
+        <TextView
+            android:id="@+id/ayaNumberRecord"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_marginLeft="5dp"
+            android:text="@string/dummy"
+            android:textColor="@color/darkGreenCMYK" />
+
+    </LinearLayout>
+
+</LinearLayout>

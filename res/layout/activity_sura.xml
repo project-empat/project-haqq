@@ -11,16 +11,6 @@
     android:orientation="vertical"
     tools:context=".SuraAPI">
 
-    <EditText
-        android:id="@+id/editText1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="text"
-        android:ems="10" >
-
-        <requestFocus />
-    </EditText>
-
     <ListView
         android:id="@+id/api_sura_lv"
         android:layout_width="match_parent"

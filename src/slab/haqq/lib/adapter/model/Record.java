@@ -5,25 +5,22 @@ package slab.haqq.lib.adapter.model;
 
 /**
  * @author rasxen
- *
+ * 
  */
 public class Record {
-	private String rid;
-	private int timeStamp;
+	private long timeStamp;
 	private String suraId;
 	private int ayaNumber;
 	private String prefix;
-	
+	private String filePath;
+
 	/**
-	 * @param id
 	 * @param timeStamp
 	 * @param suraId
 	 * @param ayaNumber
 	 * @param prefix
 	 */
-	public Record(String id, int timeStamp, String suraId, int ayaNumber,
-			String prefix) {
-		this.rid = id;
+	public Record(long timeStamp, String suraId, int ayaNumber, String prefix) {
 		this.timeStamp = timeStamp;
 		this.suraId = suraId;
 		this.ayaNumber = ayaNumber;
@@ -31,30 +28,17 @@ public class Record {
 	}
 
 	/**
-	 * @return the id
-	 */
-	public String getId() {
-		return rid;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(String id) {
-		this.rid = id;
-	}
-
-	/**
 	 * @return the timeStamp
 	 */
-	public int getTimeStamp() {
+	public long getTimeStamp() {
 		return timeStamp;
 	}
 
 	/**
-	 * @param timeStamp the timeStamp to set
+	 * @param timeStamp
+	 *            the timeStamp to set
 	 */
-	public void setTimeStamp(int timeStamp) {
+	public void setTimeStamp(long timeStamp) {
 		this.timeStamp = timeStamp;
 	}
 
@@ -66,7 +50,8 @@ public class Record {
 	}
 
 	/**
-	 * @param suraId the suraId to set
+	 * @param suraId
+	 *            the suraId to set
 	 */
 	public void setSuraId(String suraId) {
 		this.suraId = suraId;
@@ -80,7 +65,8 @@ public class Record {
 	}
 
 	/**
-	 * @param ayaNumber the ayaNumber to set
+	 * @param ayaNumber
+	 *            the ayaNumber to set
 	 */
 	public void setAyaNumber(int ayaNumber) {
 		this.ayaNumber = ayaNumber;
@@ -94,10 +80,31 @@ public class Record {
 	}
 
 	/**
-	 * @param prefix the prefix to set
+	 * @param prefix
+	 *            the prefix to set
 	 */
 	public void setPrefix(String prefix) {
 		this.prefix = prefix;
 	}
-	
+
+	/**
+	 * @return the filePath
+	 */
+	public String getFilePath() {
+		return filePath;
+	}
+
+	/**
+	 * @param filePath
+	 *            the filePath to set
+	 */
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+
+	public String toString() {
+		return prefix + "_" + suraId + "_" + String.valueOf(ayaNumber) + "_"
+				+ String.valueOf(timeStamp);
+	}
+
 }

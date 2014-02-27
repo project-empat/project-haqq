@@ -12,16 +12,16 @@ import android.view.ViewGroup;
 
 /**
  * @author rasxen
- *
+ * 
  */
 public class RecordAPI extends Fragment {
-	
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		View rootView = inflater.inflate(R.layout.activity_record,
-				container, false);
+		View rootView = inflater.inflate(R.layout.activity_record, container,
+				false);
 		return rootView;
 	}
 }
