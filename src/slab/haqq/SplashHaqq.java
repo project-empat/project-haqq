@@ -66,9 +66,11 @@ public class SplashHaqq extends Activity {
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(SplashHaqq.this, HaqqMain.class);
-				startActivity(intent);
-				finish();
+				if (GlobalController.getInitCode() == GlobalController.FINISHING_CODE) {
+					Intent intent = new Intent(SplashHaqq.this, HaqqMain.class);
+					startActivity(intent);
+					finish();
+				}
 			}
 		}, GlobalController.SPLASH_TIME_OUT);
 	}
