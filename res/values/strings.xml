@@ -20,5 +20,9 @@
     <string name="title_activity_read_aya">ReadAya</string>
     <string name="title_activity_goto">GotoActivity</string>
     <string name="title_activity_goto_aya">GotoAyaActivity</string>
+    <string name="title_activity_play_record">PlayRecord</string>
+    <string name="date">Date : </string>
+    <string name="sura">Sura : </string>
+    <string name="aya">Aya : </string>
 
 </resources>

@@ -52,6 +52,10 @@
             android:name="slab.haqq.GotoAyaActivity"
             android:label="@string/title_activity_goto_aya" >
         </activity>
+        <activity
+            android:name="slab.haqq.PlayRecord"
+            android:label="@string/title_activity_play_record" >
+        </activity>
     </application>
 
 </manifest>

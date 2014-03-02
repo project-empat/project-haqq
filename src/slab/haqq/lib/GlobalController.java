@@ -30,7 +30,7 @@ public final class GlobalController {
 	public final static String BUILDING_MODEL = "Adding Data to Model";
 	public final static String FINISHING = "Put Finishing Touch";
 
-	public final static String AUDIO_RECORDER_FOLDER = "sounds";
+	public final static String AUDIO_RECORDER_FOLDER = "record";
 
 	public final static String AUDIO_RECORDER_FILE_EXT_WAV = ".wav";
 
@@ -40,7 +40,9 @@ public final class GlobalController {
 	public final static int RECORDER_AUDIO_ENCODING = 0x2;
 	public final static int RECORDER_BPP = 0x10;
 
-	public static String PREFIX = "HAQQ_";
+	public static String PREFIX = "HAQQ";
+	
+	public static String APP_EXT_PATH;
 
 	// Splash screen timer
 	public static int SPLASH_TIME_OUT = 3000;
@@ -53,10 +55,15 @@ public final class GlobalController {
 	// Init Message
 	private static String initTag = PREPARING;
 	private static String initMessage = "";
+	
+	//Controller list
+	public static RecordController recController;
 
 	public static void init(Context context) {
 		if (initCode != FINISHING_CODE) {
 			boolean oneTime = false;
+			
+			APP_EXT_PATH = context.getExternalFilesDir(null).getAbsolutePath();
 			// init xml
 			System.setProperty("org.xml.sax.driver",
 					"org.xmlpull.v1.sax2.Driver");
@@ -86,6 +93,8 @@ public final class GlobalController {
 								ch.getChapterNumber() - 1).getTname(), ch
 								.getName().toUnicode(), ch.getVerseCount()));
 			}
+			recController = new RecordController(context);
+			
 			initTag = FINISHING;
 			initMessage = "";
 			initCode = FINISHING_CODE;

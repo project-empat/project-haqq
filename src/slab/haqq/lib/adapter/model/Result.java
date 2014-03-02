@@ -3,13 +3,15 @@
  */
 package slab.haqq.lib.adapter.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * @author rasxen
  * 
  */
-public class Result {
+public class Result implements Parcelable{
 	private String rstId;
-	private String rid;
 	private float scorePitch;
 	private float scoreRhythm;
 	private float scoreVolume;
@@ -23,10 +25,9 @@ public class Result {
 	 * @param scoreVolume
 	 * @param scoreRecog
 	 */
-	public Result(String rstId, String rid, float scorePitch,
+	public Result(String rstId, float scorePitch,
 			float scoreRhythm, float scoreVolume, float scoreRecog) {
 		this.rstId = rstId;
-		this.rid = rid;
 		this.scorePitch = scorePitch;
 		this.scoreRhythm = scoreRhythm;
 		this.scoreVolume = scoreVolume;
@@ -46,21 +47,6 @@ public class Result {
 	 */
 	public void setRstId(String rstId) {
 		this.rstId = rstId;
-	}
-
-	/**
-	 * @return the rid
-	 */
-	public String getRid() {
-		return rid;
-	}
-
-	/**
-	 * @param rid
-	 *            the rid to set
-	 */
-	public void setRid(String rid) {
-		this.rid = rid;
 	}
 
 	/**
@@ -130,4 +116,43 @@ public class Result {
 		return (float) ((0.5 * scoreRecog) + (0.15 * scorePitch)
 				+ (0.25 * scoreRhythm) + (0.1 * scoreVolume));
 	}
+	
+	public Result(Parcel in) {
+		this.rstId = in.readString();
+		this.scorePitch = in.readFloat();
+		this.scoreRecog = in.readFloat();
+		this.scoreRhythm = in.readFloat();
+		this.scoreVolume = in.readFloat();
+	}
+
+	@Override
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		// TODO Auto-generated method stub
+		dest.writeString(rstId);
+		dest.writeFloat(scorePitch);
+		dest.writeFloat(scoreRecog);
+		dest.writeFloat(scoreRhythm);
+		dest.writeFloat(scoreVolume);
+	}
+
+	public static Parcelable.Creator<Result> CREATOR = new Creator<Result>() {
+
+		@Override
+		public Result[] newArray(int size) {
+			// TODO Auto-generated method stub
+			return new Result[size];
+		}
+
+		@Override
+		public Result createFromParcel(Parcel source) {
+			// TODO Auto-generated method stub
+			return new Result(source);
+		}
+	};
 }

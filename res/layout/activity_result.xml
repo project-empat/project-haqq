@@ -10,5 +10,11 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".ResultAPI">
     
+    <ListView
+        android:id="@+id/api_result_lv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+    </ListView>
 
 </RelativeLayout>

@@ -33,7 +33,7 @@ public class ReadAya extends Activity {
 	// private WebView arText;
 	private String recordFilename;
 	private AudioRecord recorder;
-	private boolean isRecording;
+	private boolean isRecording = false;
 	private Thread recordingThread;
 	private int bufferSize;
 	private Record recordModel;
@@ -140,8 +140,21 @@ public class ReadAya extends Activity {
 
 		@Override
 		public void onClick(View arg0) {
-			// TODO Auto-generated method stub
+			if (!isRecording) {
+				recordModel = new Record(System.currentTimeMillis(),
+						String.valueOf(suraNumber), ayaNumber,
+						GlobalController.PREFIX);
+				// TODO Start recording audio
 
+				//
+				recordBtn.setBackgroundResource(R.drawable.ic_stoprecord);
+				isRecording = true;
+			} else {
+				recordModel.setFilePath(getFilename());
+				GlobalController.recController.add(recordModel, ReadAya.this);
+				recordBtn.setBackgroundResource(R.drawable.ic_record);
+				isRecording = false;
+			}
 		}
 	};
 
@@ -177,10 +190,11 @@ public class ReadAya extends Activity {
 	private void startRecording() {
 		System.out.println("RECORDER CHNNEL 4 = "
 				+ GlobalController.RECORDER_CHANNELS);
-
-		recordModel = new Record(System.currentTimeMillis(),
-				String.valueOf(suraNumber), ayaNumber, GlobalController.PREFIX);
-
+		// TODO
+		/*recordModel = new Record(System.currentTimeMillis(),
+				String.valueOf(suraNumber), ayaNumber,
+				GlobalController.PREFIX);*/
+		
 		bufferSize = AudioRecord.getMinBufferSize(
 				GlobalController.RECORDER_SAMPLERATE,
 				GlobalController.RECORDER_CHANNELS,
@@ -254,8 +268,9 @@ public class ReadAya extends Activity {
 
 		copyWaveFile(getTempFilename(), getFilename());
 		deleteTempFile();
-		recordModel.setFilePath(getFilename());
-		RecordController.add(recordModel, this);
+		// TODO
+		//recordModel.setFilePath(getFilename());
+		//RecordController.add(recordModel, this);
 	}
 
 	private void deleteTempFile() {

@@ -3,11 +3,14 @@
  */
 package slab.haqq.lib.adapter.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * @author rasxen
  * 
  */
-public class Record {
+public class Record implements Parcelable {
 	private long timeStamp;
 	private String suraId;
 	private int ayaNumber;
@@ -103,8 +106,47 @@ public class Record {
 	}
 
 	public String toString() {
-		return prefix + "_" + suraId + "_" + String.valueOf(ayaNumber) + "_"
-				+ String.valueOf(timeStamp);
+		return prefix + "_" + String.valueOf(timeStamp) + "_" + suraId + "_"
+				+ String.valueOf(ayaNumber);
 	}
+	
+	public Record(Parcel in) {
+		this.prefix = in.readString();
+		this.suraId = in.readString();
+		this.filePath = in.readString();
+		this.timeStamp = in.readLong();
+		this.ayaNumber = in.readInt();
+	}
+
+	@Override
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		// TODO Auto-generated method stub
+		dest.writeString(prefix);
+		dest.writeString(suraId);
+		dest.writeString(filePath);
+		dest.writeLong(timeStamp);
+		dest.writeInt(ayaNumber);
+	}
+
+	public static Parcelable.Creator<Record> CREATOR = new Creator<Record>() {
+
+		@Override
+		public Record[] newArray(int size) {
+			// TODO Auto-generated method stub
+			return new Record[size];
+		}
+
+		@Override
+		public Record createFromParcel(Parcel source) {
+			// TODO Auto-generated method stub
+			return new Record(source);
+		}
+	};
 
 }
