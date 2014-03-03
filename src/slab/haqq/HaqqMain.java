@@ -16,6 +16,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import slab.haqq.api.*;
+import slab.haqq.api.record.RecordAPI;
+import slab.haqq.api.result.ResultAPI;
 import slab.haqq.lib.GlobalController;
 
 public class HaqqMain extends FragmentActivity {
@@ -76,6 +78,8 @@ public class HaqqMain extends FragmentActivity {
 			startActivity(intent);
 			break;
 		case R.id.action_settings:
+			Intent intent2 = new Intent(this, SettingsActivity.class);
+			startActivity(intent2);
 			break;
 		case R.id.action_exit:
 			this.finish();

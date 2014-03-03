@@ -30,6 +30,18 @@
         <item name="android:actionModeBackground">@drawable/cab_background_top_haqq</item>
         <item name="android:actionModeSplitBackground">@drawable/cab_background_bottom_haqq</item>
         <item name="android:actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Haqq.Light</item>
+        <item name="android:textAppearanceSmall">@style/TextAppearance.Small.Haqq.Light</item>
+        <item name="android:textAppearanceLarge">@style/TextAppearance.Large.Haqq.Light</item>
+        <item name="android:textColorPrimary">@color/darkGreenCMYK</item>
+        <item name="android:textColorSecondary">@color/paleGreenCMYK</item>
+    </style>
+    
+    <style name="TextAppearance.Small.Haqq.Light" parent="@android:style/TextAppearance.Holo.Small">
+        <item name="android:textColor">@color/paleGreenCMYK</item>
+    </style>
+    
+    <style name="TextAppearance.Large.Haqq.Light" parent="@android:style/TextAppearance.Holo.Large">
+        <item name="android:textColor">@color/darkGreenCMYK</item>
     </style>
 
     <style name="ActionBar.Solid.Haqq.Light" parent="@android:style/Widget.Holo.Light.ActionBar.Solid">

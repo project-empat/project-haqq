@@ -31,8 +31,7 @@
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:text="@string/about_haqq"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/darkGreenCMYK" />
+            android:textAppearance="?android:attr/textAppearanceLarge" />
         
         
     </RelativeLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <EditTextPreference
+        android:defaultValue="@string/prefixHaqq"
+        android:key="prefix"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_prefix_haqq" />
+
+    <ListPreference
+        android:defaultValue="UTHMANI_WAQF_HARAKA"
+        android:entries="@array/pref_haqq_arabictext"
+        android:entryValues="@array/pref_haqq_arabictextval"
+        android:key="arabictext_pref_list"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/arabictextdisplay" />
+
+</PreferenceScreen>

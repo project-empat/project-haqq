@@ -11,7 +11,7 @@
         android:layout_marginLeft="5dp"
         android:gravity="center_vertical"
         android:text="@string/dummy"
-        android:textColor="@color/darkGreenCMYK"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="24sp" />
 
     <LinearLayout
@@ -31,7 +31,7 @@
                 android:layout_marginLeft="5dp"
                 android:gravity="center_vertical"
                 android:text="@string/date"
-                android:textColor="@color/darkGreenCMYK" />
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
                 android:id="@+id/timeStampRecord"
@@ -40,7 +40,7 @@
                 android:layout_marginLeft="5dp"
                 android:gravity="center_vertical"
                 android:text="@string/dummy"
-                android:textColor="@color/darkGreenCMYK" />
+                android:textAppearance="?android:attr/textAppearanceSmall" />
         </LinearLayout>
 
         <LinearLayout
@@ -55,7 +55,7 @@
                 android:layout_marginLeft="5dp"
                 android:gravity="center_vertical"
                 android:text="@string/sura"
-                android:textColor="@color/darkGreenCMYK" />
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
                 android:id="@+id/suraNumberRecord"
@@ -64,7 +64,7 @@
                 android:layout_marginLeft="5dp"
                 android:gravity="center_vertical"
                 android:text="@string/dummy"
-                android:textColor="@color/darkGreenCMYK" />
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
                 android:id="@+id/textDummy2"
@@ -73,7 +73,7 @@
                 android:layout_marginLeft="5dp"
                 android:gravity="center_vertical"
                 android:text="@string/aya"
-                android:textColor="@color/darkGreenCMYK" />
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
                 android:id="@+id/ayaNumberRecord"
@@ -82,7 +82,7 @@
                 android:layout_marginLeft="5dp"
                 android:gravity="center_vertical"
                 android:text="@string/dummy"
-                android:textColor="@color/darkGreenCMYK" />
+                android:textAppearance="?android:attr/textAppearanceSmall" />
         </LinearLayout>
     </LinearLayout>
 

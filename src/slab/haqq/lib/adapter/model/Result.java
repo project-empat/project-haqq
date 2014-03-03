@@ -12,10 +12,10 @@ import android.os.Parcelable;
  */
 public class Result implements Parcelable{
 	private String rstId;
-	private float scorePitch;
-	private float scoreRhythm;
-	private float scoreVolume;
-	private float scoreRecog;
+	private double scorePitch;
+	private double scoreRhythm;
+	private double scoreVolume;
+	private double scoreRecog;
 
 	/**
 	 * @param rstId
@@ -25,8 +25,8 @@ public class Result implements Parcelable{
 	 * @param scoreVolume
 	 * @param scoreRecog
 	 */
-	public Result(String rstId, float scorePitch,
-			float scoreRhythm, float scoreVolume, float scoreRecog) {
+	public Result(String rstId, double scorePitch,
+			double scoreRhythm, double scoreVolume, double scoreRecog) {
 		this.rstId = rstId;
 		this.scorePitch = scorePitch;
 		this.scoreRhythm = scoreRhythm;
@@ -52,7 +52,7 @@ public class Result implements Parcelable{
 	/**
 	 * @return the scorePitch
 	 */
-	public float getScorePitch() {
+	public double getScorePitch() {
 		return scorePitch;
 	}
 
@@ -60,14 +60,14 @@ public class Result implements Parcelable{
 	 * @param scorePitch
 	 *            the scorePitch to set
 	 */
-	public void setScorePitch(float scorePitch) {
+	public void setScorePitch(double scorePitch) {
 		this.scorePitch = scorePitch;
 	}
 
 	/**
 	 * @return the scoreRhythm
 	 */
-	public float getScoreRhythm() {
+	public double getScoreRhythm() {
 		return scoreRhythm;
 	}
 
@@ -75,14 +75,14 @@ public class Result implements Parcelable{
 	 * @param scoreRhythm
 	 *            the scoreRhythm to set
 	 */
-	public void setScoreRhythm(float scoreRhythm) {
+	public void setScoreRhythm(double scoreRhythm) {
 		this.scoreRhythm = scoreRhythm;
 	}
 
 	/**
 	 * @return the scoreVolume
 	 */
-	public float getScoreVolume() {
+	public double getScoreVolume() {
 		return scoreVolume;
 	}
 
@@ -90,14 +90,14 @@ public class Result implements Parcelable{
 	 * @param scoreVolume
 	 *            the scoreVolume to set
 	 */
-	public void setScoreVolume(float scoreVolume) {
+	public void setScoreVolume(double scoreVolume) {
 		this.scoreVolume = scoreVolume;
 	}
 
 	/**
 	 * @return the scoreRecog
 	 */
-	public float getScoreRecog() {
+	public double getScoreRecog() {
 		return scoreRecog;
 	}
 
@@ -112,17 +112,17 @@ public class Result implements Parcelable{
 	/**
 	 * @return average score
 	 */
-	public float getAverageScore() {
-		return (float) ((0.5 * scoreRecog) + (0.15 * scorePitch)
+	public double getAverageScore() {
+		return (double) ((0.5 * scoreRecog) + (0.15 * scorePitch)
 				+ (0.25 * scoreRhythm) + (0.1 * scoreVolume));
 	}
 	
 	public Result(Parcel in) {
 		this.rstId = in.readString();
-		this.scorePitch = in.readFloat();
-		this.scoreRecog = in.readFloat();
-		this.scoreRhythm = in.readFloat();
-		this.scoreVolume = in.readFloat();
+		this.scorePitch = in.readDouble();
+		this.scoreRecog = in.readDouble();
+		this.scoreRhythm = in.readDouble();
+		this.scoreVolume = in.readDouble();
 	}
 
 	@Override
@@ -135,10 +135,10 @@ public class Result implements Parcelable{
 	public void writeToParcel(Parcel dest, int flags) {
 		// TODO Auto-generated method stub
 		dest.writeString(rstId);
-		dest.writeFloat(scorePitch);
-		dest.writeFloat(scoreRecog);
-		dest.writeFloat(scoreRhythm);
-		dest.writeFloat(scoreVolume);
+		dest.writeDouble(scorePitch);
+		dest.writeDouble(scoreRecog);
+		dest.writeDouble(scoreRhythm);
+		dest.writeDouble(scoreVolume);
 	}
 
 	public static Parcelable.Creator<Result> CREATOR = new Creator<Result>() {

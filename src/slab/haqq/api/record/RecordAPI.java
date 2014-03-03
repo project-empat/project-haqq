@@ -1,15 +1,19 @@
 /**
  * 
  */
-package slab.haqq.api;
+package slab.haqq.api.record;
 
 import slab.haqq.R;
+import slab.haqq.lib.GlobalController;
 import slab.haqq.lib.adapter.RecordAdapter;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 /**
@@ -28,7 +32,20 @@ public class RecordAPI extends Fragment {
 		
 		lv = (ListView) rootView.findViewById(R.id.api_record_lv);
 		lv.setAdapter(new RecordAdapter(rootView.getContext()));
-		
+		lv.setOnItemClickListener(recordListener);
 		return rootView;
 	}
+	
+	private OnItemClickListener recordListener = new OnItemClickListener() {
+		@Override
+		public void onItemClick(AdapterView<?> parent, View view, int position,
+				long id) {
+			// TODO Auto-generated method stub
+			Intent intent = new Intent(parent.getContext(), PlayRecord.class);
+			intent.putExtra("recordParsel",
+					GlobalController.recController.recList.get(position));
+			startActivity(intent);
+			
+		}
+	};
 }

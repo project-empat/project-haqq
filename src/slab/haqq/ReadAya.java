@@ -9,7 +9,6 @@ import java.io.IOException;
 import org.amr.arabic.ArabicUtilities;
 
 import slab.haqq.lib.GlobalController;
-import slab.haqq.lib.RecordController;
 import slab.haqq.lib.UthmaniTextReader;
 import slab.haqq.lib.adapter.model.Record;
 import slab.haqq.lib.adapter.model.Sura;
@@ -159,7 +158,7 @@ public class ReadAya extends Activity {
 	};
 
 	private String getFilename() {
-		String filepath = Environment.getExternalStorageDirectory().getPath();
+		String filepath = getExternalFilesDir(null).getPath();
 		File file = new File(filepath, GlobalController.AUDIO_RECORDER_FOLDER);
 
 		if (!file.exists()) {

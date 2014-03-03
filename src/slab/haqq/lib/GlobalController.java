@@ -58,6 +58,7 @@ public final class GlobalController {
 	
 	//Controller list
 	public static RecordController recController;
+	public static ResultController resultController;
 
 	public static void init(Context context) {
 		if (initCode != FINISHING_CODE) {
@@ -94,6 +95,7 @@ public final class GlobalController {
 								.getName().toUnicode(), ch.getVerseCount()));
 			}
 			recController = new RecordController(context);
+			resultController = new ResultController(context);
 			
 			initTag = FINISHING;
 			initMessage = "";

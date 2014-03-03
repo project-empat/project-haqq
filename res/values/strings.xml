@@ -24,5 +24,21 @@
     <string name="date">Date : </string>
     <string name="sura">Sura : </string>
     <string name="aya">Aya : </string>
+    <string name="base_eval">Base Evalution</string>
+    <string name="full_eval">Full Evaluation</string>
+    <string name="title_activity_result_detail">ResultDetail</string>
+    <string name="prefixHaqq">Haqq</string>
+    <string name="pref_prefix_haqq">API Code</string>
+    <string-array name="pref_haqq_arabictext">
+        <item >With pause marks and diacritics(waqf and haraka)</item>
+        <item >Without pause marks only</item>
+        <item >Without pause marks and diacritics</item>
+    </string-array>
+    <string-array name="pref_haqq_arabictextval">
+        <item >UTHMANI__WAQF_HARAKA</item>
+        <item >UTHMANI_HARAKA</item>
+        <item >UTHMANI</item>
+    </string-array>
+        <string name="arabictextdisplay">Arabic Text Display</string>
 
 </resources>

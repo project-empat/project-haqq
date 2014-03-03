@@ -3,12 +3,13 @@
  */
 package slab.haqq.lib.adapter;
 
-import java.text.DateFormat;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 import slab.haqq.R;
 import slab.haqq.lib.GlobalController;
+import slab.haqq.lib.adapter.model.Record;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -88,17 +89,14 @@ public class RecordAdapter extends BaseAdapter {
 		TextView sura = (TextView) vi.findViewById(R.id.suraNumberRecord);
 		TextView aya = (TextView) vi.findViewById(R.id.ayaNumberRecord);
 
-		name.setText(GlobalController.recController.recList.get(arg0)
-				.toString());
-		Date date = new Date(GlobalController.recController.recList
-				.get(arg0).getTimeStamp());
+		Record record = GlobalController.recController.recList.get(arg0);
+
+		name.setText(record.toString());
+		Date date = new Date(record.getTimeStamp());
 		Format format = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
 		timestamp.setText(String.valueOf(format.format(date)));
-		sura.setText(GlobalController.SuraMap.get(
-				GlobalController.recController.recList.get(arg0).getSuraId())
-				.getName());
-		aya.setText(String.valueOf(GlobalController.recController.recList.get(
-				arg0).getAyaNumber()));
+		sura.setText(GlobalController.SuraMap.get(record.getSuraId()).getName());
+		aya.setText(String.valueOf(record.getAyaNumber()));
 
 		return vi;
 	}
