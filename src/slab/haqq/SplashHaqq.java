@@ -10,7 +10,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 public class SplashHaqq extends Activity {
-	
+
 	/**
 	 * TODO : Documentation
 	 */
@@ -39,6 +39,19 @@ public class SplashHaqq extends Activity {
 				splashMsg.setText(msg);
 
 				if (GlobalController.getInitCode() == GlobalController.FINISHING_CODE) {
+					new Handler().postDelayed(new Runnable() {
+
+						@Override
+						public void run() {
+							// TODO Auto-generated method stub
+							if (GlobalController.getInitCode() == GlobalController.FINISHING_CODE) {
+								Intent intent = new Intent(SplashHaqq.this,
+										HaqqMain.class);
+								startActivity(intent);
+								finish();
+							}
+						}
+					}, GlobalController.SPLASH_TIME_OUT);
 					break;
 				}
 			}
@@ -50,7 +63,9 @@ public class SplashHaqq extends Activity {
 	TextView splashMsg;
 	Handler handler;
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
 	@Override
@@ -63,29 +78,18 @@ public class SplashHaqq extends Activity {
 		splashTag = (TextView) findViewById(R.id.splashTag);
 		splashMsg = (TextView) findViewById(R.id.splashMsg);
 
-		splashTag.setText(GlobalController.getInitTag());
-		splashMsg.setText(GlobalController.getInitMessage());
+		//splashTag.setText(GlobalController.getInitTag());
+		//splashMsg.setText(GlobalController.getInitMessage());
 
 		handler = new Handler();
 		handler.post(init);
 
 		handler.post(updateGui);
-
-		new Handler().postDelayed(new Runnable() {
-
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				if (GlobalController.getInitCode() == GlobalController.FINISHING_CODE) {
-					Intent intent = new Intent(SplashHaqq.this, HaqqMain.class);
-					startActivity(intent);
-					finish();
-				}
-			}
-		}, GlobalController.SPLASH_TIME_OUT);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
 	 */
 	@Override
