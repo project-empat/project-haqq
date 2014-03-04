@@ -14,14 +14,18 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class PlayRecord extends Activity {
-	Button playBtn, pauseBtn, stopBtn, baseEvalBtn, fullEvalBtn;
+	Button baseEvalBtn, fullEvalBtn;
 	TextView timestamp, name, sura;
-
+	ImageButton playBtn, pauseBtn, stopBtn;
 	Record record;
 
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -35,9 +39,9 @@ public class PlayRecord extends Activity {
 		name = (TextView) findViewById(R.id.recordName);
 		timestamp = (TextView) findViewById(R.id.timeStampRecord);
 
-		playBtn = (Button) findViewById(R.id.playBtn);
-		pauseBtn = (Button) findViewById(R.id.pauseBtn);
-		stopBtn = (Button) findViewById(R.id.stopBtn);
+		playBtn = (ImageButton) findViewById(R.id.playButton);
+		pauseBtn = (ImageButton) findViewById(R.id.pauseButton);
+		stopBtn = (ImageButton) findViewById(R.id.stopButton);
 		baseEvalBtn = (Button) findViewById(R.id.baseEvalBtn);
 		fullEvalBtn = (Button) findViewById(R.id.fullEvalBtn);
 
@@ -50,6 +54,9 @@ public class PlayRecord extends Activity {
 		updateView();
 	}
 
+	/**
+	 * TODO : Documentation
+	 */
 	@SuppressLint("SimpleDateFormat")
 	public void updateView() {
 		sura.setText("Q.S. "
@@ -61,6 +68,9 @@ public class PlayRecord extends Activity {
 		name.setText(record.toString());
 	}
 
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -68,6 +78,9 @@ public class PlayRecord extends Activity {
 		return true;
 	}
 
+	/**
+	 * TODO : Documentation
+	 */
 	public OnClickListener playListener = new OnClickListener() {
 
 		@Override
@@ -77,6 +90,9 @@ public class PlayRecord extends Activity {
 		}
 	};
 
+	/**
+	 * TODO : Documentation
+	 */
 	public OnClickListener pauseListener = new OnClickListener() {
 
 		@Override
@@ -86,6 +102,9 @@ public class PlayRecord extends Activity {
 		}
 	};
 
+	/**
+	 * TODO : Documentation
+	 */
 	public OnClickListener stopListener = new OnClickListener() {
 
 		@Override
@@ -95,6 +114,9 @@ public class PlayRecord extends Activity {
 		}
 	};
 
+	/**
+	 * TODO : Documentation
+	 */
 	public OnClickListener baseListener = new OnClickListener() {
 
 		@Override
@@ -104,10 +126,13 @@ public class PlayRecord extends Activity {
 					PlayRecord.this,
 					record.getPrefix() + "_"
 							+ String.valueOf(record.getTimeStamp()), 0.0, 0.0,
-					0.0, 0.0);
+					0.0, 0.0, "");
 		}
 	};
 
+	/**
+	 * TODO : Documentation
+	 */
 	public OnClickListener fullListener = new OnClickListener() {
 
 		@Override
@@ -117,7 +142,7 @@ public class PlayRecord extends Activity {
 					PlayRecord.this,
 					record.getPrefix() + "_"
 							+ String.valueOf(record.getTimeStamp()), 0.0, 0.0,
-					0.0, 0.0);
+					0.0, 0.0,"");
 		}
 	};
 }

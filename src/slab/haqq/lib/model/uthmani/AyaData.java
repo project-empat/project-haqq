@@ -15,13 +15,14 @@ public class AyaData {
 	private String translation;
 
 	/**
-	 * 
+	 * TODO : Documentation
 	 */
 	public AyaData() {
 		// TODO Auto-generated constructor stub
 	}
 
 	/**
+	 * TODO : Documentation
 	 * @param uthmanitext
 	 * @param suraNumber
 	 * @param ayaNumber
@@ -33,6 +34,7 @@ public class AyaData {
 	}
 
 	/**
+	 * TODO : Documentation
 	 * @return the uthmanitext
 	 */
 	public String getUthmanitext() {

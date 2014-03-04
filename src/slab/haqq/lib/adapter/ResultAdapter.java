@@ -24,6 +24,7 @@ public class ResultAdapter extends BaseAdapter {
 	
 
 	/**
+	 * TODO : Documentation
 	 * @param context
 	 */
 	public ResultAdapter(Context context) {

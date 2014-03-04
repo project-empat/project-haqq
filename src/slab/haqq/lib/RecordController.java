@@ -46,10 +46,10 @@ public class RecordController {
 	public List<Record> recList = new ArrayList<Record>();
 
 	/**
-	 * 
+	 * TODO : Documentation
+	 * @param context
 	 */
 	public RecordController(Context context) {
-		// TODO Auto-generated constructor stub
 		recList.clear();
 		if (isRecordExist(context)) {
 			readFromXML(context);
@@ -59,6 +59,10 @@ public class RecordController {
 		}
 	}
 
+	/**
+	 * TODO : Documentation
+	 * @param context
+	 */
 	private void CreateRecordXMLs(Context context) {
 		try {
 			DocumentBuilder docBuilder = DocumentBuilderFactory.newInstance()
@@ -86,16 +90,31 @@ public class RecordController {
 		}
 	}
 
+	/**
+	 * TODO : Documentation
+	 * @param context
+	 * @return
+	 */
 	private boolean isRecordExist(Context context) {
 		File file = new File(context.getExternalFilesDir(null), RECORD_RES_NAME);
 		return file.exists();
 	}
 
+	/**
+	 * TODO : Documentation
+	 * @param record
+	 * @param context
+	 */
 	public void add(Record record, Context context) {
 		recList.add(record);
 		writeToXML(context, record);
 	}
 
+	/**
+	 * TODO : Documentation
+	 * @param context
+	 * @param record
+	 */
 	public void writeToXML(Context context, Record record) {
 		try {
 			DocumentBuilder docBuilder = DocumentBuilderFactory.newInstance()
@@ -163,6 +182,10 @@ public class RecordController {
 		}	
 	}
 
+	/**
+	 * TODO : Documentation
+	 * @param context
+	 */
 	private void readFromXML(Context context) {
 		try {
 			XMLReader reader = XMLReaderFactory.createXMLReader();
@@ -186,6 +209,10 @@ public class RecordController {
 		}
 	}
 
+	/**
+	 * @author rasxen
+	 *	TODO : Documentation
+	 */
 	public class RecordHandler extends DefaultHandler {
 		@Override
 		public void startElement(String uri, String localName, String qName,

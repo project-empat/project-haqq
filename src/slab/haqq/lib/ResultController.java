@@ -33,6 +33,10 @@ import org.xml.sax.helpers.XMLReaderFactory;
 import slab.haqq.lib.adapter.model.Result;
 import android.content.Context;
 
+/**
+ * @author rasxen
+ *
+ */
 public class ResultController {
 	public final static String RESULT_RES_NAME = "Haqq_Result.xml";
 	public final static String RESULTS_LIST_ELEMENT = "results";
@@ -41,6 +45,10 @@ public class ResultController {
 	public List<Result> resList = new ArrayList<Result>();
 	public Map<String, Result> resMap = new HashMap<String, Result>();
 
+	/**
+	 * TODO : Documentation
+	 * @param context
+	 */
 	public ResultController(Context context) {
 		// TODO Auto-generated constructor stub
 		resList.clear();
@@ -52,10 +60,28 @@ public class ResultController {
 		}
 	}
 
+	/**
+	 * TODO : Documentation
+	 * @param context
+	 * @param id
+	 * @param p
+	 * @param r
+	 * @param v
+	 * @param recog
+	 * @param recogText
+	 */
 	public void addScore(Context context, String id, double p, double r,
-			double v, double recog) {
-		Result result = new Result(id, p, r, v, recog);
+			double v, double recog, String recogText) {
+		Result result = new Result(id, p, r, v, recog, recogText);
 		if(resMap.containsKey(result.getRstId())){
+			result = resMap.get(id);
+			
+			result.setScorePitch(p);
+			result.setScoreRecog(recog);
+			result.setScoreRhythm(r);
+			result.setScoreVolume(v);
+			result.setRecogText(recogText);
+			
 			resMap.remove(result.getRstId());
 			resMap.put(result.getRstId(), result);
 			int i = getResultPosition(result);
@@ -69,6 +95,11 @@ public class ResultController {
 		}
 	}
 	
+	/**
+	 * TODO : Documentation
+	 * @param res
+	 * @return
+	 */
 	private int getResultPosition(Result res){
 		int i = 0;
 		for(i=0;i<resList.size();i++){
@@ -78,11 +109,21 @@ public class ResultController {
 		}
 		return i;
 	}
-
+	
+	/**
+	 * TODO : Documentation
+	 * @param context
+	 * @param result
+	 */
 	private void updateXML(Context context, Result result) {
 		
 	}
 
+	/**
+	 * TODO : Documentation
+	 * @param context
+	 * @param result
+	 */
 	private void writeXML(Context context, Result result) {
 		try {
 			DocumentBuilder docBuilder = DocumentBuilderFactory.newInstance()
@@ -150,6 +191,10 @@ public class ResultController {
 		}	
 	}
 
+	/**
+	 * TODO : Documentation
+	 * @param context
+	 */
 	private void CreateRecordXMLs(Context context) {
 		try {
 			DocumentBuilder docBuilder = DocumentBuilderFactory.newInstance()
@@ -178,11 +223,19 @@ public class ResultController {
 		}
 	}
 
+	/**
+	 * TODO : Documentation
+	 * @param context
+	 * @return
+	 */
 	private boolean isRecordExist(Context context) {
 		File file = new File(context.getExternalFilesDir(null), RESULT_RES_NAME);
 		return file.exists();
 	}
 
+	/**
+	 * @param context
+	 */
 	private void readFromXML(Context context) {
 		try {
 			XMLReader reader = XMLReaderFactory.createXMLReader();
@@ -206,6 +259,10 @@ public class ResultController {
 		}
 	}
 
+	/**
+	 * @author rasxen
+	 *	TODO : Documentation
+	 */
 	public class ResultHandler extends DefaultHandler {
 		@Override
 		public void startElement(String uri, String localName, String qName,
@@ -215,7 +272,8 @@ public class ResultController {
 						Double.parseDouble(attributes.getValue("pitch")),
 						Double.parseDouble(attributes.getValue("rhythm")),
 						Double.parseDouble(attributes.getValue("volume")),
-						Double.parseDouble(attributes.getValue("recog")));
+						Double.parseDouble(attributes.getValue("recog")),
+						attributes.getValue("recogText"));
 				resList.add(res);
 				resMap.put(res.getRstId(), res);
 			}

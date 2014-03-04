@@ -25,6 +25,10 @@ public class QuranPropertiesReader {
 	private static String RES_PATH = "xml/quran-properties-en.xml";
 	public static List<SuraProperties> sProperties = new ArrayList<SuraProperties>();
 
+	/**
+	 * TODO : Documentation
+	 * @param context
+	 */
 	public QuranPropertiesReader(Context context) {
 		try {
 			sProperties.clear();
@@ -46,6 +50,10 @@ public class QuranPropertiesReader {
 		}
 	}
 
+	/**
+	 * @author rasxen
+	 *	TODO : Documentation
+	 */
 	public class SuraPropertiesHandler extends DefaultHandler {
 		private static final String SURA_ELEMENT = "sura";
 
@@ -62,12 +70,17 @@ public class QuranPropertiesReader {
 		}
 	}
 
+	/**
+	 * @author rasxen
+	 *	TODO : Documentation
+	 */
 	public static class SuraProperties {
 		private int id;
 		private String name;
 		private String tname;
 
 		/**
+		 * TODO : Documentation
 		 * @param id
 		 * @param name
 		 * @param tname

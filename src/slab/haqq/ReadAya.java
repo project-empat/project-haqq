@@ -37,6 +37,9 @@ public class ReadAya extends Activity {
 	private int bufferSize;
 	private Record recordModel;
 
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -73,6 +76,9 @@ public class ReadAya extends Activity {
 		updateView();
 	}
 
+	/**
+	 * TODO : Documentation
+	 */
 	public void updateView() {
 		arText.setText(UthmaniTextReader.getUthmaniText(suraNumber, ayaNumber)
 				+ "\uFD3F"
@@ -86,6 +92,9 @@ public class ReadAya extends Activity {
 				+ "\uFD3F");
 	}
 
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -93,6 +102,9 @@ public class ReadAya extends Activity {
 		return true;
 	}
 
+	/**
+	 * TODO : Documentation
+	 */
 	private OnClickListener nextListener = new OnClickListener() {
 
 		@Override
@@ -114,6 +126,9 @@ public class ReadAya extends Activity {
 		}
 	};
 
+	/**
+	 * TODO : Documentation
+	 */
 	private OnClickListener prevListener = new OnClickListener() {
 
 		@Override
@@ -135,6 +150,9 @@ public class ReadAya extends Activity {
 		}
 	};
 
+	/**
+	 * TODO : Documentation
+	 */
 	private OnClickListener recordListener = new OnClickListener() {
 
 		@Override
@@ -157,6 +175,10 @@ public class ReadAya extends Activity {
 		}
 	};
 
+	/**
+	 * TODO : Documentation
+	 * @return
+	 */
 	private String getFilename() {
 		String filepath = getExternalFilesDir(null).getPath();
 		File file = new File(filepath, GlobalController.AUDIO_RECORDER_FOLDER);
@@ -169,6 +191,10 @@ public class ReadAya extends Activity {
 		return recordFilename;
 	}
 
+	/**
+	 * TODO : Documentation
+	 * @return
+	 */
 	private String getTempFilename() {
 		String filepath = Environment.getExternalStorageDirectory().getPath();
 		File file = new File(filepath, GlobalController.AUDIO_RECORDER_FOLDER);
@@ -186,6 +212,9 @@ public class ReadAya extends Activity {
 		return (file.getAbsolutePath() + "/" + GlobalController.AUDIO_RECORDER_TEMP_FILE);
 	}
 
+	/**
+	 * TODO : Documentation
+	 */
 	private void startRecording() {
 		System.out.println("RECORDER CHNNEL 4 = "
 				+ GlobalController.RECORDER_CHANNELS);
@@ -218,6 +247,9 @@ public class ReadAya extends Activity {
 		recordingThread.start();
 	}
 
+	/**
+	 * TODO : Documentation
+	 */
 	private void writeAudioDataToFile() {
 		byte data[] = new byte[bufferSize];
 		String filename = getTempFilename();
@@ -254,6 +286,9 @@ public class ReadAya extends Activity {
 		}
 	}
 
+	/**
+	 * TODO : Documentation
+	 */
 	private void stopRecording() {
 		if (null != recorder) {
 			isRecording = false;
@@ -272,12 +307,20 @@ public class ReadAya extends Activity {
 		//RecordController.add(recordModel, this);
 	}
 
+	/**
+	 * TODO : Documentation
+	 */
 	private void deleteTempFile() {
 		File file = new File(getTempFilename());
 
 		file.delete();
 	}
 
+	/**
+	 * TODO : Documentation
+	 * @param inFilename
+	 * @param outFilename
+	 */
 	private void copyWaveFile(String inFilename, String outFilename) {
 		FileInputStream in = null;
 		FileOutputStream out = null;
@@ -313,6 +356,16 @@ public class ReadAya extends Activity {
 		}
 	}
 
+	/**
+	 * TODO : Documentation
+	 * @param out
+	 * @param totalAudioLen
+	 * @param totalDataLen
+	 * @param longSampleRate
+	 * @param channels
+	 * @param byteRate
+	 * @throws IOException
+	 */
 	private void WriteWaveFileHeader(FileOutputStream out, long totalAudioLen,
 			long totalDataLen, long longSampleRate, int channels, long byteRate)
 			throws IOException {

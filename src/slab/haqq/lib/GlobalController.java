@@ -41,7 +41,7 @@ public final class GlobalController {
 	public final static int RECORDER_BPP = 0x10;
 
 	public static String PREFIX = "HAQQ";
-	
+
 	public static String APP_EXT_PATH;
 
 	// Splash screen timer
@@ -55,15 +55,21 @@ public final class GlobalController {
 	// Init Message
 	private static String initTag = PREPARING;
 	private static String initMessage = "";
-	
-	//Controller list
+	// ResultSnapshot
+	public final static String RES_SNAPSHOT_FOLDER = "HaqqSnapshot";
+
+	// Controller list
 	public static RecordController recController;
 	public static ResultController resultController;
 
+	/**
+	 * TODO : Documentation
+	 * @param context
+	 */
 	public static void init(Context context) {
 		if (initCode != FINISHING_CODE) {
 			boolean oneTime = false;
-			
+
 			APP_EXT_PATH = context.getExternalFilesDir(null).getAbsolutePath();
 			// init xml
 			System.setProperty("org.xml.sax.driver",
@@ -96,19 +102,24 @@ public final class GlobalController {
 			}
 			recController = new RecordController(context);
 			resultController = new ResultController(context);
-			
+
 			initTag = FINISHING;
 			initMessage = "";
 			initCode = FINISHING_CODE;
 		}
 	}
 
+	/**
+	 * TODO : Documentation
+	 * @param item
+	 */
 	private static void AddSura(Sura item) {
 		SuraList.add(item);
 		SuraMap.put(item.getId(), item);
 	}
 
 	/**
+	 * TODO : Documentation
 	 * @return the initCode
 	 */
 	public static int getInitCode() {
@@ -116,6 +127,7 @@ public final class GlobalController {
 	}
 
 	/**
+	 * TODO : Documentation
 	 * @return the initTag
 	 */
 	public static String getInitTag() {
@@ -123,6 +135,7 @@ public final class GlobalController {
 	}
 
 	/**
+	 * TODO : Documentation
 	 * @return the initMessage
 	 */
 	public static String getInitMessage() {

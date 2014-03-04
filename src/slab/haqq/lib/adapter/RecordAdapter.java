@@ -28,6 +28,7 @@ public class RecordAdapter extends BaseAdapter {
 	private static LayoutInflater inflater;
 
 	/**
+	 * TODO : Documentation
 	 * @param context
 	 */
 	public RecordAdapter(Context context) {

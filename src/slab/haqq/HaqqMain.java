@@ -37,6 +37,9 @@ public class HaqqMain extends FragmentActivity {
 	 */
 	ViewPager mViewPager;
 
+	/* (non-Javadoc)
+	 * @see android.support.v4.app.FragmentActivity#onCreate(android.os.Bundle)
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -59,6 +62,9 @@ public class HaqqMain extends FragmentActivity {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -66,8 +72,8 @@ public class HaqqMain extends FragmentActivity {
 		return true;
 	}
 
-	/**
-	 * 
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
 	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {

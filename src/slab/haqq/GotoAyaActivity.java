@@ -25,6 +25,9 @@ public class GotoAyaActivity extends Activity {
 	private Sura suradata;
 	private Button jumpBtn;
 	
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -55,6 +58,9 @@ public class GotoAyaActivity extends Activity {
 		jumpBtn.setOnClickListener(gotoListener);
 	}
 
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -62,6 +68,9 @@ public class GotoAyaActivity extends Activity {
 		return true;
 	}
 	
+	/**
+	 * TODO : Documentation
+	 */
 	private OnItemSelectedListener suraListener = new OnItemSelectedListener() {
 		@Override
 		public void onItemSelected(AdapterView<?> arg0, View arg1, int pos,
@@ -84,6 +93,9 @@ public class GotoAyaActivity extends Activity {
 		}
 	};
 
+	/**
+	 * TODO : Documentation
+	 */
 	private OnClickListener gotoListener = new OnClickListener() {
 		
 		@Override

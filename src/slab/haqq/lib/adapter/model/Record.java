@@ -18,6 +18,7 @@ public class Record implements Parcelable {
 	private String filePath;
 
 	/**
+	 * TODO : Documentation
 	 * @param timeStamp
 	 * @param suraId
 	 * @param ayaNumber
@@ -105,11 +106,19 @@ public class Record implements Parcelable {
 		this.filePath = filePath;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
 	public String toString() {
 		return prefix + "_" + String.valueOf(timeStamp) + "_" + suraId + "_"
 				+ String.valueOf(ayaNumber);
 	}
 	
+	/**
+	 * TODO : Documentation
+	 * @param in
+	 */
 	public Record(Parcel in) {
 		this.prefix = in.readString();
 		this.suraId = in.readString();
@@ -118,12 +127,18 @@ public class Record implements Parcelable {
 		this.ayaNumber = in.readInt();
 	}
 
+	/* (non-Javadoc)
+	 * @see android.os.Parcelable#describeContents()
+	 */
 	@Override
 	public int describeContents() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
+	/* (non-Javadoc)
+	 * @see android.os.Parcelable#writeToParcel(android.os.Parcel, int)
+	 */
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
 		// TODO Auto-generated method stub
@@ -134,6 +149,9 @@ public class Record implements Parcelable {
 		dest.writeInt(ayaNumber);
 	}
 
+	/**
+	 * TODO : Documentation
+	 */
 	public static Parcelable.Creator<Record> CREATOR = new Creator<Record>() {
 
 		@Override

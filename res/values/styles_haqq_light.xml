@@ -34,6 +34,12 @@
         <item name="android:textAppearanceLarge">@style/TextAppearance.Large.Haqq.Light</item>
         <item name="android:textColorPrimary">@color/darkGreenCMYK</item>
         <item name="android:textColorSecondary">@color/paleGreenCMYK</item>
+        <item name="android:buttonStyle">@style/Button.Haqq.Light</item>
+    </style>
+    
+    <style name="Button.Haqq.Light" parent="@android:style/Widget.Holo.Light.Button">
+        <item name="android:background">@color/paleGreenCMYK</item>
+        <item name="android:textColor">#FFFFFF</item>
     </style>
     
     <style name="TextAppearance.Small.Haqq.Light" parent="@android:style/TextAppearance.Holo.Small">

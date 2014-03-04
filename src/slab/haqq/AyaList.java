@@ -17,6 +17,9 @@ public class AyaList extends Activity {
 	private String[] ayaArray;
 	private ArrayAdapter<String> ayaAdapter;
 
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -38,7 +41,11 @@ public class AyaList extends Activity {
 		ayaListView.setAdapter(ayaAdapter);
 		ayaListView.setOnItemClickListener(ayaListener);
 	}
-
+	
+	
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -46,6 +53,9 @@ public class AyaList extends Activity {
 		return true;
 	}
 
+	/**
+	 * TODO : Documentation
+	 */
 	private OnItemClickListener ayaListener = new OnItemClickListener() {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position,

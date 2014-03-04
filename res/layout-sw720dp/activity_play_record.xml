@@ -87,33 +87,37 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:gravity="center"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:background="@color/paleGreenCMYK" >
 
-            <Button
-                android:id="@+id/playBtn"
-                style="?android:attr/buttonBarButtonStyle"
+            <ImageButton
+                android:id="@+id/playButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_marginLeft="192dp"
-                android:background="@drawable/ic_play" />
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/dummy"
+                android:src="@drawable/ic_play" />
 
-            <Button
-                android:id="@+id/pauseBtn"
-                style="?android:attr/buttonBarButtonStyle"
+            <ImageButton
+                android:id="@+id/pauseButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/ic_pause" />
+                android:contentDescription="@string/dummy"
+                android:src="@drawable/ic_pause" />
 
-            <Button
-                android:id="@+id/stopBtn"
-                style="?android:attr/buttonBarButtonStyle"
+            <ImageButton
+                android:id="@+id/stopButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
                 android:layout_marginRight="192dp"
-                android:background="@drawable/ic_stoprecord" />
+                android:layout_alignParentRight="true"
+                android:contentDescription="@string/dummy"
+                android:src="@drawable/ic_stoprecord" />
         </RelativeLayout>
 
         <LinearLayout

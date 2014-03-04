@@ -24,6 +24,9 @@ import slab.haqq.lib.adapter.*;
 public class SuraAPI extends Fragment {
 	private ListView lv;
 
+	/* (non-Javadoc)
+	 * @see android.support.v4.app.Fragment#onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle)
+	 */
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -37,6 +40,9 @@ public class SuraAPI extends Fragment {
 		return rootView;
 	}
 
+	/**
+	 * TODO : Documentation
+	 */
 	private OnItemClickListener suraListener = new OnItemClickListener() {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position,

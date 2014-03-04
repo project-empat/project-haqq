@@ -16,8 +16,10 @@ public class Result implements Parcelable{
 	private double scoreRhythm;
 	private double scoreVolume;
 	private double scoreRecog;
+	private String recogText;
 
 	/**
+	 * TODO : Documentation
 	 * @param rstId
 	 * @param rid
 	 * @param scorePitch
@@ -26,12 +28,13 @@ public class Result implements Parcelable{
 	 * @param scoreRecog
 	 */
 	public Result(String rstId, double scorePitch,
-			double scoreRhythm, double scoreVolume, double scoreRecog) {
+			double scoreRhythm, double scoreVolume, double scoreRecog, String recogText) {
 		this.rstId = rstId;
 		this.scorePitch = scorePitch;
 		this.scoreRhythm = scoreRhythm;
 		this.scoreVolume = scoreVolume;
 		this.scoreRecog = scoreRecog;
+		this.recogText = recogText;
 	}
 
 	/**
@@ -105,11 +108,27 @@ public class Result implements Parcelable{
 	 * @param scoreRecog
 	 *            the scoreRecog to set
 	 */
-	public void setScoreRecog(float scoreRecog) {
+	public void setScoreRecog(double scoreRecog) {
 		this.scoreRecog = scoreRecog;
+	}
+	
+	/**
+	 * @return the recogText
+	 */
+	public String getRecogText() {
+		return recogText;
 	}
 
 	/**
+	 * @param recogText
+	 *            the recogText to set
+	 */
+	public void setRecogText(String recogText) {
+		this.recogText = recogText;
+	}
+
+	/**
+	 * TODO : Documentation
 	 * @return average score
 	 */
 	public double getAverageScore() {
@@ -117,30 +136,45 @@ public class Result implements Parcelable{
 				+ (0.25 * scoreRhythm) + (0.1 * scoreVolume));
 	}
 	
+	/**
+	 * TODO : Documentation
+	 * @param in
+	 */
 	public Result(Parcel in) {
 		this.rstId = in.readString();
+		this.recogText = in.readString();
 		this.scorePitch = in.readDouble();
 		this.scoreRecog = in.readDouble();
 		this.scoreRhythm = in.readDouble();
 		this.scoreVolume = in.readDouble();
 	}
 
+	/* (non-Javadoc)
+	 * @see android.os.Parcelable#describeContents()
+	 */
 	@Override
 	public int describeContents() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
+	/* (non-Javadoc)
+	 * @see android.os.Parcelable#writeToParcel(android.os.Parcel, int)
+	 */
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
 		// TODO Auto-generated method stub
 		dest.writeString(rstId);
+		dest.writeString(recogText);
 		dest.writeDouble(scorePitch);
 		dest.writeDouble(scoreRecog);
 		dest.writeDouble(scoreRhythm);
 		dest.writeDouble(scoreVolume);
 	}
 
+	/**
+	 * TODO : Documentation
+	 */
 	public static Parcelable.Creator<Result> CREATOR = new Creator<Result>() {
 
 		@Override

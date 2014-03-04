@@ -31,7 +31,8 @@ public class UthmaniTextReader {
 	public static List<SuraData> suraList = new ArrayList<SuraData>();
 
 	/**
-	 * 
+	 * TODO : Documentation
+	 * @param context
 	 */
 	public UthmaniTextReader(Context context) {
 		// TODO Auto-generated constructor stub
@@ -64,17 +65,36 @@ public class UthmaniTextReader {
 
 	}
 
+	/**
+	 * TODO : Documentation
+	 * @param suraNumber
+	 * @param ayaNumber
+	 * @return
+	 */
 	public static String getUthmaniText(int suraNumber, int ayaNumber) {
 		return suraList.get(suraNumber - 1).getAyaText(ayaNumber);
 	}
 
+	/**
+	 * TODO : Documentation
+	 * @param suraNumber
+	 * @param ayaNumber
+	 * @return
+	 */
 	public static String getTranslation(int suraNumber, int ayaNumber) {
 		return suraList.get(suraNumber - 1).getAyaTrans(ayaNumber);
 	}
 
+	/**
+	 * @author rasxen
+	 *	TODO : Documentation
+	 */
 	public class TranslationHandler extends DefaultHandler {
 		private static final String TRANSLATION_ELEMENT = "translation";
 
+		/* (non-Javadoc)
+		 * @see org.xml.sax.helpers.DefaultHandler#startElement(java.lang.String, java.lang.String, java.lang.String, org.xml.sax.Attributes)
+		 */
 		@Override
 		public void startElement(String uri, String localName, String qName,
 				Attributes attributes) throws SAXException {
@@ -91,10 +111,17 @@ public class UthmaniTextReader {
 		}
 	}
 
+	/**
+	 * @author rasxen
+	 *	TODO : Documentation
+	 */
 	public class UthmaniTextHandler extends DefaultHandler {
 		private static final String SURA_ELEMENT = "sura";
 		private static final String AYA_ELEMENT = "aya";
 
+		/* (non-Javadoc)
+		 * @see org.xml.sax.helpers.DefaultHandler#startElement(java.lang.String, java.lang.String, java.lang.String, org.xml.sax.Attributes)
+		 */
 		@Override
 		public void startElement(String uri, String localName, String qName,
 				Attributes attributes) throws SAXException {

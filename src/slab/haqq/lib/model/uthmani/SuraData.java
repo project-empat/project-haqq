@@ -17,14 +17,14 @@ public class SuraData {
 	private List<AyaData> ayaTextList;
 
 	/**
-	 * 
+	 * TODO : Documentation
 	 */
 	public SuraData() {
-		// TODO Auto-generated constructor stub
 		ayaTextList = new ArrayList<AyaData>();
 	}
 
 	/**
+	 * TODO : Documentation
 	 * @param suraNumber
 	 * @param suraName
 	 */
@@ -34,18 +34,37 @@ public class SuraData {
 		ayaTextList = new ArrayList<AyaData>();
 	}
 
+	/**
+	 * TODO : Documentation
+	 * @param ayaNumber
+	 * @return
+	 */
 	public String getAyaText(int ayaNumber) {
 		return ayaTextList.get(ayaNumber - 1).getUthmanitext();
 	}
 
+	/**
+	 * TODO : Documentation
+	 * @param ayaNumber
+	 * @return
+	 */
 	public String getAyaTrans(int ayaNumber) {
 		return ayaTextList.get(ayaNumber - 1).getTranslation();
 	}
 
+	/**
+	 * TODO : Documentation
+	 * @param ayaNumber
+	 * @return
+	 */
 	public AyaData getAya(int ayaNumber) {
 		return ayaTextList.get(ayaNumber - 1);
 	}
 
+	/**
+	 * TODO : Documentation
+	 * @param aya
+	 */
 	public void addAya(AyaData aya) {
 		ayaTextList.add(aya);
 	}

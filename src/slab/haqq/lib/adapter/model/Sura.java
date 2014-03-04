@@ -22,7 +22,7 @@ public class Sura implements Parcelable {
 
 	/**
 	 * Constructor
-	 * 
+	 * TODO : Documentation
 	 * @param id
 	 * @param idn
 	 * @param name
@@ -128,6 +128,10 @@ public class Sura implements Parcelable {
 		this.arname = arname;
 	}
 
+	/**
+	 * TODO : Documentation
+	 * @param in
+	 */
 	public Sura(Parcel in) {
 		this.id = in.readString();
 		this.name = in.readString();
@@ -137,12 +141,18 @@ public class Sura implements Parcelable {
 		this.ayaCount = in.readInt();
 	}
 
+	/* (non-Javadoc)
+	 * @see android.os.Parcelable#describeContents()
+	 */
 	@Override
 	public int describeContents() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
+	/* (non-Javadoc)
+	 * @see android.os.Parcelable#writeToParcel(android.os.Parcel, int)
+	 */
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
 		// TODO Auto-generated method stub
@@ -154,6 +164,9 @@ public class Sura implements Parcelable {
 		dest.writeInt(ayaCount);
 	}
 
+	/**
+	 * TODO : Documentation
+	 */
 	public static Parcelable.Creator<Sura> CREATOR = new Creator<Sura>() {
 
 		@Override

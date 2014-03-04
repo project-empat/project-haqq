@@ -25,6 +25,7 @@ public class SuraAdapter extends BaseAdapter {
 	private static LayoutInflater inflater;
 
 	/**
+	 * TODO : Documentation
 	 * @param suraList
 	 * @param context
 	 */

@@ -10,6 +10,10 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 public class SplashHaqq extends Activity {
+	
+	/**
+	 * TODO : Documentation
+	 */
 	private final Runnable init = new Runnable() {
 		public void run() {
 			GlobalController.init(SplashHaqq.this);
@@ -17,6 +21,9 @@ public class SplashHaqq extends Activity {
 		}
 	};
 
+	/**
+	 * TODO : Documentation
+	 */
 	private final Runnable updateGui = new Runnable() {
 
 		@Override
@@ -43,6 +50,9 @@ public class SplashHaqq extends Activity {
 	TextView splashMsg;
 	Handler handler;
 
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -75,6 +85,9 @@ public class SplashHaqq extends Activity {
 		}, GlobalController.SPLASH_TIME_OUT);
 	}
 
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
