@@ -9,9 +9,12 @@ import slab.haqq.lib.GlobalController;
 import slab.haqq.lib.adapter.model.Result;
 import android.os.Bundle;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
+import android.graphics.Color;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
@@ -43,6 +46,9 @@ public class ResultDetail extends Activity {
 		
 		imageData = (LinearLayout)findViewById(R.id.imageSave);
 		imageData.setDrawingCacheEnabled(true);
+		imageData.setDrawingCacheBackgroundColor(Color.WHITE);
+		imageData.setDrawingCacheQuality(100);
+		
 		updateView();
 	}
 	
@@ -50,7 +56,13 @@ public class ResultDetail extends Activity {
 	 * TODO : Documentation
 	 */
 	private void updateView(){
-		
+		SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+		displayName.setText(pref.getString("displayNameHaqq", "----"));
+		pitchScore.setText(String.valueOf(result.getScorePitch()));
+		rhythmScore.setText(String.valueOf(result.getScoreRhythm()));
+		volumeScore.setText(String.valueOf(result.getScoreVolume()));
+		recogScore.setText(String.valueOf(result.getScoreRecog()));
+		averageScore.setText(String.valueOf(result.getAverageScore()));
 	}
 	
 	/* (non-Javadoc)

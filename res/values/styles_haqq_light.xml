@@ -38,7 +38,7 @@
     </style>
     
     <style name="Button.Haqq.Light" parent="@android:style/Widget.Holo.Light.Button">
-        <item name="android:background">@color/paleGreenCMYK</item>
+        <item name="android:background">@drawable/button_haqq_light</item>
         <item name="android:textColor">#FFFFFF</item>
     </style>
     

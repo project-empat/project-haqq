@@ -41,6 +41,11 @@ public final class GlobalController {
 	public final static int RECORDER_BPP = 0x10;
 
 	public static String PREFIX = "HAQQ";
+	
+	public final static String WITH_WAQF_HARAKA = "1";
+	public final static String WITH_HARAKA_WITHOUT_WAQF = "0";
+	public final static String WITHOUT_ALL = "-1";
+	
 
 	public static String APP_EXT_PATH;
 
@@ -61,6 +66,7 @@ public final class GlobalController {
 	// Controller list
 	public static RecordController recController;
 	public static ResultController resultController;
+	
 
 	/**
 	 * TODO : Documentation
@@ -141,5 +147,4 @@ public final class GlobalController {
 	public static String getInitMessage() {
 		return initMessage;
 	}
-
 }

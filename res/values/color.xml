@@ -4,4 +4,5 @@
     <color name="darkGreenCMYK">#009344</color>
     <color name="goldCMYK">#FFDD17</color>
     <color name="paleGoldCMYK">#F8ED31</color>
+    <color name="white">#FFFFFF</color>
 </resources>

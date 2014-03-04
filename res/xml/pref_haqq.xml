@@ -7,10 +7,20 @@
         android:maxLines="1"
         android:selectAllOnFocus="true"
         android:singleLine="true"
+        android:summary="Unique Identifier Code"
         android:title="@string/pref_prefix_haqq" />
+    
+    <EditTextPreference
+        android:defaultValue="@string/defaultDisplayNameHaqq"
+        android:key="displayNameHaqq"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:summary="A name to display in result "
+        android:title="@string/dispNameHaqq" />
 
     <ListPreference
-        android:defaultValue="UTHMANI_WAQF_HARAKA"
+        android:defaultValue="1"
         android:entries="@array/pref_haqq_arabictext"
         android:entryValues="@array/pref_haqq_arabictextval"
         android:key="arabictext_pref_list"

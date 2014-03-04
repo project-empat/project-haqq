@@ -7,6 +7,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import org.amr.arabic.ArabicUtilities;
+import org.jqurantree.orthography.Document;
+import org.jqurantree.orthography.Verse;
 
 import slab.haqq.lib.GlobalController;
 import slab.haqq.lib.UthmaniTextReader;
@@ -16,6 +18,7 @@ import android.media.AudioRecord;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
@@ -80,8 +83,8 @@ public class ReadAya extends Activity {
 	 * TODO : Documentation
 	 */
 	public void updateView() {
-		arText.setText(UthmaniTextReader.getUthmaniText(suraNumber, ayaNumber)
-				+ "\uFD3F"
+		arText.setText(getArabicText(suraNumber, ayaNumber)
+				+ " \uFD3F"
 				+ ArabicUtilities.getArabicNumber(String.valueOf(ayaNumber))
 				+ "\uFD3E");
 		transText.setText(UthmaniTextReader.getTranslation(suraNumber,
@@ -90,6 +93,19 @@ public class ReadAya extends Activity {
 		setTitle("Q.S. " + sura.getName() + " : \uFD3E"
 				+ ArabicUtilities.getArabicNumber(String.valueOf(ayaNumber))
 				+ "\uFD3F");
+	}
+	
+	private String getArabicText(int suraN, int ayaN){
+		String text = "";
+		Verse verse = Document.getVerse(suraN, ayaN);
+		if(PreferenceManager.getDefaultSharedPreferences(this).getString("arabictext_pref_list", "1").equals(GlobalController.WITH_WAQF_HARAKA)){
+			text = UthmaniTextReader.getUthmaniText(suraNumber, ayaNumber);
+		} else if(PreferenceManager.getDefaultSharedPreferences(this).getString("arabictext_pref_list", "1").equals(GlobalController.WITH_HARAKA_WITHOUT_WAQF)){
+			text = verse.toUnicode();
+		} else{
+			text = verse.removeDiacritics().toUnicode();
+		}
+		return text;
 	}
 
 	/* (non-Javadoc)
