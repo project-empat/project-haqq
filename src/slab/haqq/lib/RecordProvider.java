@@ -135,6 +135,10 @@ public class RecordProvider {
 		recordList.remove(getRecordPosition(record));
 		recordMap.remove(record.toString());
 		deleteFromXML(context, record);
+		File file = new File(record.getFilePath());
+		if(file.exists()){
+			file.delete();
+		}
 		GlobalController.recordAdapter.notifyDataSetChanged();
 		GlobalController.resultProvider.deleteScore(context,
 				GlobalController.resultProvider.resultMap.get(record

@@ -43,7 +43,7 @@ public class ResultAdapter extends BaseAdapter {
 		inflater = (LayoutInflater) this.context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		confirmDeleteDialog = new AlertDialog.Builder(context).setTitle("Confirm Deletion")
-				.setMessage("Are You sure you want to delete this result")
+				.setMessage("Are you sure you want to delete this result")
 				.setNegativeButton("No", new DialogInterface.OnClickListener() {
 
 					@Override

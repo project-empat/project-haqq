@@ -7,6 +7,8 @@ import java.util.Date;
 import slab.haqq.R;
 import slab.haqq.lib.GlobalController;
 import slab.haqq.lib.adapter.model.Record;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -22,6 +24,7 @@ public class PlayRecord extends Activity {
 	TextView timestamp, name, sura;
 	ImageButton playBtn, pauseBtn, stopBtn;
 	Record record;
+	MediaPlayer player;
 
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -51,6 +54,7 @@ public class PlayRecord extends Activity {
 		baseEvalBtn.setOnClickListener(baseListener);
 		fullEvalBtn.setOnClickListener(fullListener);
 
+		player = MediaPlayer.create(this, Uri.parse(record.getFilePath()));
 		updateView();
 	}
 
@@ -86,7 +90,7 @@ public class PlayRecord extends Activity {
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
-
+			player.start();
 		}
 	};
 
@@ -98,7 +102,7 @@ public class PlayRecord extends Activity {
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
-
+			player.pause();
 		}
 	};
 
@@ -110,7 +114,8 @@ public class PlayRecord extends Activity {
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
-
+			player.stop();
+			player = MediaPlayer.create(PlayRecord.this, Uri.parse(record.getFilePath()));
 		}
 	};
 

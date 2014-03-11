@@ -1,1 +1,6 @@
 bin
+proguard
+doc
+javadoc.xml
+uml
+.settings

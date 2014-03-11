@@ -14,17 +14,18 @@ import slab.haqq.lib.GlobalController;
 import slab.haqq.lib.UthmaniTextReader;
 import slab.haqq.lib.adapter.model.Record;
 import slab.haqq.lib.adapter.model.Sura;
+import android.app.Activity;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
-import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ReadAya extends Activity {
 	private int suraNumber, ayaNumber;
@@ -40,7 +41,9 @@ public class ReadAya extends Activity {
 	private int bufferSize;
 	private Record recordModel;
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
 	@Override
@@ -83,8 +86,7 @@ public class ReadAya extends Activity {
 	 * TODO : Documentation
 	 */
 	public void updateView() {
-		arText.setText(getArabicText(suraNumber, ayaNumber)
-				+ " \uFD3F"
+		arText.setText(getArabicText(suraNumber, ayaNumber) + " \uFD3F"
 				+ ArabicUtilities.getArabicNumber(String.valueOf(ayaNumber))
 				+ "\uFD3E");
 		transText.setText(UthmaniTextReader.getTranslation(suraNumber,
@@ -94,21 +96,27 @@ public class ReadAya extends Activity {
 				+ ArabicUtilities.getArabicNumber(String.valueOf(ayaNumber))
 				+ "\uFD3F");
 	}
-	
-	private String getArabicText(int suraN, int ayaN){
+
+	private String getArabicText(int suraN, int ayaN) {
 		String text = "";
 		Verse verse = Document.getVerse(suraN, ayaN);
-		if(PreferenceManager.getDefaultSharedPreferences(this).getString("arabictext_pref_list", "1").equals(GlobalController.WITH_WAQF_HARAKA)){
+		if (PreferenceManager.getDefaultSharedPreferences(this)
+				.getString("arabictext_pref_list", "1")
+				.equals(GlobalController.WITH_WAQF_HARAKA)) {
 			text = UthmaniTextReader.getUthmaniText(suraNumber, ayaNumber);
-		} else if(PreferenceManager.getDefaultSharedPreferences(this).getString("arabictext_pref_list", "1").equals(GlobalController.WITH_HARAKA_WITHOUT_WAQF)){
+		} else if (PreferenceManager.getDefaultSharedPreferences(this)
+				.getString("arabictext_pref_list", "1")
+				.equals(GlobalController.WITH_HARAKA_WITHOUT_WAQF)) {
 			text = verse.toUnicode();
-		} else{
+		} else {
 			text = verse.removeDiacritics().toUnicode();
 		}
 		return text;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
 	 */
 	@Override
@@ -126,19 +134,26 @@ public class ReadAya extends Activity {
 		@Override
 		public void onClick(View arg0) {
 			// TODO Auto-generated method stub
-			if (ayaNumber + 1 > sura.getAyaCount()) {
-				if (suraNumber + 1 > GlobalController.SuraList.size()) {
-					return;
+			if (!isRecording) {
+				if (ayaNumber + 1 > sura.getAyaCount()) {
+					if (suraNumber + 1 > GlobalController.SuraList.size()) {
+						return;
+					} else {
+						ayaNumber = 1;
+						suraNumber++;
+						sura = GlobalController.SuraMap.get(String
+								.valueOf(suraNumber));
+					}
 				} else {
-					ayaNumber = 1;
-					suraNumber++;
-					sura = GlobalController.SuraMap.get(String
-							.valueOf(suraNumber));
+					ayaNumber++;
 				}
+				updateView();
 			} else {
-				ayaNumber++;
+				Toast.makeText(
+						ReadAya.this,
+						"You are currently recording. Please stop the recording first before navigating to other aya.",
+						Toast.LENGTH_LONG).show();
 			}
-			updateView();
 		}
 	};
 
@@ -150,19 +165,26 @@ public class ReadAya extends Activity {
 		@Override
 		public void onClick(View arg0) {
 			// TODO Auto-generated method stub
-			if (ayaNumber - 1 < 1) {
-				if (suraNumber - 1 < 1) {
-					return;
+			if (!isRecording) {
+				if (ayaNumber - 1 < 1) {
+					if (suraNumber - 1 < 1) {
+						return;
+					} else {
+						suraNumber--;
+						sura = GlobalController.SuraMap.get(String
+								.valueOf(suraNumber));
+						ayaNumber = sura.getAyaCount();
+					}
 				} else {
-					suraNumber--;
-					sura = GlobalController.SuraMap.get(String
-							.valueOf(suraNumber));
-					ayaNumber = sura.getAyaCount();
+					ayaNumber--;
 				}
+				updateView();
 			} else {
-				ayaNumber--;
+				Toast.makeText(
+						ReadAya.this,
+						"You are currently recording. Please stop the recording first before navigating to other aya.",
+						Toast.LENGTH_LONG).show();
 			}
-			updateView();
 		}
 	};
 
@@ -178,11 +200,12 @@ public class ReadAya extends Activity {
 						String.valueOf(suraNumber), ayaNumber,
 						GlobalController.PREFIX);
 				// TODO Start recording audio
-
+				startRecording();
 				//
 				recordBtn.setBackgroundResource(R.drawable.ic_stoprecord);
 				isRecording = true;
 			} else {
+				stopRecording();
 				recordModel.setFilePath(getFilename());
 				GlobalController.recordProvider.add(recordModel, ReadAya.this);
 				recordBtn.setBackgroundResource(R.drawable.ic_record);
@@ -193,6 +216,7 @@ public class ReadAya extends Activity {
 
 	/**
 	 * TODO : Documentation
+	 * 
 	 * @return
 	 */
 	private String getFilename() {
@@ -209,6 +233,7 @@ public class ReadAya extends Activity {
 
 	/**
 	 * TODO : Documentation
+	 * 
 	 * @return
 	 */
 	private String getTempFilename() {
@@ -235,10 +260,11 @@ public class ReadAya extends Activity {
 		System.out.println("RECORDER CHNNEL 4 = "
 				+ GlobalController.RECORDER_CHANNELS);
 		// TODO
-		/*recordModel = new Record(System.currentTimeMillis(),
-				String.valueOf(suraNumber), ayaNumber,
-				GlobalController.PREFIX);*/
-		
+		/*
+		 * recordModel = new Record(System.currentTimeMillis(),
+		 * String.valueOf(suraNumber), ayaNumber, GlobalController.PREFIX);
+		 */
+
 		bufferSize = AudioRecord.getMinBufferSize(
 				GlobalController.RECORDER_SAMPLERATE,
 				GlobalController.RECORDER_CHANNELS,
@@ -319,8 +345,8 @@ public class ReadAya extends Activity {
 		copyWaveFile(getTempFilename(), getFilename());
 		deleteTempFile();
 		// TODO
-		//recordModel.setFilePath(getFilename());
-		//RecordController.add(recordModel, this);
+		// recordModel.setFilePath(getFilename());
+		// RecordController.add(recordModel, this);
 	}
 
 	/**
@@ -334,6 +360,7 @@ public class ReadAya extends Activity {
 
 	/**
 	 * TODO : Documentation
+	 * 
 	 * @param inFilename
 	 * @param outFilename
 	 */
@@ -374,6 +401,7 @@ public class ReadAya extends Activity {
 
 	/**
 	 * TODO : Documentation
+	 * 
 	 * @param out
 	 * @param totalAudioLen
 	 * @param totalDataLen

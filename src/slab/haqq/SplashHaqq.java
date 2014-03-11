@@ -75,7 +75,6 @@ public class SplashHaqq extends Activity {
 			//splashUpdate.cancel(true);
 			Intent intent = new Intent(SplashHaqq.this,
 					HaqqMain.class);
-			intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY|Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intent);
 		};
 	};

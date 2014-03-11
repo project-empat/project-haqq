@@ -49,7 +49,7 @@ public class RecordAdapter extends BaseAdapter {
 		inflater = (LayoutInflater) this.context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		confirmDeleteDialog = new AlertDialog.Builder(context).setTitle("Confirm Deletion")
-				.setMessage("Are You sure you want to delete this record")
+				.setMessage("Are you sure you want to delete this record")
 				.setNegativeButton("No", new DialogInterface.OnClickListener() {
 
 					@Override
