@@ -18,9 +18,14 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+-dontwarn com.badlogic.**
+-keep class com.badlogic.**{*;}
 
--dontwarn com.badlogic.gdx.**
--keep class com.badlogic.gdx.** {*;}
 -dontwarn com.caverock.**
--dontwarn slab.haqq.**
+-keep class com.caverock.**{*;}
+
 -dontwarn com.ringdroid.**
+-keep class com.ringdroid.**{*;}
+
+-dontwarn org.amr.arabic.**
+-keep class org.amr.arabic.**{*;}
