@@ -6,15 +6,12 @@ package slab.haqq.api.result;
 import slab.haqq.R;
 import slab.haqq.lib.GlobalController;
 import slab.haqq.lib.adapter.ResultAdapter;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.AdapterView.OnItemClickListener;
 
 /**
  * @author rasxen
@@ -34,14 +31,17 @@ public class ResultAPI extends Fragment {
 				false);
 		
 		lv = (ListView) rootView.findViewById(R.id.api_result_lv);
-		lv.setAdapter(new ResultAdapter(rootView.getContext()));
-		lv.setOnItemClickListener(resultListener);
+		GlobalController.resultAdapter = new ResultAdapter(this.getActivity());
+		lv.setAdapter(GlobalController.resultAdapter);
+		//lv.setOnItemClickListener(resultListener);
 		return rootView;
 	}
+	
 	
 	/**
 	 * TODO : Documentation
 	 */
+	/*
 	private OnItemClickListener resultListener = new OnItemClickListener() {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position,
@@ -49,9 +49,9 @@ public class ResultAPI extends Fragment {
 			// TODO Auto-generated method stub
 			Intent intent = new Intent(parent.getContext(), ResultDetail.class);
 			intent.putExtra("resultParsel",
-					GlobalController.resultController.resList.get(position));
+					GlobalController.resultProvider.resultList.get(position));
 			startActivity(intent);
 			
 		}
-	};
+	};*/
 }

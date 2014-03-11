@@ -2,6 +2,10 @@ package slab.haqq;
 
 import java.util.Locale;
 
+import slab.haqq.api.AboutAPI;
+import slab.haqq.api.SuraAPI;
+import slab.haqq.api.record.RecordAPI;
+import slab.haqq.api.result.ResultAPI;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,10 +19,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import slab.haqq.api.*;
-import slab.haqq.api.record.RecordAPI;
-import slab.haqq.api.result.ResultAPI;
-import slab.haqq.lib.GlobalController;
 
 public class HaqqMain extends FragmentActivity {
 
@@ -47,7 +47,7 @@ public class HaqqMain extends FragmentActivity {
 		/*
 		 * Init
 		 */
-		GlobalController.init(this);
+		//GlobalController.init(this);
 
 		setContentView(R.layout.activity_haqq_main);
 

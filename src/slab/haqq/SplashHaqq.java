@@ -1,6 +1,7 @@
 package slab.haqq;
 
 import slab.haqq.lib.GlobalController;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.app.Activity;
@@ -10,55 +11,6 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 public class SplashHaqq extends Activity {
-
-	/**
-	 * TODO : Documentation
-	 */
-	private final Runnable init = new Runnable() {
-		public void run() {
-			GlobalController.init(SplashHaqq.this);
-			handler.removeCallbacks(init);
-		}
-	};
-
-	/**
-	 * TODO : Documentation
-	 */
-	private final Runnable updateGui = new Runnable() {
-
-		@Override
-		public void run() {
-			// TODO Auto-generated method stub
-			String tag = "";
-			String msg = "";
-			while (true) {
-				tag = GlobalController.getInitTag();
-				msg = GlobalController.getInitMessage();
-
-				splashTag.setText(tag);
-				splashMsg.setText(msg);
-
-				if (GlobalController.getInitCode() == GlobalController.FINISHING_CODE) {
-					new Handler().postDelayed(new Runnable() {
-
-						@Override
-						public void run() {
-							// TODO Auto-generated method stub
-							if (GlobalController.getInitCode() == GlobalController.FINISHING_CODE) {
-								Intent intent = new Intent(SplashHaqq.this,
-										HaqqMain.class);
-								startActivity(intent);
-								finish();
-							}
-						}
-					}, GlobalController.SPLASH_TIME_OUT);
-					break;
-				}
-			}
-			handler.removeCallbacks(updateGui);
-		}
-	};
-
 	TextView splashTag;
 	TextView splashMsg;
 	Handler handler;
@@ -74,17 +26,9 @@ public class SplashHaqq extends Activity {
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.activity_splash_haqq);
-
-		splashTag = (TextView) findViewById(R.id.splashTag);
-		splashMsg = (TextView) findViewById(R.id.splashMsg);
-
-		//splashTag.setText(GlobalController.getInitTag());
-		//splashMsg.setText(GlobalController.getInitMessage());
-
-		handler = new Handler();
-		handler.post(init);
-
-		handler.post(updateGui);
+		new SplashTask().execute();
+		// splashTag.setText(GlobalController.getInitTag());
+		// splashMsg.setText(GlobalController.getInitMessage());
 	}
 
 	/*
@@ -98,5 +42,42 @@ public class SplashHaqq extends Activity {
 		// getMenuInflater().inflate(R.menu.splash_haqq, menu);
 		return true;
 	}
+
+	public class SplashTask extends AsyncTask<Void, Void, Void> {
+		@Override
+		protected void onPreExecute() {
+			splashTag = (TextView) findViewById(R.id.splashTag);
+			splashMsg = (TextView) findViewById(R.id.splashMsg);
+		};
+		
+		public void updateProgress(){
+			publishProgress();
+		}
+
+		@Override
+		protected Void doInBackground(Void... arg0) {
+			// TODO Auto-generated method stub
+			GlobalController.init(this, SplashHaqq.this);
+			return null;
+		}
+		
+		protected void onProgressUpdate(Void... values) {
+			String tag = "";
+			String msg = "";
+			tag = GlobalController.getInitTag();
+			msg = GlobalController.getInitMessage();
+			splashTag.setText(tag);
+			splashMsg.setText(msg);
+		};
+
+		@Override
+		protected void onPostExecute(Void result) {
+			//splashUpdate.cancel(true);
+			Intent intent = new Intent(SplashHaqq.this,
+					HaqqMain.class);
+			intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent);
+		};
+	};
 
 }

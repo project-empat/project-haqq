@@ -184,7 +184,7 @@ public class ReadAya extends Activity {
 				isRecording = true;
 			} else {
 				recordModel.setFilePath(getFilename());
-				GlobalController.recController.add(recordModel, ReadAya.this);
+				GlobalController.recordProvider.add(recordModel, ReadAya.this);
 				recordBtn.setBackgroundResource(R.drawable.ic_record);
 				isRecording = false;
 			}

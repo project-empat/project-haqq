@@ -1,89 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
-
-    <TextView
-        android:id="@+id/recordName"
-        android:layout_width="match_parent"
-        android:layout_height="36dp"
-        android:layout_marginLeft="5dp"
-        android:gravity="center_vertical"
-        android:text="@string/dummy"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="24sp" />
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/itemData"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="0.8"
+        android:clickable="true"
         android:orientation="vertical" >
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/recordName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-
-            <TextView
-                android:id="@+id/textDummy"
-                android:layout_width="wrap_content"
-                android:layout_height="24dp"
-                android:layout_marginLeft="5dp"
-                android:gravity="center_vertical"
-                android:text="@string/date"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
-
-            <TextView
-                android:id="@+id/timeStampRecord"
-                android:layout_width="wrap_content"
-                android:layout_height="24dp"
-                android:layout_marginLeft="5dp"
-                android:gravity="center_vertical"
-                android:text="@string/dummy"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
-        </LinearLayout>
+            android:layout_height="36dp"
+            android:layout_marginLeft="5dp"
+            android:gravity="center_vertical"
+            android:text="@string/dummy"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="24sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/textDummy1"
-                android:layout_width="wrap_content"
-                android:layout_height="24dp"
-                android:layout_marginLeft="5dp"
-                android:gravity="center_vertical"
-                android:text="@string/sura"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
 
-            <TextView
-                android:id="@+id/suraNumberRecord"
-                android:layout_width="wrap_content"
-                android:layout_height="24dp"
-                android:layout_marginLeft="5dp"
-                android:gravity="center_vertical"
-                android:text="@string/dummy"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                <TextView
+                    android:id="@+id/textDummy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/date"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
 
-            <TextView
-                android:id="@+id/textDummy2"
-                android:layout_width="wrap_content"
-                android:layout_height="24dp"
-                android:layout_marginLeft="5dp"
-                android:gravity="center_vertical"
-                android:text="@string/aya"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                <TextView
+                    android:id="@+id/timeStampRecord"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/dummy"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/ayaNumberRecord"
-                android:layout_width="wrap_content"
-                android:layout_height="24dp"
-                android:layout_marginLeft="5dp"
-                android:gravity="center_vertical"
-                android:text="@string/dummy"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/textDummy1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/sura"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                <TextView
+                    android:id="@+id/suraNumberRecord"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/dummy"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                <TextView
+                    android:id="@+id/textDummy2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/aya"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                <TextView
+                    android:id="@+id/ayaNumberRecord"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/dummy"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
+    <Button
+        android:id="@+id/popup"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/ic_dotted" />
 </LinearLayout>

@@ -1,52 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
-
-    <TextView
-        android:id="@+id/resultId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/itemData"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:layout_weight="0.8"
+        android:clickable="true"
+        android:orientation="vertical" >
 
         <TextView
-            android:id="@+id/pitchScore"
-            android:layout_width="wrap_content"
+            android:id="@+id/resultId"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
             android:layout_marginLeft="8dp"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-        
-        <TextView
-            android:id="@+id/rhythmScore"
-            android:layout_width="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:layout_marginLeft="8dp"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-        
-        <TextView
-            android:id="@+id/volScore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:layout_marginLeft="8dp"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-        
-        <TextView
-            android:id="@+id/recogScore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:layout_marginLeft="8dp"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/pitchScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/rhythmScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/volScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/recogScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="14sp" />
+        </LinearLayout>
     </LinearLayout>
+
+    <Button
+        android:id="@+id/popup"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/ic_dotted" />
 
 </LinearLayout>

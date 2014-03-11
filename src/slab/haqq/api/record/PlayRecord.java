@@ -122,7 +122,7 @@ public class PlayRecord extends Activity {
 		@Override
 		public void onClick(View arg0) {
 			// TODO Auto-generated method stub
-			GlobalController.resultController.addScore(
+			GlobalController.resultProvider.addScore(
 					PlayRecord.this,
 					record.getPrefix() + "_"
 							+ String.valueOf(record.getTimeStamp()), 0.0, 0.0,
@@ -138,7 +138,7 @@ public class PlayRecord extends Activity {
 		@Override
 		public void onClick(View arg0) {
 			// TODO Auto-generated method stub
-			GlobalController.resultController.addScore(
+			GlobalController.resultProvider.addScore(
 					PlayRecord.this,
 					record.getPrefix() + "_"
 							+ String.valueOf(record.getTimeStamp()), 0.0, 0.0,

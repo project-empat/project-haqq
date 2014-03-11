@@ -11,9 +11,12 @@ import java.util.Map;
 import org.jqurantree.orthography.Chapter;
 import org.jqurantree.orthography.Document;
 
+import slab.haqq.SplashHaqq.SplashTask;
+import slab.haqq.lib.adapter.RecordAdapter;
+import slab.haqq.lib.adapter.ResultAdapter;
+import slab.haqq.lib.adapter.model.Sura;
 import android.content.Context;
 import android.util.Log;
-import slab.haqq.lib.adapter.model.Sura;
 
 /**
  * @author rasxen
@@ -64,15 +67,17 @@ public final class GlobalController {
 	public final static String RES_SNAPSHOT_FOLDER = "HaqqSnapshot";
 
 	// Controller list
-	public static RecordController recController;
-	public static ResultController resultController;
+	public static RecordProvider recordProvider;
+	public static ResultProvider resultProvider;
+	public static RecordAdapter recordAdapter;
+	public static ResultAdapter resultAdapter;
 	
 
 	/**
 	 * TODO : Documentation
 	 * @param context
 	 */
-	public static void init(Context context) {
+	public static void init(SplashTask task, Context context) {
 		if (initCode != FINISHING_CODE) {
 			boolean oneTime = false;
 
@@ -83,16 +88,19 @@ public final class GlobalController {
 			initTag = PARSING_XML;
 			initMessage = "Parsing Qur'an Properties";
 			initCode = PARSING_XML_CODE;
+			task.updateProgress();
 			new QuranPropertiesReader(context);
 			new UthmaniTextReader(context);
 			Log.v("init",
 					String.valueOf(QuranPropertiesReader.sProperties.size()));
 			initMessage = "Parsing Qur'an Data From Tanzil";
+			task.updateProgress();
 			for (Chapter ch : Document.getChapters()) {
 				if (oneTime == false) {
 					initTag = BUILDING_MODEL;
 					initCode = BULDING_MODEL_CODE;
 					oneTime = true;
+					task.updateProgress();
 				}
 				Log.v("init",
 						QuranPropertiesReader.sProperties.get(
@@ -100,18 +108,27 @@ public final class GlobalController {
 				initMessage = "Adding "
 						+ QuranPropertiesReader.sProperties.get(
 								ch.getChapterNumber() - 1).getTname();
+				task.updateProgress();
 				AddSura(new Sura(String.valueOf(ch.getChapterNumber()),
 						ch.getChapterNumber(),
 						QuranPropertiesReader.sProperties.get(
 								ch.getChapterNumber() - 1).getTname(), ch
 								.getName().toUnicode(), ch.getVerseCount()));
+				try {
+					Thread.sleep(25);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
-			recController = new RecordController(context);
-			resultController = new ResultController(context);
-
+			task.updateProgress();
+			recordProvider = new RecordProvider(context);
+			resultProvider = new ResultProvider(context);
+			task.updateProgress();
 			initTag = FINISHING;
 			initMessage = "";
 			initCode = FINISHING_CODE;
+			task.updateProgress();
 		}
 	}
 

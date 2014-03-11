@@ -41,6 +41,6 @@
     </string-array>
 
     <string name="arabictextdisplay">Arabic Text Display</string>
-    <string name="result_id_text">Name :</string>    <string name="pitch">Pitch</string>    <string name="rhythm">Rhythm</string>    <string name="volume">Volume</string>    <string name="recog">Recognition</string>    <string name="hundred">100</string>    <string name="average">Average</string>    <string name="comment_text">Evaluation :</string>    <string name="saveimage">Save As Images</string>    <string name="action_saveImage">Save as Image</string>    <string name="dispNameHaqq">Display Name</string>    <string name="defaultDisplayNameHaqq">Haqq</string>
+    <string name="result_id_text">Name :</string>    <string name="pitch">Pitch</string>    <string name="rhythm">Rhythm</string>    <string name="volume">Volume</string>    <string name="recog">Recognition</string>    <string name="hundred">100</string>    <string name="average">Average</string>    <string name="comment_text">Evaluation :</string>    <string name="saveimage">Save As Images</string>    <string name="action_saveImage">Save as Image</string>    <string name="dispNameHaqq">Display Name</string>    <string name="defaultDisplayNameHaqq">Haqq</string>    <string name="delete">Delete</string>
 
 </resources>
