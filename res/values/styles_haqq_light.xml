@@ -35,17 +35,50 @@
         <item name="android:textColorPrimary">@color/darkGreenCMYK</item>
         <item name="android:textColorSecondary">@color/paleGreenCMYK</item>
         <item name="android:buttonStyle">@style/Button.Haqq.Light</item>
+        <item name="android:popupMenuStyle">@style/PopUpMenu.Haqq.Light</item>
+        <!-- <item name="android:alertDialogTheme">@style/AlertDialog.Haqq.Light</item> -->
     </style>
-    
+
+    <style name="AlertDialog.Haqq.Light" parent="@android:style/Theme.Holo.Light.Dialog">
+        <item name="android:windowTitleStyle">@style/DialogWindowTitle.Haqq.Light</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:buttonBarStyle">@style/Dialog.Button.Haqq.Light</item>
+        <item name="android:borderlessButtonStyle">@style/Dialog.ButtonBorderless.Haqq.Light</item>
+        <item name="android:textAppearance">@style/TextAppearance.Large.Haqq.Light</item>
+        <item name="android:textAppearanceInverse">@style/TextAppearance.Small.Haqq.Light</item>
+        <item name="android:textColorPrimary">@color/darkGreenCMYK</item>
+        <item name="android:textColorSecondary">@color/paleGreenCMYK</item>
+    </style>
+
+    <style name="DialogWindowTitle.Haqq.Light" parent="@android:style/TextAppearance.Holo.DialogWindowTitle">
+        <item name="android:textColor">@color/darkGreenCMYK</item>
+        <item name="android:shadowColor">@color/paleGreenCMYK</item>
+        <item name="android:divider">@color/goldCMYK</item>
+    </style>
+
+    <style name="PopUpMenu.Haqq.Light" parent="@android:style/Widget.Holo.Light.PopupMenu">
+        <item name="android:textAppearance">@style/TextAppearance.Small.Haqq.Light</item>
+    </style>
+
+    <style name="Dialog.ButtonBorderless.Haqq.Light" parent="@android:style/Widget.Holo.Button.Borderless.Small">
+        <item name="android:textColor">@color/paleGreenCMYK</item>
+    </style>
+
+    <style name="Dialog.Button.Haqq.Light" parent="@android:style/Holo.ButtonBar.AlertDialog">
+        <item name="android:background">@color/white</item>
+        <item name="android:textColor">@color/paleGreenCMYK</item>
+    </style>
+
     <style name="Button.Haqq.Light" parent="@android:style/Widget.Holo.Light.Button">
         <item name="android:background">@drawable/button_haqq_light</item>
-        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColor">@color/white</item>
     </style>
-    
+
     <style name="TextAppearance.Small.Haqq.Light" parent="@android:style/TextAppearance.Holo.Small">
         <item name="android:textColor">@color/paleGreenCMYK</item>
     </style>
-    
+
     <style name="TextAppearance.Large.Haqq.Light" parent="@android:style/TextAppearance.Holo.Large">
         <item name="android:textColor">@color/darkGreenCMYK</item>
     </style>
@@ -101,7 +134,7 @@
         <item name="android:popupMenuStyle">@style/PopupMenu.Haqq.Light</item>
         <item name="android:dropDownListViewStyle">@style/DropDownListView.Haqq.Light</item>
     </style>
-    
+
     <style name="PagerHaqqLight">
         <item name="android:background">@color/goldCMYK</item>
         <item name="android:textColor">@color/darkGreenCMYK</item>

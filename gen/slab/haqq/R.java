@@ -254,10 +254,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int volume=0x7f070020;
     }
     public static final class style {
-        public static final int ActionBar_Solid_Haqq_Light=0x7f090006;
-        public static final int ActionBar_Transparent_Haqq_Light=0x7f090007;
-        public static final int ActionBarTabStyle_Haqq_Light=0x7f09000b;
-        public static final int ActionButton_CloseMode_Haqq_Light=0x7f09000e;
+        public static final int ActionBar_Solid_Haqq_Light=0x7f09000b;
+        public static final int ActionBar_Transparent_Haqq_Light=0x7f09000c;
+        public static final int ActionBarTabStyle_Haqq_Light=0x7f090010;
+        public static final int ActionButton_CloseMode_Haqq_Light=0x7f090013;
+        public static final int AlertDialog_Haqq_Light=0x7f090003;
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
@@ -284,19 +285,23 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f090001;
-        public static final int Button_Haqq_Light=0x7f090003;
-        public static final int DropDownListView_Haqq_Light=0x7f09000a;
-        public static final int DropDownNav_Haqq_Light=0x7f09000c;
-        public static final int PagerHaqqLight=0x7f090010;
-        public static final int PopupMenu_Haqq_Light=0x7f090009;
-        public static final int ProgressBar_Haqq_Light=0x7f09000d;
-        public static final int TextAppearance_Large_Haqq_Light=0x7f090005;
-        public static final int TextAppearance_Small_Haqq_Light=0x7f090004;
+        public static final int Button_Haqq_Light=0x7f090008;
+        public static final int Dialog_Button_Haqq_Light=0x7f090007;
+        public static final int Dialog_ButtonBorderless_Haqq_Light=0x7f090006;
+        public static final int DialogWindowTitle_Haqq_Light=0x7f090004;
+        public static final int DropDownListView_Haqq_Light=0x7f09000f;
+        public static final int DropDownNav_Haqq_Light=0x7f090011;
+        public static final int PagerHaqqLight=0x7f090015;
+        public static final int PopUpMenu_Haqq_Light=0x7f090005;
+        public static final int PopupMenu_Haqq_Light=0x7f09000e;
+        public static final int ProgressBar_Haqq_Light=0x7f090012;
+        public static final int TextAppearance_Large_Haqq_Light=0x7f09000a;
+        public static final int TextAppearance_Small_Haqq_Light=0x7f090009;
         public static final int Theme_Haqq_Light=0x7f090002;
         /**  this style is only referenced in a Light.DarkActionBar based theme 
          */
-        public static final int Theme_Haqq_Light_Widget=0x7f09000f;
-        public static final int TitleStyle_Haqq_Light=0x7f090008;
+        public static final int Theme_Haqq_Light_Widget=0x7f090014;
+        public static final int TitleStyle_Haqq_Light=0x7f09000d;
     }
     public static final class xml {
         public static final int pref_data_sync=0x7f040000;
