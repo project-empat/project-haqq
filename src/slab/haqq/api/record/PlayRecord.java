@@ -7,11 +7,13 @@ import java.util.Date;
 import slab.haqq.R;
 import slab.haqq.lib.GlobalController;
 import slab.haqq.lib.adapter.model.Record;
+import slab.haqq.service.DefaultEvaluationService;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -26,7 +28,9 @@ public class PlayRecord extends Activity {
 	Record record;
 	MediaPlayer player;
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
 	@Override
@@ -72,7 +76,9 @@ public class PlayRecord extends Activity {
 		name.setText(record.toString());
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
 	 */
 	@Override
@@ -115,7 +121,8 @@ public class PlayRecord extends Activity {
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
 			player.stop();
-			player = MediaPlayer.create(PlayRecord.this, Uri.parse(record.getFilePath()));
+			player = MediaPlayer.create(PlayRecord.this,
+					Uri.parse(record.getFilePath()));
 		}
 	};
 
@@ -127,11 +134,15 @@ public class PlayRecord extends Activity {
 		@Override
 		public void onClick(View arg0) {
 			// TODO Auto-generated method stub
-			GlobalController.resultProvider.addScore(
-					PlayRecord.this,
-					record.getPrefix() + "_"
-							+ String.valueOf(record.getTimeStamp()), 0.0, 0.0,
-					0.0, 0.0, "");
+			/*
+			 * GlobalController.resultProvider.addScore( PlayRecord.this,
+			 * record.getPrefix() + "_" + String.valueOf(record.getTimeStamp()),
+			 * 0.0, 0.0, 0.0, 0.0, "");
+			 */
+			Intent intent = new Intent(PlayRecord.this,
+					DefaultEvaluationService.class);
+			intent.putExtra("recordParsel", record);
+			startService(intent);
 		}
 	};
 
@@ -143,11 +154,15 @@ public class PlayRecord extends Activity {
 		@Override
 		public void onClick(View arg0) {
 			// TODO Auto-generated method stub
-			GlobalController.resultProvider.addScore(
-					PlayRecord.this,
-					record.getPrefix() + "_"
-							+ String.valueOf(record.getTimeStamp()), 0.0, 0.0,
-					0.0, 0.0,"");
+			/*
+			 * GlobalController.resultProvider.addScore( PlayRecord.this,
+			 * record.getPrefix() + "_" + String.valueOf(record.getTimeStamp()),
+			 * 0.0, 0.0, 0.0, 0.0, "");
+			 */
+			Intent intent = new Intent(PlayRecord.this,
+					DefaultEvaluationService.class);
+			intent.putExtra("recordParsel", record);
+			startService(intent);
 		}
 	};
 }

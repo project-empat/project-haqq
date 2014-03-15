@@ -10,7 +10,7 @@ import android.os.Parcelable;
  * @author rasxen
  * 
  */
-public class Result implements Parcelable{
+public class Result implements Parcelable {
 	private String rstId;
 	private double scorePitch;
 	private double scoreRhythm;
@@ -20,6 +20,7 @@ public class Result implements Parcelable{
 
 	/**
 	 * TODO : Documentation
+	 * 
 	 * @param rstId
 	 * @param rid
 	 * @param scorePitch
@@ -27,8 +28,8 @@ public class Result implements Parcelable{
 	 * @param scoreVolume
 	 * @param scoreRecog
 	 */
-	public Result(String rstId, double scorePitch,
-			double scoreRhythm, double scoreVolume, double scoreRecog, String recogText) {
+	public Result(String rstId, double scorePitch, double scoreRhythm,
+			double scoreVolume, double scoreRecog, String recogText) {
 		this.rstId = rstId;
 		this.scorePitch = scorePitch;
 		this.scoreRhythm = scoreRhythm;
@@ -111,7 +112,7 @@ public class Result implements Parcelable{
 	public void setScoreRecog(double scoreRecog) {
 		this.scoreRecog = scoreRecog;
 	}
-	
+
 	/**
 	 * @return the recogText
 	 */
@@ -129,15 +130,26 @@ public class Result implements Parcelable{
 
 	/**
 	 * TODO : Documentation
+	 * 
 	 * @return average score
 	 */
 	public double getAverageScore() {
 		return (double) ((0.5 * scoreRecog) + (0.15 * scorePitch)
 				+ (0.25 * scoreRhythm) + (0.1 * scoreVolume));
 	}
-	
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "P : " + String.valueOf(getScorePitch()) + " R : "
+				+ String.valueOf(getScoreRhythm()) + " V : "
+				+ String.valueOf(getScoreVolume()) + " Recog : "
+				+ String.valueOf(getScoreRecog());
+	}
+
 	/**
 	 * TODO : Documentation
+	 * 
 	 * @param in
 	 */
 	public Result(Parcel in) {
@@ -149,7 +161,9 @@ public class Result implements Parcelable{
 		this.scoreVolume = in.readDouble();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.os.Parcelable#describeContents()
 	 */
 	@Override
@@ -158,7 +172,9 @@ public class Result implements Parcelable{
 		return 0;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.os.Parcelable#writeToParcel(android.os.Parcel, int)
 	 */
 	@Override

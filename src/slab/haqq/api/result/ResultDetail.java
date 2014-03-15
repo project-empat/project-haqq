@@ -32,7 +32,7 @@ public class ResultDetail extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_result_detail);
-		
+		GlobalController.resultAdapter.notifyDataSetChanged();
 		result = getIntent().getExtras().getParcelable("resultParsel");
 		setTitle(result.getRstId());
 		

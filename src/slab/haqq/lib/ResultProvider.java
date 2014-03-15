@@ -79,7 +79,7 @@ public class ResultProvider {
 	 * @param recog
 	 * @param recogText
 	 */
-	public void addScore(Context context, String id, double p, double r,
+	public Result addScore(Context context, String id, double p, double r,
 			double v, double recog, String recogText) {
 		Result result = new Result(id, p, r, v, recog, recogText);
 		if (resultMap.containsKey(result.getRstId())) {
@@ -102,7 +102,8 @@ public class ResultProvider {
 			resultList.add(result);
 			writeXML(context, result);
 		}
-		GlobalController.resultAdapter.notifyDataSetChanged();
+		return result;
+		//GlobalController.resultAdapter.notifyDataSetChanged();
 	}
 
 	/**

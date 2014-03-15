@@ -59,11 +59,14 @@
         <activity
             android:name="slab.haqq.api.result.ResultDetail"
             android:label="@string/title_activity_result_detail" >
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value="slab.haqq.HaqqMain" />
         </activity>
         <activity
             android:name="slab.haqq.SettingsActivity"
             android:label="@string/title_activity_settings" >
         </activity>
+        <service android:name=".service.DefaultEvaluationService"></service>
     </application>
 
 </manifest>

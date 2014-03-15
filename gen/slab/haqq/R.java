@@ -70,27 +70,29 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int ic_prev_light=0x7f020019;
         public static final int ic_record=0x7f02001a;
         public static final int ic_saveimage=0x7f02001b;
-        public static final int ic_stoprecord=0x7f02001c;
-        public static final int list_focused_haqq=0x7f02001d;
-        public static final int list_pressed_haqq=0x7f02001e;
-        public static final int menu_dropdown_panel_haqq=0x7f02001f;
-        public static final int progress_bg_haqq=0x7f020020;
-        public static final int progress_horizontal_haqq=0x7f020021;
-        public static final int progress_primary_haqq=0x7f020022;
-        public static final int progress_secondary_haqq=0x7f020023;
-        public static final int selectable_background_haqq=0x7f020024;
-        public static final int spinner_ab_default_haqq=0x7f020025;
-        public static final int spinner_ab_disabled_haqq=0x7f020026;
-        public static final int spinner_ab_focused_haqq=0x7f020027;
-        public static final int spinner_ab_pressed_haqq=0x7f020028;
-        public static final int spinner_background_ab_haqq=0x7f020029;
-        public static final int tab_indicator_ab_haqq=0x7f02002a;
-        public static final int tab_selected_focused_haqq=0x7f02002b;
-        public static final int tab_selected_haqq=0x7f02002c;
-        public static final int tab_selected_pressed_haqq=0x7f02002d;
-        public static final int tab_unselected_focused_haqq=0x7f02002e;
-        public static final int tab_unselected_haqq=0x7f02002f;
-        public static final int tab_unselected_pressed_haqq=0x7f020030;
+        public static final int ic_stat_done_evaluation=0x7f02001c;
+        public static final int ic_stat_evaluation_loading=0x7f02001d;
+        public static final int ic_stoprecord=0x7f02001e;
+        public static final int list_focused_haqq=0x7f02001f;
+        public static final int list_pressed_haqq=0x7f020020;
+        public static final int menu_dropdown_panel_haqq=0x7f020021;
+        public static final int progress_bg_haqq=0x7f020022;
+        public static final int progress_horizontal_haqq=0x7f020023;
+        public static final int progress_primary_haqq=0x7f020024;
+        public static final int progress_secondary_haqq=0x7f020025;
+        public static final int selectable_background_haqq=0x7f020026;
+        public static final int spinner_ab_default_haqq=0x7f020027;
+        public static final int spinner_ab_disabled_haqq=0x7f020028;
+        public static final int spinner_ab_focused_haqq=0x7f020029;
+        public static final int spinner_ab_pressed_haqq=0x7f02002a;
+        public static final int spinner_background_ab_haqq=0x7f02002b;
+        public static final int tab_indicator_ab_haqq=0x7f02002c;
+        public static final int tab_selected_focused_haqq=0x7f02002d;
+        public static final int tab_selected_haqq=0x7f02002e;
+        public static final int tab_selected_pressed_haqq=0x7f02002f;
+        public static final int tab_unselected_focused_haqq=0x7f020030;
+        public static final int tab_unselected_haqq=0x7f020031;
+        public static final int tab_unselected_pressed_haqq=0x7f020032;
     }
     public static final class id {
         public static final int action_exit=0x7f0b0040;
@@ -297,6 +299,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int ProgressBar_Haqq_Light=0x7f090012;
         public static final int TextAppearance_Large_Haqq_Light=0x7f09000a;
         public static final int TextAppearance_Small_Haqq_Light=0x7f090009;
+        /**  <item name="android:alertDialogTheme">@style/AlertDialog.Haqq.Light</item> 
+         */
         public static final int Theme_Haqq_Light=0x7f090002;
         /**  this style is only referenced in a Light.DarkActionBar based theme 
          */
