@@ -16,6 +16,7 @@ import slab.haqq.lib.adapter.RecordAdapter;
 import slab.haqq.lib.adapter.ResultAdapter;
 import slab.haqq.lib.adapter.model.Sura;
 import android.content.Context;
+import android.os.Environment;
 import android.util.Log;
 
 /**
@@ -65,17 +66,20 @@ public final class GlobalController {
 	private static String initMessage = "";
 	// ResultSnapshot
 	public final static String RES_SNAPSHOT_FOLDER = "HaqqSnapshot";
+	
+	public final static String HAQQ_DATA_PATH = Environment.getExternalStorageDirectory().getAbsolutePath()+"/HaqqData"; 
 
-	// Controller list
+	// Handler list
 	public static RecordProvider recordProvider;
 	public static ResultProvider resultProvider;
 	public static RecordAdapter recordAdapter;
 	public static ResultAdapter resultAdapter;
-	
+	public static MurattalProvider murattalProvider;
 
 	/**
 	 * TODO : Documentation
 	 * @param context
+	 * @param task
 	 */
 	public static void init(SplashTask task, Context context) {
 		if (initCode != FINISHING_CODE) {
@@ -89,12 +93,15 @@ public final class GlobalController {
 			initMessage = "Parsing Qur'an Properties";
 			initCode = PARSING_XML_CODE;
 			task.updateProgress();
-			new QuranPropertiesReader(context);
-			new UthmaniTextReader(context);
+			
+			new QuranPropertiesProvider(context);
+			
 			Log.v("init",
-					String.valueOf(QuranPropertiesReader.sProperties.size()));
+					String.valueOf(QuranPropertiesProvider.sProperties.size()));
 			initMessage = "Parsing Qur'an Data From Tanzil";
 			task.updateProgress();
+			
+			new UthmaniTextProvider(context);
 			for (Chapter ch : Document.getChapters()) {
 				if (oneTime == false) {
 					initTag = BUILDING_MODEL;
@@ -103,15 +110,15 @@ public final class GlobalController {
 					task.updateProgress();
 				}
 				Log.v("init",
-						QuranPropertiesReader.sProperties.get(
+						QuranPropertiesProvider.sProperties.get(
 								ch.getChapterNumber() - 1).getTname());
 				initMessage = "Adding "
-						+ QuranPropertiesReader.sProperties.get(
+						+ QuranPropertiesProvider.sProperties.get(
 								ch.getChapterNumber() - 1).getTname();
 				task.updateProgress();
 				AddSura(new Sura(String.valueOf(ch.getChapterNumber()),
 						ch.getChapterNumber(),
-						QuranPropertiesReader.sProperties.get(
+						QuranPropertiesProvider.sProperties.get(
 								ch.getChapterNumber() - 1).getTname(), ch
 								.getName().toUnicode(), ch.getVerseCount()));
 				try {
@@ -121,6 +128,8 @@ public final class GlobalController {
 					e.printStackTrace();
 				}
 			}
+			murattalProvider = new MurattalProvider();
+			murattalProvider.refreshMurottalData(context);
 			task.updateProgress();
 			recordProvider = new RecordProvider(context);
 			resultProvider = new ResultProvider(context);
@@ -129,6 +138,62 @@ public final class GlobalController {
 			initMessage = "";
 			initCode = FINISHING_CODE;
 			task.updateProgress();
+		}
+	}
+	
+	/**
+	 * TODO : Documentation
+	 * @param context
+	 */
+	public static void init(Context context) {
+		if (initCode != FINISHING_CODE) {
+			boolean oneTime = false;
+
+			APP_EXT_PATH = context.getExternalFilesDir(null).getAbsolutePath();
+			// init xml
+			System.setProperty("org.xml.sax.driver",
+					"org.xmlpull.v1.sax2.Driver");
+			initTag = PARSING_XML;
+			initMessage = "Parsing Qur'an Properties";
+			initCode = PARSING_XML_CODE;
+
+			new QuranPropertiesProvider(context);
+			
+			Log.v("init",
+					String.valueOf(QuranPropertiesProvider.sProperties.size()));
+			initMessage = "Parsing Qur'an Data From Tanzil";
+			
+			new UthmaniTextProvider(context);
+			for (Chapter ch : Document.getChapters()) {
+				if (oneTime == false) {
+					initTag = BUILDING_MODEL;
+					initCode = BULDING_MODEL_CODE;
+					oneTime = true;
+
+				}
+				Log.v("init",
+						QuranPropertiesProvider.sProperties.get(
+								ch.getChapterNumber() - 1).getTname());
+				initMessage = "Adding "
+						+ QuranPropertiesProvider.sProperties.get(
+								ch.getChapterNumber() - 1).getTname();
+
+				AddSura(new Sura(String.valueOf(ch.getChapterNumber()),
+						ch.getChapterNumber(),
+						QuranPropertiesProvider.sProperties.get(
+								ch.getChapterNumber() - 1).getTname(), ch
+								.getName().toUnicode(), ch.getVerseCount()));
+			}
+			
+			murattalProvider = new MurattalProvider();
+			murattalProvider.refreshMurottalData(context);
+			
+			recordProvider = new RecordProvider(context);
+			resultProvider = new ResultProvider(context);
+
+			initTag = FINISHING;
+			initMessage = "";
+			initCode = FINISHING_CODE;
 		}
 	}
 

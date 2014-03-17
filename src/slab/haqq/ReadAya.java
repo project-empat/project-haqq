@@ -11,7 +11,7 @@ import org.jqurantree.orthography.Document;
 import org.jqurantree.orthography.Verse;
 
 import slab.haqq.lib.GlobalController;
-import slab.haqq.lib.UthmaniTextReader;
+import slab.haqq.lib.UthmaniTextProvider;
 import slab.haqq.lib.adapter.model.Record;
 import slab.haqq.lib.adapter.model.Sura;
 import android.app.Activity;
@@ -89,7 +89,7 @@ public class ReadAya extends Activity {
 		arText.setText(getArabicText(suraNumber, ayaNumber) + " \uFD3F"
 				+ ArabicUtilities.getArabicNumber(String.valueOf(ayaNumber))
 				+ "\uFD3E");
-		transText.setText(UthmaniTextReader.getTranslation(suraNumber,
+		transText.setText(UthmaniTextProvider.getTranslation(suraNumber,
 				ayaNumber));
 
 		setTitle("Q.S. " + sura.getName() + " : \uFD3E"
@@ -103,7 +103,7 @@ public class ReadAya extends Activity {
 		if (PreferenceManager.getDefaultSharedPreferences(this)
 				.getString("arabictext_pref_list", "1")
 				.equals(GlobalController.WITH_WAQF_HARAKA)) {
-			text = UthmaniTextReader.getUthmaniText(suraNumber, ayaNumber);
+			text = UthmaniTextProvider.getUthmaniText(suraNumber, ayaNumber);
 		} else if (PreferenceManager.getDefaultSharedPreferences(this)
 				.getString("arabictext_pref_list", "1")
 				.equals(GlobalController.WITH_HARAKA_WITHOUT_WAQF)) {
@@ -220,8 +220,7 @@ public class ReadAya extends Activity {
 	 * @return
 	 */
 	private String getFilename() {
-		String filepath = getExternalFilesDir(null).getPath();
-		File file = new File(filepath, GlobalController.AUDIO_RECORDER_FOLDER);
+		File file = new File(GlobalController.HAQQ_DATA_PATH, GlobalController.AUDIO_RECORDER_FOLDER);
 
 		if (!file.exists()) {
 			file.mkdirs();

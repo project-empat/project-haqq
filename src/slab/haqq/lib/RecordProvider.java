@@ -38,8 +38,8 @@ import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.helpers.XMLReaderFactory;
 
-import android.content.Context;
 import slab.haqq.lib.adapter.model.Record;
+import android.content.Context;
 
 /**
  * @author rasxen
@@ -85,7 +85,7 @@ public class RecordProvider {
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(xmlDoc);
 			StreamResult result = new StreamResult(new File(
-					context.getExternalFilesDir(null), RECORD_RES_NAME));
+					GlobalController.HAQQ_DATA_PATH, RECORD_RES_NAME));
 			transformer.transform(source, result);
 			// docBuilder.parse(new File(context.getExternalFilesDir(null),
 			// RECORD_RES_NAME));
@@ -108,7 +108,7 @@ public class RecordProvider {
 	 * @return
 	 */
 	private boolean isRecordExist(Context context) {
-		File file = new File(context.getExternalFilesDir(null), RECORD_RES_NAME);
+		File file = new File(GlobalController.HAQQ_DATA_PATH, RECORD_RES_NAME);
 		return file.exists();
 	}
 
@@ -136,7 +136,7 @@ public class RecordProvider {
 		recordMap.remove(record.toString());
 		deleteFromXML(context, record);
 		File file = new File(record.getFilePath());
-		if(file.exists()){
+		if (file.exists()) {
 			file.delete();
 		}
 		GlobalController.recordAdapter.notifyDataSetChanged();
@@ -174,15 +174,15 @@ public class RecordProvider {
 			DocumentBuilder docBuilder = DocumentBuilderFactory.newInstance()
 					.newDocumentBuilder();
 			Document xmlDoc;
-			File file = new File(context.getExternalFilesDir(null),
+			File file = new File(GlobalController.HAQQ_DATA_PATH,
 					RECORD_RES_NAME);
 
 			if (!file.exists()) {
 				xmlDoc = docBuilder.newDocument();
 				xmlDoc.appendChild(xmlDoc.createElement(RECORDS_LIST_ELEMENT));
 			} else {
-				xmlDoc = docBuilder.parse(new File(context
-						.getExternalFilesDir(null), RECORD_RES_NAME));
+				xmlDoc = docBuilder.parse(new File(
+						GlobalController.HAQQ_DATA_PATH, RECORD_RES_NAME));
 			}
 
 			Element rootElement = xmlDoc.getDocumentElement();
@@ -218,7 +218,7 @@ public class RecordProvider {
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(xmlDoc);
 			StreamResult result = new StreamResult(new File(
-					context.getExternalFilesDir(null), RECORD_RES_NAME));
+					GlobalController.HAQQ_DATA_PATH, RECORD_RES_NAME));
 			transformer.transform(source, result);
 		} catch (ParserConfigurationException e) {
 			// TODO Auto-generated catch block
@@ -249,15 +249,15 @@ public class RecordProvider {
 			DocumentBuilder docBuilder = DocumentBuilderFactory.newInstance()
 					.newDocumentBuilder();
 			Document xmlDoc;
-			File file = new File(context.getExternalFilesDir(null),
+			File file = new File(GlobalController.HAQQ_DATA_PATH,
 					RECORD_RES_NAME);
 
 			if (!file.exists()) {
 				xmlDoc = docBuilder.newDocument();
 				xmlDoc.appendChild(xmlDoc.createElement(RECORDS_LIST_ELEMENT));
 			} else {
-				xmlDoc = docBuilder.parse(new File(context
-						.getExternalFilesDir(null), RECORD_RES_NAME));
+				xmlDoc = docBuilder.parse(new File(
+						GlobalController.HAQQ_DATA_PATH, RECORD_RES_NAME));
 			}
 
 			Element rootElement = xmlDoc.getDocumentElement();
@@ -273,7 +273,7 @@ public class RecordProvider {
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(xmlDoc);
 			StreamResult result = new StreamResult(new File(
-					context.getExternalFilesDir(null), RECORD_RES_NAME));
+					GlobalController.HAQQ_DATA_PATH, RECORD_RES_NAME));
 			transformer.transform(source, result);
 		} catch (ParserConfigurationException e) {
 			// TODO Auto-generated catch block
@@ -307,7 +307,7 @@ public class RecordProvider {
 			reader.setContentHandler(new RecordHandler());
 
 			InputStream stream = new FileInputStream(new File(
-					context.getExternalFilesDir(null), RECORD_RES_NAME));
+					GlobalController.HAQQ_DATA_PATH, RECORD_RES_NAME));
 			InputSource source = new InputSource(stream);
 
 			reader.parse(source);

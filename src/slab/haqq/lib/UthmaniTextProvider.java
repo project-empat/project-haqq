@@ -26,7 +26,7 @@ import slab.haqq.lib.model.uthmani.SuraData;
  * @author rasxen
  * 
  */
-public class UthmaniTextReader {
+public class UthmaniTextProvider {
 	private static String TRANS_PATH = "xml/id.indonesian.xml";
 	public static List<SuraData> suraList = new ArrayList<SuraData>();
 
@@ -34,7 +34,7 @@ public class UthmaniTextReader {
 	 * TODO : Documentation
 	 * @param context
 	 */
-	public UthmaniTextReader(Context context) {
+	public UthmaniTextProvider(Context context) {
 		// TODO Auto-generated constructor stub
 		try {
 			XMLReader xmlreader = XMLReaderFactory.createXMLReader();

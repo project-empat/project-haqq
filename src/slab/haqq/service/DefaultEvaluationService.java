@@ -47,11 +47,15 @@ public class DefaultEvaluationService extends IntentService implements
 	 * @see slab.haqq.service.IEvaluationService#NotifyStart()
 	 */
 	@Override
-	public void NotifyStart(NotificationManager nm, int id) {
+	public void NotifyStart(NotificationManager nm, int id, Record record) {
 		// TODO Auto-generated method stub
 		NotificationCompat.Builder nBuilder = new NotificationCompat.Builder(
-				this).setSmallIcon(R.drawable.ic_stat_evaluation_loading)
-				.setContentTitle("Haqq : Evaluating ...")
+				this)
+				.setSmallIcon(R.drawable.ic_stat_evaluation_loading)
+				.setContentTitle(
+						"Haqq : " + record.getPrefix() + "_"
+								+ String.valueOf(record.getTimeStamp())
+								+ "Evaluating ...")
 				.setContentText("Please wait");
 		nm.notify(id, nBuilder.build());
 	}
@@ -75,8 +79,10 @@ public class DefaultEvaluationService extends IntentService implements
 				PendingIntent.FLAG_UPDATE_CURRENT);
 
 		NotificationCompat.Builder nBuilder = new NotificationCompat.Builder(
-				this).setSmallIcon(R.drawable.ic_stat_done_evaluation)
-				.setContentTitle("Haqq : Evaluation Done")
+				this)
+				.setSmallIcon(R.drawable.ic_stat_done_evaluation)
+				.setContentTitle(
+						"Haqq : " + result.getRstId() + " Evaluation Done")
 				.setContentText(result.toString())
 				.setContentIntent(pendingIntent);
 		nm.notify(id, nBuilder.build());
@@ -93,7 +99,7 @@ public class DefaultEvaluationService extends IntentService implements
 		Record record = intent.getExtras().getParcelable("recordParsel");
 		NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 		int nid = new Random().nextInt();
-		NotifyStart(nm, nid);
+		NotifyStart(nm, nid, record);
 		long endTime = System.currentTimeMillis() + 5 * 1000;
 		while (System.currentTimeMillis() < endTime) {
 			synchronized (this) {

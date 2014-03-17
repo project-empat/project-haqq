@@ -21,7 +21,7 @@ import android.content.Context;
  * @author rasxen
  * 
  */
-public class QuranPropertiesReader {
+public class QuranPropertiesProvider {
 	private static String RES_PATH = "xml/quran-properties-en.xml";
 	public static List<SuraProperties> sProperties = new ArrayList<SuraProperties>();
 
@@ -29,7 +29,7 @@ public class QuranPropertiesReader {
 	 * TODO : Documentation
 	 * @param context
 	 */
-	public QuranPropertiesReader(Context context) {
+	public QuranPropertiesProvider(Context context) {
 		try {
 			sProperties.clear();
 			XMLReader reader = XMLReaderFactory.createXMLReader();
@@ -62,7 +62,7 @@ public class QuranPropertiesReader {
 				Attributes attributes) throws SAXException {
 			// TODO Auto-generated method stub
 			if (qName.equals(SURA_ELEMENT)) {
-				QuranPropertiesReader.sProperties.add(new SuraProperties(
+				QuranPropertiesProvider.sProperties.add(new SuraProperties(
 						Integer.parseInt(attributes.getValue("index")),
 						attributes.getValue("name"), attributes
 								.getValue("tname")));

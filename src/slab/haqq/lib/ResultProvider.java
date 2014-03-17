@@ -103,7 +103,7 @@ public class ResultProvider {
 			writeXML(context, result);
 		}
 		return result;
-		//GlobalController.resultAdapter.notifyDataSetChanged();
+		// GlobalController.resultAdapter.notifyDataSetChanged();
 	}
 
 	/**
@@ -150,15 +150,15 @@ public class ResultProvider {
 			docBuilder = DocumentBuilderFactory.newInstance()
 					.newDocumentBuilder();
 			Document xmlDoc;
-			File file = new File(context.getExternalFilesDir(null),
+			File file = new File(GlobalController.HAQQ_DATA_PATH,
 					RESULT_RES_NAME);
 
 			if (!file.exists()) {
 				xmlDoc = docBuilder.newDocument();
 				xmlDoc.appendChild(xmlDoc.createElement(RESULTS_LIST_ELEMENT));
 			} else {
-				xmlDoc = docBuilder.parse(new File(context
-						.getExternalFilesDir(null), RESULT_RES_NAME));
+				xmlDoc = docBuilder.parse(new File(
+						GlobalController.HAQQ_DATA_PATH, RESULT_RES_NAME));
 			}
 
 			XPath xpath = XPathFactory.newInstance().newXPath();
@@ -182,7 +182,7 @@ public class ResultProvider {
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(xmlDoc);
 			StreamResult outresult = new StreamResult(new File(
-					context.getExternalFilesDir(null), RESULT_RES_NAME));
+					GlobalController.HAQQ_DATA_PATH, RESULT_RES_NAME));
 			transformer.transform(source, outresult);
 		} catch (ParserConfigurationException e) {
 			// TODO Auto-generated catch block
@@ -216,15 +216,15 @@ public class ResultProvider {
 			DocumentBuilder docBuilder = DocumentBuilderFactory.newInstance()
 					.newDocumentBuilder();
 			Document xmlDoc;
-			File file = new File(context.getExternalFilesDir(null),
+			File file = new File(GlobalController.HAQQ_DATA_PATH,
 					RESULT_RES_NAME);
 
 			if (!file.exists()) {
 				xmlDoc = docBuilder.newDocument();
 				xmlDoc.appendChild(xmlDoc.createElement(RESULTS_LIST_ELEMENT));
 			} else {
-				xmlDoc = docBuilder.parse(new File(context
-						.getExternalFilesDir(null), RESULT_RES_NAME));
+				xmlDoc = docBuilder.parse(new File(GlobalController.HAQQ_DATA_PATH,
+						RESULT_RES_NAME));
 			}
 
 			Element rootElement = xmlDoc.getDocumentElement();
@@ -264,7 +264,7 @@ public class ResultProvider {
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(xmlDoc);
 			StreamResult outresult = new StreamResult(new File(
-					context.getExternalFilesDir(null), RESULT_RES_NAME));
+					GlobalController.HAQQ_DATA_PATH, RESULT_RES_NAME));
 			transformer.transform(source, outresult);
 		} catch (ParserConfigurationException e) {
 			// TODO Auto-generated catch block
@@ -295,7 +295,7 @@ public class ResultProvider {
 			DocumentBuilder docBuilder = DocumentBuilderFactory.newInstance()
 					.newDocumentBuilder();
 			Document xmlDoc;
-			File file = new File(context.getExternalFilesDir(null),
+			File file = new File(GlobalController.HAQQ_DATA_PATH,
 					RESULT_RES_NAME);
 
 			if (!file.exists()) {
@@ -318,7 +318,7 @@ public class ResultProvider {
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(xmlDoc);
 			StreamResult outresult = new StreamResult(new File(
-					context.getExternalFilesDir(null), RESULT_RES_NAME));
+					GlobalController.HAQQ_DATA_PATH, RESULT_RES_NAME));
 			transformer.transform(source, outresult);
 		} catch (ParserConfigurationException e) {
 			// TODO Auto-generated catch block
@@ -358,7 +358,7 @@ public class ResultProvider {
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(xmlDoc);
 			StreamResult result = new StreamResult(new File(
-					context.getExternalFilesDir(null), RESULT_RES_NAME));
+					GlobalController.HAQQ_DATA_PATH, RESULT_RES_NAME));
 			transformer.transform(source, result);
 			// docBuilder.parse(new File(context.getExternalFilesDir(null),
 			// RECORD_RES_NAME));
@@ -381,7 +381,7 @@ public class ResultProvider {
 	 * @return
 	 */
 	private boolean isRecordExist(Context context) {
-		File file = new File(context.getExternalFilesDir(null), RESULT_RES_NAME);
+		File file = new File(GlobalController.HAQQ_DATA_PATH, RESULT_RES_NAME);
 		return file.exists();
 	}
 
@@ -394,7 +394,7 @@ public class ResultProvider {
 			reader.setContentHandler(new ResultHandler());
 
 			InputStream stream = new FileInputStream(new File(
-					context.getExternalFilesDir(null), RESULT_RES_NAME));
+					GlobalController.HAQQ_DATA_PATH, RESULT_RES_NAME));
 			InputSource source = new InputSource(stream);
 
 			reader.parse(source);

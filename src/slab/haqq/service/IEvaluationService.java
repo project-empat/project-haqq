@@ -3,6 +3,7 @@
  */
 package slab.haqq.service;
 
+import slab.haqq.lib.adapter.model.Record;
 import slab.haqq.lib.adapter.model.Result;
 import android.app.NotificationManager;
 
@@ -14,7 +15,7 @@ public interface IEvaluationService {
 	/**
 	 * TODO : Documentation
 	 */
-	public void NotifyStart(NotificationManager nm, int id);
+	public void NotifyStart(NotificationManager nm, int id, Record record);
 	/**
 	 * TODO : Documentation
 	 */
