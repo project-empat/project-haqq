@@ -84,6 +84,7 @@ public class MurattalProvider {
 						if(rootElement.getTagName().equals("murattal")){
 							NodeList childs = rootElement.getChildNodes();
 							MurattalProperties newProperties = new MurattalProperties();
+							boolean skip = false;
 							for(int j = 0; j< childs.getLength(); j++){
 								Node el = (Node)childs.item(j);
 								if(el.getNodeName().equals("name")){
@@ -95,6 +96,10 @@ public class MurattalProvider {
 									Log.v("Murattal value", el.getTextContent());
 								}
 								if(el.getNodeName().equals("format")){
+									if(!el.getTextContent().equals("mp3")||!el.getTextContent().equals("wav")||!el.getTextContent().equals("amr")||!el.getTextContent().equals("aac")){	
+										skip = true;
+										Log.v("Murattal format", "unsupported format, skipped");
+									}
 									newProperties.setFormat(el.getTextContent());
 									Log.v("Murattal format", el.getTextContent());
 								}
@@ -112,6 +117,10 @@ public class MurattalProvider {
 										newProperties.setAudhubillah(false);
 									Log.v("Murattal", el.getTextContent());
 								}
+							}
+							if(!skip){
+								murattalList.add(newProperties);
+								murattalMap.put(newProperties.getName(), newProperties);
 							}
 							count++;
 						}

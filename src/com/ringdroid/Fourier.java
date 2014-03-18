@@ -238,4 +238,10 @@ public class Fourier {
 	static float smin;
 	static float mux;
 	static float smux;
+	/**
+	 * @return the magnitude
+	 */
+	public double[] getMagnitude() {
+		return magnitude;
+	}
 }

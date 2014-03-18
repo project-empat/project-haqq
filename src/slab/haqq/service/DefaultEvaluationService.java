@@ -17,6 +17,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
+import android.util.Log;
+
+import com.ringdroid.DTW;
+import com.ringdroid.Fourier;
+import com.ringdroid.Skoring;
+import com.ringdroid.soundfile.CheapSoundFile;
 
 /**
  * @author rasxen
@@ -24,7 +30,6 @@ import android.support.v4.app.TaskStackBuilder;
  */
 public class DefaultEvaluationService extends IntentService implements
 		IEvaluationService {
-
 	/**
 	 * @param name
 	 */
@@ -53,9 +58,8 @@ public class DefaultEvaluationService extends IntentService implements
 				this)
 				.setSmallIcon(R.drawable.ic_stat_evaluation_loading)
 				.setContentTitle(
-						"Haqq : " + record.getPrefix() + "_"
-								+ String.valueOf(record.getTimeStamp())
-								+ "Evaluating ...")
+						"Evaluating ... : " + record.getPrefix() + "_"
+								+ String.valueOf(record.getTimeStamp()))
 				.setContentText("Please wait");
 		nm.notify(id, nBuilder.build());
 	}
@@ -79,10 +83,8 @@ public class DefaultEvaluationService extends IntentService implements
 				PendingIntent.FLAG_UPDATE_CURRENT);
 
 		NotificationCompat.Builder nBuilder = new NotificationCompat.Builder(
-				this)
-				.setSmallIcon(R.drawable.ic_stat_done_evaluation)
-				.setContentTitle(
-						"Haqq : " + result.getRstId() + " Evaluation Done")
+				this).setSmallIcon(R.drawable.ic_stat_done_evaluation)
+				.setContentTitle("Evaluation done : " + result.getRstId())
 				.setContentText(result.toString())
 				.setContentIntent(pendingIntent);
 		nm.notify(id, nBuilder.build());
@@ -100,22 +102,70 @@ public class DefaultEvaluationService extends IntentService implements
 		NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 		int nid = new Random().nextInt();
 		NotifyStart(nm, nid, record);
-		long endTime = System.currentTimeMillis() + 5 * 1000;
-		while (System.currentTimeMillis() < endTime) {
-			synchronized (this) {
-				try {
-					wait(endTime - System.currentTimeMillis());
-				} catch (Exception e) {
-				} finally {
-					Result result = GlobalController.resultProvider.addScore(
-							this,
-							record.getPrefix() + "_"
-									+ String.valueOf(record.getTimeStamp()),
-							0.0, 0.0, 0.0, 0.0, "");
-					NotifyDone(nm, nid, result);
-				}
+		// long endTime = System.currentTimeMillis() + 5 * 1000;
+
+		final CheapSoundFile.ProgressListener listener = new CheapSoundFile.ProgressListener() {
+
+			@Override
+			public boolean reportProgress(double fractionComplete) {
+				// TODO Auto-generated method stub
+				return false;
 			}
+		};
+		try {
+			CheapSoundFile fileSource = CheapSoundFile.create(
+					GlobalController.murattalProvider.getMurattalFilePath(
+							"saadalghamidi",
+							Integer.parseInt(record.getSuraId()),
+							record.getAyaNumber()), listener);
+			CheapSoundFile fileRecord = CheapSoundFile.create(
+					record.getFilePath(), listener);
+
+			Skoring skoring = new Skoring();
+			Fourier fftSource = new Fourier();
+			Fourier fftRecord = new Fourier();
+
+			int[] frameGainsSource = fileSource.getFrameGains();
+			int[] frameGainsRecord = fileRecord.getFrameGains();
+
+			int freqs = 8000;
+			fftSource.calcSpec(frameGainsSource, freqs);
+			fftRecord.calcSpec(frameGainsRecord, freqs);
+
+			double[] energySource = skoring.calcEnergy(frameGainsSource);
+			double[] energyRecord = skoring.calcEnergy(frameGainsRecord);
+			skoring.clearArray();
+
+			DTW pitchDTW = new DTW(fftSource.getMagnitude(),
+					fftRecord.getMagnitude());
+			fftSource.clearMagnitude();
+			fftRecord.clearMagnitude();
+			DTW volDTW = new DTW(energySource, energyRecord);
+
+			double pitchScore = skoring.getPitchScore(pitchDTW.getDistance());
+			double volScore = skoring.getVolScore(volDTW.getDistance());
+			double rhythmScore = skoring.getRhyScore(volDTW.getInBeat());
+
+			Result result = GlobalController.resultProvider.addScore(
+					this,
+					record.getPrefix() + "_"
+							+ String.valueOf(record.getTimeStamp()),
+					pitchScore, rhythmScore, volScore, 0.0, "");
+			NotifyDone(nm, nid, result);
+		} catch (Exception e) {
+			// TODO: handle exception
+			Log.v("Evaluation", e.getMessage());
 		}
+
+		/*
+		 * while (System.currentTimeMillis() < endTime) { synchronized (this) {
+		 * try { wait(endTime - System.currentTimeMillis());
+		 * 
+		 * } catch (Exception e) { } finally { Result result =
+		 * GlobalController.resultProvider.addScore( this, record.getPrefix() +
+		 * "_" + String.valueOf(record.getTimeStamp()), 0.0, 0.0, 0.0, 0.0, "");
+		 * NotifyDone(nm, nid, result); } } }
+		 */
 
 	}
 

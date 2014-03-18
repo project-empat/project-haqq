@@ -85,10 +85,10 @@ public class ResultProvider {
 		if (resultMap.containsKey(result.getRstId())) {
 			result = resultMap.get(id);
 
-			result.setScorePitch(100);
-			result.setScoreRecog(80);
-			result.setScoreRhythm(50);
-			result.setScoreVolume(70);
+			result.setScorePitch(p);
+			result.setScoreRecog(recog);
+			result.setScoreRhythm(r);
+			result.setScoreVolume(v);
 			result.setRecogText(recogText);
 
 			resultMap.remove(result.getRstId());
