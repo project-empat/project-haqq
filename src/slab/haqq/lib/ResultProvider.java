@@ -302,8 +302,7 @@ public class ResultProvider {
 				xmlDoc = docBuilder.newDocument();
 				xmlDoc.appendChild(xmlDoc.createElement(RESULTS_LIST_ELEMENT));
 			} else {
-				xmlDoc = docBuilder.parse(new File(context
-						.getExternalFilesDir(null), RESULT_RES_NAME));
+				xmlDoc = docBuilder.parse(new File(GlobalController.HAQQ_DATA_PATH, RESULT_RES_NAME));
 			}
 
 			Element rootElement = xmlDoc.getDocumentElement();

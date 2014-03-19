@@ -48,17 +48,17 @@ public class Skoring {
 
 	public double getVolScore(double Dist) {
 		int divisor = 0;
-		if (Dist < 2.7) {
+		if (Dist < 3.0) {
 			divisor = 80;
-		} else if (Dist < 3) {
-			divisor = 60;
 		} else if (Dist < 3.3) {
+			divisor = 60;
+		} else if (Dist < 3.6) {
 			divisor = 40;
-		} else if (Dist < 3.5) {
+		} else if (Dist < 3.8) {
 			divisor = 30;
-		} else if (Dist < 3.7) {
+		} else if (Dist < 4.0) {
 			divisor = 20;
-		} else if (Dist < 3.9) {
+		} else if (Dist < 4.2) {
 			divisor = 10;
 		} else {
 			divisor = 3;

@@ -171,9 +171,9 @@ public class Fourier {
 
 	public float[] FrameSig() {
 		float[] frame = new float[seg_len];
-		float padlen = n_shift + seg_len;
+		int padlen = n_shift + seg_len;
 
-		wn = hamming(seg_len);
+		wn = hamming(padlen);
 
 		for (int i = 0; i < seg_len; i++) { // Windowing
 			frame[i] = time_array[i] * wn[i];

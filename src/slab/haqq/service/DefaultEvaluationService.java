@@ -109,7 +109,7 @@ public class DefaultEvaluationService extends IntentService implements
 			@Override
 			public boolean reportProgress(double fractionComplete) {
 				// TODO Auto-generated method stub
-				return false;
+				return true;
 			}
 		};
 		try {
@@ -120,14 +120,14 @@ public class DefaultEvaluationService extends IntentService implements
 							record.getAyaNumber()), listener);
 			CheapSoundFile fileRecord = CheapSoundFile.create(
 					record.getFilePath(), listener);
-
+			Log.v("Evaluation","fileLoad");
 			Skoring skoring = new Skoring();
 			Fourier fftSource = new Fourier();
 			Fourier fftRecord = new Fourier();
 
 			int[] frameGainsSource = fileSource.getFrameGains();
 			int[] frameGainsRecord = fileRecord.getFrameGains();
-
+			Log.v("Evaluation","fileLoadDone");
 			int freqs = 8000;
 			fftSource.calcSpec(frameGainsSource, freqs);
 			fftRecord.calcSpec(frameGainsRecord, freqs);
@@ -141,10 +141,14 @@ public class DefaultEvaluationService extends IntentService implements
 			fftSource.clearMagnitude();
 			fftRecord.clearMagnitude();
 			DTW volDTW = new DTW(energySource, energyRecord);
-
+			
 			double pitchScore = skoring.getPitchScore(pitchDTW.getDistance());
 			double volScore = skoring.getVolScore(volDTW.getDistance());
 			double rhythmScore = skoring.getRhyScore(volDTW.getInBeat());
+			
+			Log.v("pitch distance", String.valueOf(pitchDTW.getDistance()));
+			Log.v("vol distance", String.valueOf(volDTW.getDistance()));
+			Log.v("rhy beat", String.valueOf(volDTW.getInBeat()));
 
 			Result result = GlobalController.resultProvider.addScore(
 					this,
@@ -154,7 +158,7 @@ public class DefaultEvaluationService extends IntentService implements
 			NotifyDone(nm, nid, result);
 		} catch (Exception e) {
 			// TODO: handle exception
-			Log.v("Evaluation", e.getMessage());
+			Log.v("Evaluation", e.toString());
 		}
 
 		/*

@@ -96,7 +96,11 @@ public class MurattalProvider {
 									Log.v("Murattal value", el.getTextContent());
 								}
 								if(el.getNodeName().equals("format")){
-									if(!el.getTextContent().equals("mp3")||!el.getTextContent().equals("wav")||!el.getTextContent().equals("amr")||!el.getTextContent().equals("aac")){	
+									if(el.getTextContent().equals("mp3")||el.getTextContent().equals("wav")||el.getTextContent().equals("amr")||el.getTextContent().equals("aac")){	
+										skip = false;
+										Log.v("Murattal format", "supported format, not skipped");
+									}
+									else{
 										skip = true;
 										Log.v("Murattal format", "unsupported format, skipped");
 									}
@@ -119,8 +123,9 @@ public class MurattalProvider {
 								}
 							}
 							if(!skip){
+								Log.v("murattal", "add murrattal"+newProperties.getValue());
 								murattalList.add(newProperties);
-								murattalMap.put(newProperties.getName(), newProperties);
+								murattalMap.put(newProperties.getValue(), newProperties);
 							}
 							count++;
 						}
@@ -151,7 +156,12 @@ public class MurattalProvider {
 	 * @return
 	 */
 	public String getMurattalFilePath(String id, int sura, int aya) {
-		return Environment.getExternalStorageDirectory().getAbsolutePath()
+		Log.v("murattal", Environment.getExternalStorageDirectory().getAbsolutePath() +"/"
+				+ MurattalPath + id + "/"
+				+ convertNumberToStringWithPrefix(sura) + "/"
+				+ convertNumberToStringWithPrefix(aya) + "."
+				+ murattalMap.get(id).getFormat());
+		return Environment.getExternalStorageDirectory().getAbsolutePath() +"/"
 				+ MurattalPath + id + "/"
 				+ convertNumberToStringWithPrefix(sura) + "/"
 				+ convertNumberToStringWithPrefix(aya) + "."
@@ -164,7 +174,7 @@ public class MurattalProvider {
 	 */
 	public String getMurattalBismillah(String id) {
 		return (murattalMap.get(id).isBismillah()) ? Environment
-				.getExternalStorageDirectory().getAbsolutePath()
+				.getExternalStorageDirectory().getAbsolutePath() +"/"
 				+ MurattalPath
 				+ id
 				+ "/bismillah." + murattalMap.get(id).getFormat() : "?";
@@ -176,7 +186,7 @@ public class MurattalProvider {
 	 */
 	public String getMurattalAudhubillah(String id) {
 		return (murattalMap.get(id).isAudhubillah()) ? Environment
-				.getExternalStorageDirectory().getAbsolutePath()
+				.getExternalStorageDirectory().getAbsolutePath() +"/"
 				+ MurattalPath
 				+ id
 				+ "/audhubillah." + murattalMap.get(id).getFormat() : "?";
