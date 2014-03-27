@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * @author rasxen
- * 
+ * A Container of sura data of Uthmani Text for Qur'an,
  */
 public class SuraData {
 
@@ -17,14 +17,14 @@ public class SuraData {
 	private List<AyaData> ayaTextList;
 
 	/**
-	 * TODO : Documentation
+	 * Empty Constructor for SuraData
 	 */
 	public SuraData() {
 		ayaTextList = new ArrayList<AyaData>();
 	}
 
 	/**
-	 * TODO : Documentation
+	 * Parameterized Constructor for SuraData
 	 * @param suraNumber
 	 * @param suraName
 	 */
@@ -35,25 +35,25 @@ public class SuraData {
 	}
 
 	/**
-	 * TODO : Documentation
+	 * Get Uthmani text of using parameter to get it from this sura collection of {@link AyaData}
 	 * @param ayaNumber
-	 * @return
+	 * @return {@link AyaData} getUthmaniText()
 	 */
 	public String getAyaText(int ayaNumber) {
 		return ayaTextList.get(ayaNumber - 1).getUthmanitext();
 	}
 
 	/**
-	 * TODO : Documentation
+	 * Get default translation of using parameter to get it from this sura collection of {@link AyaData}
 	 * @param ayaNumber
-	 * @return
+	 * @return {@link AyaData} getTranslation()
 	 */
 	public String getAyaTrans(int ayaNumber) {
 		return ayaTextList.get(ayaNumber - 1).getTranslation();
 	}
 
 	/**
-	 * TODO : Documentation
+	 * Get {@link AyaData} using parameter to get it from this sura collection of {@link AyaData}
 	 * @param ayaNumber
 	 * @return
 	 */
@@ -62,7 +62,7 @@ public class SuraData {
 	}
 
 	/**
-	 * TODO : Documentation
+	 * Add {@link AyaData} to this sura collection of {@link AyaData} 
 	 * @param aya
 	 */
 	public void addAya(AyaData aya) {

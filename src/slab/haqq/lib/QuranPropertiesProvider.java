@@ -19,14 +19,14 @@ import android.content.Context;
 
 /**
  * @author rasxen
- * 
+ * a provider of quran properties
  */
 public class QuranPropertiesProvider {
 	private static String RES_PATH = "xml/quran-properties-en.xml";
 	public static List<SuraProperties> sProperties = new ArrayList<SuraProperties>();
 
 	/**
-	 * TODO : Documentation
+	 * A constructor for QuranPropertiesProvider
 	 * @param context
 	 */
 	public QuranPropertiesProvider(Context context) {
@@ -52,7 +52,7 @@ public class QuranPropertiesProvider {
 
 	/**
 	 * @author rasxen
-	 *	TODO : Documentation
+	 * a sax event handler when reading quran properties xml
 	 */
 	public class SuraPropertiesHandler extends DefaultHandler {
 		private static final String SURA_ELEMENT = "sura";

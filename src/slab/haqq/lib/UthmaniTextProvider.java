@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.jqurantree.core.resource.ResourceUtil;
+import org.jqurantree.orthography.Document;
 import org.jqurantree.tanzil.TanzilReader;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
@@ -17,21 +18,26 @@ import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.helpers.XMLReaderFactory;
 
-import android.content.Context;
-import android.util.Log;
 import slab.haqq.lib.model.uthmani.AyaData;
 import slab.haqq.lib.model.uthmani.SuraData;
+import android.content.Context;
+import android.util.Log;
 
 /**
  * @author rasxen
+ * A provider for uthmani text, read from xml
+ * the xml is provided by {@linkplain tanzil.net} 
+ * have a collection {@link SuraData} for a complete display of uthmani text, 
+ * different from {@link Document} from jquran API which automatically remove its pause marks
  * 
+ * have two inner class {@link TranslationHandler} and {@link UthmaniTextHandler} a handler for sax event
  */
 public class UthmaniTextProvider {
 	private static String TRANS_PATH = "xml/id.indonesian.xml";
 	public static List<SuraData> suraList = new ArrayList<SuraData>();
 
 	/**
-	 * TODO : Documentation
+	 * A UthmaniTextProvider constructor
 	 * @param context
 	 */
 	public UthmaniTextProvider(Context context) {
@@ -66,20 +72,20 @@ public class UthmaniTextProvider {
 	}
 
 	/**
-	 * TODO : Documentation
+	 * Get uthmani text from its sura number and aya number
 	 * @param suraNumber
 	 * @param ayaNumber
-	 * @return
+	 * @return {@link AyaData} getUthmaniText()
 	 */
 	public static String getUthmaniText(int suraNumber, int ayaNumber) {
 		return suraList.get(suraNumber - 1).getAyaText(ayaNumber);
 	}
 
 	/**
-	 * TODO : Documentation
+	 * Get translation from its sura number and aya number
 	 * @param suraNumber
 	 * @param ayaNumber
-	 * @return
+	 * @return {@link AyaData} getTranslation()
 	 */
 	public static String getTranslation(int suraNumber, int ayaNumber) {
 		return suraList.get(suraNumber - 1).getAyaTrans(ayaNumber);
@@ -87,7 +93,7 @@ public class UthmaniTextProvider {
 
 	/**
 	 * @author rasxen
-	 *	TODO : Documentation
+	 * A sax event handler for reading translation data
 	 */
 	public class TranslationHandler extends DefaultHandler {
 		private static final String TRANSLATION_ELEMENT = "translation";
@@ -113,7 +119,7 @@ public class UthmaniTextProvider {
 
 	/**
 	 * @author rasxen
-	 *	TODO : Documentation
+	 * A sax event handler for reading uthmani text data
 	 */
 	public class UthmaniTextHandler extends DefaultHandler {
 		private static final String SURA_ELEMENT = "sura";

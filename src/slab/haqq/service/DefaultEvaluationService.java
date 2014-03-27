@@ -26,11 +26,12 @@ import com.ringdroid.soundfile.CheapSoundFile;
 
 /**
  * @author rasxen
- * 
+ * A Basic background Service to evaluate record, and process its notification 
  */
 public class DefaultEvaluationService extends IntentService implements
 		IEvaluationService {
 	/**
+	 * Constructor of Evaluation Service
 	 * @param name
 	 */
 	public DefaultEvaluationService(String name) {
@@ -39,6 +40,8 @@ public class DefaultEvaluationService extends IntentService implements
 	}
 
 	/**
+	 * An empty service constructor
+	 * Necessary for every service
 	 * @param name
 	 */
 	public DefaultEvaluationService() {
@@ -159,6 +162,7 @@ public class DefaultEvaluationService extends IntentService implements
 		} catch (Exception e) {
 			// TODO: handle exception
 			Log.v("Evaluation", e.toString());
+			NotifyFailed(nm, nid, e.toString());
 		}
 
 		/*
@@ -171,6 +175,19 @@ public class DefaultEvaluationService extends IntentService implements
 		 * NotifyDone(nm, nid, result); } } }
 		 */
 
+	}
+
+	/* (non-Javadoc)
+	 * @see slab.haqq.service.IEvaluationService#NotifyFailed(android.app.NotificationManager, int, java.lang.String)
+	 */
+	@Override
+	public void NotifyFailed(NotificationManager nm, int id, String message) {
+		// TODO Auto-generated method stub
+		NotificationCompat.Builder nBuilder = new NotificationCompat.Builder(
+				this).setSmallIcon(R.drawable.ic_stat_evaluationfailed)
+				.setContentTitle("Evaluation Failed")
+				.setContentText(message);
+		nm.notify(id, nBuilder.build());
 	}
 
 }

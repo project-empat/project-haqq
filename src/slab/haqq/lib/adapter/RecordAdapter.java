@@ -31,7 +31,7 @@ import android.widget.TextView;
 
 /**
  * @author rasxen
- * 
+ * A record model adapter to handle its display its action(open, delete)
  */
 public class RecordAdapter extends BaseAdapter {
 
@@ -41,7 +41,8 @@ public class RecordAdapter extends BaseAdapter {
 	private Record recordToProcess = null;
 
 	/**
-	 * TODO : Documentation
+	 * A constructor for RecordAdapter
+	 * Create an {@link AlertDialog} for deleting {@link Record}
 	 * @param context
 	 */
 	public RecordAdapter(Context context) {
@@ -141,9 +142,6 @@ public class RecordAdapter extends BaseAdapter {
 		return vi;
 	}
 	
-	/**
-	 * TODO : Documentation
-	 */
 	private OnClickListener openListener = new OnClickListener() {
 		
 		@Override
@@ -157,9 +155,6 @@ public class RecordAdapter extends BaseAdapter {
 		}
 	};
 	
-	/**
-	 * TODO : Documentation
-	 */
 	private OnClickListener popUpListener = new OnClickListener() {
 		
 		@Override

@@ -26,7 +26,7 @@ import android.widget.PopupMenu.OnMenuItemClickListener;
 
 /**
  * @author rasxen
- * 
+ * A result model adapter to handle its display its action(open, delete)
  */
 public class ResultAdapter extends BaseAdapter {
 	private Context context;
@@ -34,8 +34,8 @@ public class ResultAdapter extends BaseAdapter {
 	private AlertDialog confirmDeleteDialog;
 	private Result resultToProcess = null;
 	/**
-	 * TODO : Documentation
-	 * 
+	 * A constructor for ResultAdapter
+	 * Create an {@link AlertDialog} for deleting {@link Result}
 	 * @param context
 	 */
 	public ResultAdapter(Context context) {

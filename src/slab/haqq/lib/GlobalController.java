@@ -11,6 +11,7 @@ import java.util.Map;
 import org.jqurantree.orthography.Chapter;
 import org.jqurantree.orthography.Document;
 
+import slab.haqq.SplashHaqq;
 import slab.haqq.SplashHaqq.SplashTask;
 import slab.haqq.lib.adapter.RecordAdapter;
 import slab.haqq.lib.adapter.ResultAdapter;
@@ -21,7 +22,7 @@ import android.util.Log;
 
 /**
  * @author rasxen
- * 
+ * A Global controller of this Application
  */
 public final class GlobalController {
 	public final static int PREPARING_CODE = 0x00;
@@ -77,7 +78,7 @@ public final class GlobalController {
 	public static MurattalProvider murattalProvider;
 
 	/**
-	 * TODO : Documentation
+	 * init this application, called only in {@link SplashHaqq} activity (default init)
 	 * @param context
 	 * @param task
 	 */
@@ -129,7 +130,7 @@ public final class GlobalController {
 				}
 			}
 			murattalProvider = new MurattalProvider();
-			murattalProvider.refreshMurottalData(context);
+			murattalProvider.refreshMurattalData(context);
 			task.updateProgress();
 			recordProvider = new RecordProvider(context);
 			resultProvider = new ResultProvider(context);
@@ -142,7 +143,7 @@ public final class GlobalController {
 	}
 	
 	/**
-	 * TODO : Documentation
+	 * init this application, called everywhere activity (only if needed)
 	 * @param context
 	 */
 	public static void init(Context context) {
@@ -186,7 +187,7 @@ public final class GlobalController {
 			}
 			
 			murattalProvider = new MurattalProvider();
-			murattalProvider.refreshMurottalData(context);
+			murattalProvider.refreshMurattalData(context);
 			
 			recordProvider = new RecordProvider(context);
 			resultProvider = new ResultProvider(context);
@@ -198,7 +199,6 @@ public final class GlobalController {
 	}
 
 	/**
-	 * TODO : Documentation
 	 * @param item
 	 */
 	private static void AddSura(Sura item) {
@@ -207,7 +207,6 @@ public final class GlobalController {
 	}
 
 	/**
-	 * TODO : Documentation
 	 * @return the initCode
 	 */
 	public static int getInitCode() {
@@ -215,7 +214,6 @@ public final class GlobalController {
 	}
 
 	/**
-	 * TODO : Documentation
 	 * @return the initTag
 	 */
 	public static String getInitTag() {
@@ -223,7 +221,6 @@ public final class GlobalController {
 	}
 
 	/**
-	 * TODO : Documentation
 	 * @return the initMessage
 	 */
 	public static String getInitMessage() {

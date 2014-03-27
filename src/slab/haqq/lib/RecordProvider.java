@@ -43,7 +43,7 @@ import android.content.Context;
 
 /**
  * @author rasxen
- * 
+ * a provider for reading and editing xml {@link Record}
  */
 public class RecordProvider {
 	public final static String RECORD_RES_NAME = "Haqq_Record.xml";
@@ -54,7 +54,7 @@ public class RecordProvider {
 	public HashMap<String, Record> recordMap = new HashMap<String, Record>();
 
 	/**
-	 * TODO : Documentation
+	 * a constructor of RecordProvider
 	 * 
 	 * @param context
 	 */
@@ -69,7 +69,7 @@ public class RecordProvider {
 	}
 
 	/**
-	 * TODO : Documentation
+	 * init the xml for {@link Record}, only if the file is not exist/deleted
 	 * 
 	 * @param context
 	 */
@@ -102,7 +102,7 @@ public class RecordProvider {
 	}
 
 	/**
-	 * TODO : Documentation
+	 * check if {@link Record} xml is exist
 	 * 
 	 * @param context
 	 * @return
@@ -113,7 +113,7 @@ public class RecordProvider {
 	}
 
 	/**
-	 * TODO : Documentation
+	 * add a new {@link Record} to xml
 	 * 
 	 * @param record
 	 * @param context
@@ -126,7 +126,7 @@ public class RecordProvider {
 	}
 
 	/**
-	 * TODO : Documentation
+	 * delete {@link Record} from xml
 	 * 
 	 * @param record
 	 * @param context
@@ -148,7 +148,7 @@ public class RecordProvider {
 	}
 
 	/**
-	 * TODO : Documentation
+	 * get {@link Record} position in the collection
 	 * 
 	 * @param record
 	 * @return
@@ -164,7 +164,7 @@ public class RecordProvider {
 	}
 
 	/**
-	 * TODO : Documentation
+	 * the actual processing function to write a new {@link Record} to xml
 	 * 
 	 * @param context
 	 * @param record
@@ -239,7 +239,7 @@ public class RecordProvider {
 	}
 
 	/**
-	 * TODO : Documentation
+	 * the actual processing function to delete {@link Record} from xml
 	 * 
 	 * @param context
 	 * @param record
@@ -297,8 +297,6 @@ public class RecordProvider {
 	}
 
 	/**
-	 * TODO : Documentation
-	 * 
 	 * @param context
 	 */
 	private void readFromXML(Context context) {
@@ -325,7 +323,8 @@ public class RecordProvider {
 	}
 
 	/**
-	 * @author rasxen TODO : Documentation
+	 * @author rasxen
+	 * a sax event handler when reading {@link Record} xml
 	 */
 	public class RecordHandler extends DefaultHandler {
 		@Override

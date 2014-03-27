@@ -42,7 +42,7 @@ import android.content.Context;
 
 /**
  * @author rasxen
- * 
+ * a provider for reading and editing xml of {@link Result}
  */
 public class ResultProvider {
 	public final static String RESULT_RES_NAME = "Haqq_Result.xml";
@@ -53,23 +53,23 @@ public class ResultProvider {
 	public Map<String, Result> resultMap = new HashMap<String, Result>();
 
 	/**
-	 * TODO : Documentation
+	 * a constructor of ResultProvider
 	 * 
 	 * @param context
 	 */
 	public ResultProvider(Context context) {
 		// TODO Auto-generated constructor stub
 		resultList.clear();
-		if (isRecordExist(context)) {
+		if (isResultExist(context)) {
 			readFromXML(context);
 		} else {
-			CreateRecordXMLs(context);
+			CreateResultXMLs(context);
 			readFromXML(context);
 		}
 	}
 
 	/**
-	 * TODO : Documentation
+	 * Add new result/modify a result to/in xml
 	 * 
 	 * @param context
 	 * @param id
@@ -107,7 +107,7 @@ public class ResultProvider {
 	}
 
 	/**
-	 * TODO : Documentation
+	 * deleting result from xml
 	 * 
 	 * @param context
 	 * @param result
@@ -121,9 +121,7 @@ public class ResultProvider {
 		}
 	}
 
-	/**
-	 * TODO : Documentation
-	 * 
+	/** 
 	 * @param res
 	 * @return
 	 */
@@ -138,8 +136,8 @@ public class ResultProvider {
 	}
 
 	/**
-	 * TODO : Documentation
-	 * 
+	 * the actual processing function for modifying {@link Result} in xml
+	 * using DOM and XPath
 	 * @param context
 	 * @param result
 	 */
@@ -206,8 +204,8 @@ public class ResultProvider {
 	}
 
 	/**
-	 * TODO : Documentation
-	 * 
+	 * the actual processing function for adding {@link Result} in xml
+	 * using DOM and XPath
 	 * @param context
 	 * @param result
 	 */
@@ -285,8 +283,8 @@ public class ResultProvider {
 	}
 
 	/**
-	 * TODO : Documentation
-	 * 
+	 * the actual processing function for deleting {@link Result} in xml
+	 * using DOM and XPath
 	 * @param context
 	 * @param result
 	 */
@@ -341,11 +339,11 @@ public class ResultProvider {
 	}
 
 	/**
-	 * TODO : Documentation
+	 * init the xml for {@link Result}, only if the file is not exist/deleted
 	 * 
 	 * @param context
 	 */
-	private void CreateRecordXMLs(Context context) {
+	private void CreateResultXMLs(Context context) {
 		try {
 			DocumentBuilder docBuilder = DocumentBuilderFactory.newInstance()
 					.newDocumentBuilder();
@@ -374,12 +372,12 @@ public class ResultProvider {
 	}
 
 	/**
-	 * TODO : Documentation
+	 * check if {@link Result} xml is exist
 	 * 
 	 * @param context
 	 * @return
 	 */
-	private boolean isRecordExist(Context context) {
+	private boolean isResultExist(Context context) {
 		File file = new File(GlobalController.HAQQ_DATA_PATH, RESULT_RES_NAME);
 		return file.exists();
 	}
@@ -411,7 +409,8 @@ public class ResultProvider {
 	}
 
 	/**
-	 * @author rasxen TODO : Documentation
+	 * @author rasxen 
+	 * a sax event handler when reading {@link Result} xml
 	 */
 	public class ResultHandler extends DefaultHandler {
 		@Override

@@ -5,12 +5,14 @@ package slab.haqq.lib.adapter.model;
 
 import java.util.Locale;
 
+import android.app.Activity;
 import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
  * @author rasxen
- * 
+ * A sura data model
+ * Implement a {@link Parcelable} to pass this model between {@link Activity}
  */
 public class Sura implements Parcelable {
 	private String id;
@@ -21,8 +23,7 @@ public class Sura implements Parcelable {
 	private String slug;
 
 	/**
-	 * Constructor
-	 * TODO : Documentation
+	 * A sura model constructor
 	 * @param id
 	 * @param idn
 	 * @param name
@@ -129,7 +130,7 @@ public class Sura implements Parcelable {
 	}
 
 	/**
-	 * TODO : Documentation
+	 * A sura model constructor with a parcel as its parameter
 	 * @param in
 	 */
 	public Sura(Parcel in) {
@@ -164,9 +165,6 @@ public class Sura implements Parcelable {
 		dest.writeInt(ayaCount);
 	}
 
-	/**
-	 * TODO : Documentation
-	 */
 	public static Parcelable.Creator<Sura> CREATOR = new Creator<Sura>() {
 
 		@Override

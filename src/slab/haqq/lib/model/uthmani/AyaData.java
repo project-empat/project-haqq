@@ -5,7 +5,8 @@ package slab.haqq.lib.model.uthmani;
 
 /**
  * @author rasxen
- * 
+ * A Container of aya data of Uthmani Text for Qur'an,
+ * For displaying Uthmani Text With its Diacritics(Haraka) And Pause Marks(Waqf)
  */
 public class AyaData {
 
@@ -15,6 +16,7 @@ public class AyaData {
 	private String translation;
 
 	/**
+	 * Empty Contructor of AyaData
 	 * TODO : Documentation
 	 */
 	public AyaData() {
@@ -22,7 +24,7 @@ public class AyaData {
 	}
 
 	/**
-	 * TODO : Documentation
+	 * Parameterized constructor of AyaData 
 	 * @param uthmanitext
 	 * @param suraNumber
 	 * @param ayaNumber
@@ -34,7 +36,6 @@ public class AyaData {
 	}
 
 	/**
-	 * TODO : Documentation
 	 * @return the uthmanitext
 	 */
 	public String getUthmanitext() {

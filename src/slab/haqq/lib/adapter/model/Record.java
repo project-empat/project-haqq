@@ -3,12 +3,15 @@
  */
 package slab.haqq.lib.adapter.model;
 
+import android.app.Activity;
 import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
  * @author rasxen
- * 
+ * A record data model
+ * Implement a {@link Parcelable} to pass this model between {@link Activity}
+ * Saved to xml
  */
 public class Record implements Parcelable {
 	private long timeStamp;
@@ -18,7 +21,7 @@ public class Record implements Parcelable {
 	private String filePath;
 
 	/**
-	 * TODO : Documentation
+	 * A record model constructor
 	 * @param timeStamp
 	 * @param suraId
 	 * @param ayaNumber
@@ -116,7 +119,7 @@ public class Record implements Parcelable {
 	}
 	
 	/**
-	 * TODO : Documentation
+	 * A record constructor with a parcel as its parameter
 	 * @param in
 	 */
 	public Record(Parcel in) {
@@ -149,9 +152,6 @@ public class Record implements Parcelable {
 		dest.writeInt(ayaNumber);
 	}
 
-	/**
-	 * TODO : Documentation
-	 */
 	public static Parcelable.Creator<Record> CREATOR = new Creator<Record>() {
 
 		@Override

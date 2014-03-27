@@ -27,7 +27,7 @@ import android.util.Log;
 
 /**
  * @author rasxen
- * 
+ * A provider of murattal used for evaluation
  */
 public class MurattalProvider {
 	final static private String MurattalPath = "HaqqData/murattal/";
@@ -35,6 +35,7 @@ public class MurattalProvider {
 	private static Map<String, MurattalProperties> murattalMap = new HashMap<String, MurattalProvider.MurattalProperties>();
 
 	/**
+	 * a MurattalProvider constructor, clearing collection
 	 * @param context
 	 */
 	public MurattalProvider() {
@@ -44,9 +45,10 @@ public class MurattalProvider {
 	}
 
 	/**
+	 * init murattaldata from murattal folder
 	 * @param context
 	 */
-	public int refreshMurottalData(Context context) {
+	public int refreshMurattalData(Context context) {
 		murattalList.clear();
 		murattalMap.clear();
 		int count = 0;
@@ -150,6 +152,7 @@ public class MurattalProvider {
 	}
 
 	/**
+	 * get murattal sound from active murattal for selected sura and aya
 	 * @param id
 	 * @param sura
 	 * @param aya
@@ -169,6 +172,7 @@ public class MurattalProvider {
 	}
 
 	/**
+	 * get Bismillah sound from active murattal
 	 * @param id
 	 * @return
 	 */
@@ -181,6 +185,7 @@ public class MurattalProvider {
 	}
 
 	/**
+	 * get Audhubillah sound from active murattal
 	 * @param id
 	 * @return
 	 */
@@ -206,7 +211,7 @@ public class MurattalProvider {
 
 	/**
 	 * @author rasxen
-	 * 
+	 * a murattal model data
 	 */
 	public class MurattalProperties {
 		private String name;

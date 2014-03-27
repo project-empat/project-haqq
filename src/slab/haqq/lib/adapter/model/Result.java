@@ -3,12 +3,15 @@
  */
 package slab.haqq.lib.adapter.model;
 
+import android.app.Activity;
 import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
  * @author rasxen
- * 
+ * A result data model
+ * Implement a {@link Parcelable} to pass this model between {@link Activity}
+ * Saved to xml
  */
 public class Result implements Parcelable {
 	private String rstId;
@@ -19,7 +22,7 @@ public class Result implements Parcelable {
 	private String recogText;
 
 	/**
-	 * TODO : Documentation
+	 * A result model constructor
 	 * 
 	 * @param rstId
 	 * @param rid
@@ -129,15 +132,20 @@ public class Result implements Parcelable {
 	}
 
 	/**
-	 * TODO : Documentation
+	 * Return of average score of this {@link Result}
+	 * with a scale 0.5 for recog, 0.15 for pitch,
+	 * 0.25 for rhtyhm, 0.1 for volume
 	 * 
 	 * @return average score
 	 */
 	public double getAverageScore() {
-		return (double) ((0.5 * scoreRecog) + (0.15 * scorePitch)
-				+ (0.25 * scoreRhythm) + (0.1 * scoreVolume));
+		return Math.round((double) ((0.5 * scoreRecog) + (0.15 * scorePitch)
+				+ (0.25 * scoreRhythm) + (0.1 * scoreVolume)));
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
@@ -148,8 +156,7 @@ public class Result implements Parcelable {
 	}
 
 	/**
-	 * TODO : Documentation
-	 * 
+	 * A result constructor with a parcel as its parameter
 	 * @param in
 	 */
 	public Result(Parcel in) {
