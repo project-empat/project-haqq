@@ -18,6 +18,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
+/**
+ * @author rasxen
+ * <p><h1>Goto Activity</h1></p>
+ * <p>Goto UI Handle,
+ * <br>provide quick jump to specific aya
+ * </p>
+ */
 public class GotoAyaActivity extends Activity {
 
 	private Spinner suraDropdown, ayaDropdown;

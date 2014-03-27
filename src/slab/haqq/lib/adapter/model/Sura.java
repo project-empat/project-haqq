@@ -11,8 +11,10 @@ import android.os.Parcelable;
 
 /**
  * @author rasxen
- * A sura data model
- * Implement a {@link Parcelable} to pass this model between {@link Activity}
+ * <p><h1>Sura</h1></p>
+ * <p>A sura data model
+ * <br>Implement a {@link Parcelable} to pass this model between {@link Activity}
+ * <p>
  */
 public class Sura implements Parcelable {
 	private String id;

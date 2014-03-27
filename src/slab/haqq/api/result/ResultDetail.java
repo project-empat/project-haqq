@@ -20,6 +20,13 @@ import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+/**
+ * @author rasxen
+ * <p><h1>ResultDetail Activity</h1></p>
+ * <p>display result detail
+ * <br>and save it to an image
+ * </p>
+ */
 public class ResultDetail extends Activity {
 	Result result;
 	TextView displayName, pitchScore, rhythmScore, volumeScore, recogScore, averageScore, commentText;

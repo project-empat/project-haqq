@@ -9,9 +9,11 @@ import android.os.Parcelable;
 
 /**
  * @author rasxen
- * A result data model
- * Implement a {@link Parcelable} to pass this model between {@link Activity}
- * Saved to xml
+ * <p><h1>Result</h1></p>
+ * <p>A result data model
+ * <br>Implement a {@link Parcelable} to pass this model between {@link Activity}
+ * <br>Saved to xml
+ * </p>
  */
 public class Result implements Parcelable {
 	private String rstId;

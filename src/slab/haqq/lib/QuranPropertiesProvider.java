@@ -19,7 +19,8 @@ import android.content.Context;
 
 /**
  * @author rasxen
- * a provider of quran properties
+ * <p><h1>QuranPropertiesProvider</h1></p>
+ * <p>a provider of quran properties</p>
  */
 public class QuranPropertiesProvider {
 	private static String RES_PATH = "xml/quran-properties-en.xml";

@@ -43,7 +43,8 @@ import android.content.Context;
 
 /**
  * @author rasxen
- * a provider for reading and editing xml {@link Record}
+ * <p><h1>RecordProvider</h1></p>
+ * <p>a provider for reading and editing xml {@link Record}</p>
  */
 public class RecordProvider {
 	public final static String RECORD_RES_NAME = "Haqq_Record.xml";

@@ -15,7 +15,8 @@ import android.widget.ListView;
 
 /**
  * @author rasxen
- * 
+ * <p><h1>Record Fragment</h1></p>
+ * <p>a fragment that shown sura list from {@link RecordAdapter}</p>
  */
 public class RecordAPI extends Fragment {
 	private ListView lv;

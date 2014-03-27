@@ -19,7 +19,8 @@ import slab.haqq.lib.adapter.*;
 
 /**
  * @author rasxen
- * 
+ * <p><h1>Sura Fragment</h1></p>
+ * <p>a fragment that shown sura list from {@link SuraAdapter}</p>
  */
 public class SuraAPI extends Fragment {
 	private ListView lv;

@@ -5,8 +5,10 @@ package slab.haqq.lib.model.uthmani;
 
 /**
  * @author rasxen
- * A Container of aya data of Uthmani Text for Qur'an,
- * For displaying Uthmani Text With its Diacritics(Haraka) And Pause Marks(Waqf)
+ * <p><h1>AyaData</h1></p>
+ * <p>A Container of aya data of Uthmani Text for Qur'an,
+ * <br>For displaying Uthmani Text With its Diacritics(Haraka) And Pause Marks(Waqf)
+ * </p>
  */
 public class AyaData {
 

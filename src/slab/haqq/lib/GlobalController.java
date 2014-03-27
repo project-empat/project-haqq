@@ -22,7 +22,8 @@ import android.util.Log;
 
 /**
  * @author rasxen
- * A Global controller of this Application
+ * <p><h1>GlobalController</h1></p>
+ * <p>A Global controller of this Application</p>
  */
 public final class GlobalController {
 	public final static int PREPARING_CODE = 0x00;

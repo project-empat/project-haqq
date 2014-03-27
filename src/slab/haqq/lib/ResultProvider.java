@@ -42,7 +42,8 @@ import android.content.Context;
 
 /**
  * @author rasxen
- * a provider for reading and editing xml of {@link Result}
+ * <p><h1>ResultProvider</h1></p>
+ * <p>a provider for reading and editing xml of {@link Result}</p>
  */
 public class ResultProvider {
 	public final static String RESULT_RES_NAME = "Haqq_Result.xml";

@@ -25,12 +25,13 @@ import android.util.Log;
 
 /**
  * @author rasxen
- * A provider for uthmani text, read from xml
- * the xml is provided by {@linkplain tanzil.net} 
- * have a collection {@link SuraData} for a complete display of uthmani text, 
- * different from {@link Document} from jquran API which automatically remove its pause marks
- * 
- * have two inner class {@link TranslationHandler} and {@link UthmaniTextHandler} a handler for sax event
+ * <p><h1>UthmaniTextProvider</h1></p>
+ * <p>A provider for uthmani text, read from xml
+ * <br>the xml is provided by {@linkplain tanzil.net} 
+ * <br>have a collection {@link SuraData} for a complete display of uthmani text, 
+ * <br>different from {@link Document} from jquran API which automatically remove its pause marks
+ * </p>
+ * <p>have two inner class {@link TranslationHandler} and {@link UthmaniTextHandler} a handler for sax event</p>
  */
 public class UthmaniTextProvider {
 	private static String TRANS_PATH = "xml/id.indonesian.xml";

@@ -5,6 +5,7 @@ package slab.haqq.api.result;
 
 import slab.haqq.R;
 import slab.haqq.lib.GlobalController;
+import slab.haqq.lib.ResultProvider;
 import slab.haqq.lib.adapter.ResultAdapter;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,7 +16,8 @@ import android.widget.ListView;
 
 /**
  * @author rasxen
- * 
+ * <p><h1>Result Fragment</h1></p>
+ * <p>a fragment that shown sura list from {@link ResultProvider}</p>
  */
 public class ResultAPI extends Fragment {
 	private ListView lv;

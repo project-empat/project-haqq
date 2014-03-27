@@ -26,7 +26,8 @@ import android.widget.PopupMenu.OnMenuItemClickListener;
 
 /**
  * @author rasxen
- * A result model adapter to handle its display its action(open, delete)
+ * <p><h1>ResultAdapter</h1></p>
+ * <p>A result model adapter to handle its display its action(open, delete)</p>
  */
 public class ResultAdapter extends BaseAdapter {
 	private Context context;

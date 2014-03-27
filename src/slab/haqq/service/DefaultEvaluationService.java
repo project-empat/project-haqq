@@ -26,7 +26,10 @@ import com.ringdroid.soundfile.CheapSoundFile;
 
 /**
  * @author rasxen
- * A Basic background Service to evaluate record, and process its notification 
+ * <p><h1>DefaultEvaluationService</h1></p>
+ * <p>A Basic background Service to evaluate record, 
+ * <br>and process its notification
+ * </p>
  */
 public class DefaultEvaluationService extends IntentService implements
 		IEvaluationService {

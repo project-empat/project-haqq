@@ -11,6 +11,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+/**
+ * @author rasxen
+ * <p><h1>AyaList Activity</h1></p>
+ * <p>Aya List UI Handler,
+ * <br>display aya list of selected sura
+ * </p>
+ */
 public class AyaList extends Activity {
 	private Sura sura;
 	private ListView ayaListView;

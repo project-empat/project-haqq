@@ -22,6 +22,12 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+/**
+ * @author rasxen
+ * <p><h1>PlayRecord Activity</h1></p>
+ * <p>a Media player for the record and handler for evaluation process
+ * </p>
+ */
 public class PlayRecord extends Activity {
 	Button baseEvalBtn, fullEvalBtn;
 	TextView timestamp, name, sura;

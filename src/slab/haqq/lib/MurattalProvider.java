@@ -27,7 +27,8 @@ import android.util.Log;
 
 /**
  * @author rasxen
- * A provider of murattal used for evaluation
+ * <p><h1>MurattalProvider</h1></p>
+ * <p>A provider of murattal used for evaluation</p>
  */
 public class MurattalProvider {
 	final static private String MurattalPath = "HaqqData/murattal/";

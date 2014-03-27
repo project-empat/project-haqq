@@ -31,7 +31,8 @@ import android.widget.TextView;
 
 /**
  * @author rasxen
- * A record model adapter to handle its display its action(open, delete)
+ * <p><h1>RecordAdapter</h1></p>
+ * <p>A record model adapter to handle its display its action(open, delete)</p>
  */
 public class RecordAdapter extends BaseAdapter {
 

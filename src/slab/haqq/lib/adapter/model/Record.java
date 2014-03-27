@@ -9,9 +9,11 @@ import android.os.Parcelable;
 
 /**
  * @author rasxen
- * A record data model
- * Implement a {@link Parcelable} to pass this model between {@link Activity}
- * Saved to xml
+ * <p><h1>Record</h1></p>
+ * <p>A record data model
+ * <br>Implement a {@link Parcelable} to pass this model between {@link Activity}
+ * <br>Saved to xml
+ * </p>
  */
 public class Record implements Parcelable {
 	private long timeStamp;

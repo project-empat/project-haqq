@@ -11,7 +11,8 @@ import android.content.res.Resources.NotFoundException;
 
 /**
  * @author rasxen
- * An default interface for Evaluation Service
+ * <p><h1>IEvaluationService</h1></p>
+ * <p>A default interface for Evaluation Service</p>
  */
 public interface IEvaluationService {
 	/**

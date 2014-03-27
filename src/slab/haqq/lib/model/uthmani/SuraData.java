@@ -8,7 +8,8 @@ import java.util.List;
 
 /**
  * @author rasxen
- * A Container of sura data of Uthmani Text for Qur'an,
+ * <p><h1>SuraData</h1></p>
+ * <p>A Container of sura data of Uthmani Text for Qur'an</p>
  */
 public class SuraData {
 

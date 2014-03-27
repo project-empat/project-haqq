@@ -7,6 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+/**
+ * @author rasxen
+ * <p><h1>About Fragment</h1></p>
+ * <p>a fragment to show this application description, credit, etc</p>
+ */
 public class AboutAPI extends Fragment {
 
 	/* (non-Javadoc)

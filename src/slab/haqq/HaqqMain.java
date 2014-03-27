@@ -21,6 +21,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+/**
+ * @author rasxen
+ * <p><h1>Main Activity</h1></p>
+ * <p>Main UI Handler</p>
+ */
 public class HaqqMain extends FragmentActivity {
 
 	/**

@@ -27,6 +27,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * @author rasxen
+ * <p><h1>ReadAya Activity</h1></p>
+ * <p>Qur'an reading ui handler, for single aya only
+ * <br>use for reading and recording
+ * </p>
+ */
 public class ReadAya extends Activity {
 	private int suraNumber, ayaNumber;
 	private Sura sura;

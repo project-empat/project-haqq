@@ -16,7 +16,8 @@ import slab.haqq.lib.adapter.model.Sura;
 
 /**
  * @author rasxen
- * A sura model adapter to handle its display its action(delete)
+ * <p><h1>Sura Adapter</h1></p>
+ * <p>A sura model adapter to handle its display its action(open)</p>
  */
 public class SuraAdapter extends BaseAdapter {
 
