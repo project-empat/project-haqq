@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="customrules">
+  <import file="cmusphinx_assets.xml"/>
+
+  <target name="-pre-clean" depends="cmusphinx_assets.clean"/>
+  <target name="-pre-build" depends="cmusphinx_assets.list,cmusphinx_assets.checksum"/>
+</project>

@@ -1,22 +1,26 @@
 package slab.haqq;
 
 import slab.haqq.lib.adapter.model.Sura;
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 /**
  * @author rasxen
- * <p><h1>AyaList Activity</h1></p>
- * <p>Aya List UI Handler,
- * <br>display aya list of selected sura
- * </p>
+ *         <p>
+ *         <h1>AyaList Activity</h1>
+ *         </p>
+ *         <p>
+ *         Aya List UI Handler, <br>
+ *         display aya list of selected sura
+ *         </p>
  */
 public class AyaList extends Activity {
 	private Sura sura;
@@ -24,21 +28,22 @@ public class AyaList extends Activity {
 	private String[] ayaArray;
 	private ArrayAdapter<String> ayaAdapter;
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_aya_list);
-
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 		this.sura = getIntent().getExtras().getParcelable("suraParcel");
 		setTitle(sura.getName() + " - " + sura.getArname());
 
 		ayaArray = new String[this.sura.getAyaCount()];
 		for (int i = 0; i < ayaArray.length; i++) {
-			ayaArray[i] = sura.getName()
-					+ " - " + String.valueOf(i + 1);
+			ayaArray[i] = sura.getName() + " - " + String.valueOf(i + 1);
 		}
 
 		ayaAdapter = new ArrayAdapter<String>(this,
@@ -48,9 +53,10 @@ public class AyaList extends Activity {
 		ayaListView.setAdapter(ayaAdapter);
 		ayaListView.setOnItemClickListener(ayaListener);
 	}
-	
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
 	 */
 	@Override
@@ -75,4 +81,15 @@ public class AyaList extends Activity {
 			startActivity(intent);
 		}
 	};
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    switch (item.getItemId()) {
+	    // Respond to the action bar's Up/Home button
+	    case android.R.id.home:
+	        onBackPressed();
+	        return true;
+	    }
+	    return super.onOptionsItemSelected(item);
+	}
 }

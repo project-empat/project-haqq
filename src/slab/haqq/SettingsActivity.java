@@ -1,5 +1,7 @@
 package slab.haqq;
 
+import java.util.List;
+
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Configuration;
@@ -16,8 +18,7 @@ import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
 import android.text.TextUtils;
 import android.util.Log;
-
-import java.util.List;
+import android.view.MenuItem;
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On
@@ -43,7 +44,19 @@ public class SettingsActivity extends PreferenceActivity {
 	protected void onPostCreate(Bundle savedInstanceState) {
 		super.onPostCreate(savedInstanceState);
 		setTheme(R.style.Theme_Haqq_Light);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 		setupSimplePreferencesScreen();
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    switch (item.getItemId()) {
+	    // Respond to the action bar's Up/Home button
+	    case android.R.id.home:
+	    	onBackPressed();
+	        return true;
+	    }
+	    return super.onOptionsItemSelected(item);
 	}
 
 	/**
