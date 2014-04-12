@@ -15,6 +15,8 @@ import slab.haqq.lib.UthmaniTextProvider;
 import slab.haqq.lib.adapter.model.Record;
 import slab.haqq.lib.adapter.model.Sura;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
 import android.os.Bundle;
@@ -30,10 +32,13 @@ import android.widget.Toast;
 
 /**
  * @author rasxen
- * <p><h1>ReadAya Activity</h1></p>
- * <p>Qur'an reading ui handler, for single aya only
- * <br>use for reading and recording
- * </p>
+ *         <p>
+ *         <h1>ReadAya Activity</h1>
+ *         </p>
+ *         <p>
+ *         Qur'an reading ui handler, for single aya only <br>
+ *         use for reading and recording
+ *         </p>
  */
 public class ReadAya extends Activity {
 	private int suraNumber, ayaNumber;
@@ -48,6 +53,7 @@ public class ReadAya extends Activity {
 	private Thread recordingThread;
 	private int bufferSize;
 	private Record recordModel;
+	private AlertDialog confirmSaveRecord;
 
 	/*
 	 * (non-Javadoc)
@@ -85,7 +91,31 @@ public class ReadAya extends Activity {
 		 * 
 		 * arText.loadData(textAR, "text/html", "utf-8")
 		 */;
-
+		confirmSaveRecord = new AlertDialog.Builder(this).setTitle("Create record")
+				.setNegativeButton("No", new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+						stopRecording(false);
+						//recordModel.setFilePath(getFilename());
+						//GlobalController.recordProvider.add(recordModel, ReadAya.this);
+						recordBtn.setBackgroundResource(R.drawable.ic_record);
+						isRecording = false;
+					}
+				})
+				.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+						stopRecording(true);
+						recordModel.setFilePath(getFilename());
+						GlobalController.recordProvider.add(recordModel, ReadAya.this);
+						recordBtn.setBackgroundResource(R.drawable.ic_record);
+						isRecording = false;
+					}
+				}).create();
 		ArabicUtilities.getArabicEnabledTextView(this, arText);
 		updateView();
 	}
@@ -133,16 +163,16 @@ public class ReadAya extends Activity {
 		// getMenuInflater().inflate(R.menu.read_aya, menu);
 		return true;
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-	    switch (item.getItemId()) {
-	    // Respond to the action bar's Up/Home button
-	    case android.R.id.home:
-	    	onBackPressed();
-	        return true;
-	    }
-	    return super.onOptionsItemSelected(item);
+		switch (item.getItemId()) {
+		// Respond to the action bar's Up/Home button
+		case android.R.id.home:
+			onBackPressed();
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 
 	/**
@@ -224,11 +254,8 @@ public class ReadAya extends Activity {
 				recordBtn.setBackgroundResource(R.drawable.ic_stoprecord);
 				isRecording = true;
 			} else {
-				stopRecording();
-				recordModel.setFilePath(getFilename());
-				GlobalController.recordProvider.add(recordModel, ReadAya.this);
-				recordBtn.setBackgroundResource(R.drawable.ic_record);
-				isRecording = false;
+				confirmSaveRecord.setMessage("Do you want to save the record "+getFilename()+" ?");
+				confirmSaveRecord.show();
 			}
 		}
 	};
@@ -239,7 +266,8 @@ public class ReadAya extends Activity {
 	 * @return
 	 */
 	private String getFilename() {
-		File file = new File(GlobalController.HAQQ_DATA_PATH, GlobalController.AUDIO_RECORDER_FOLDER);
+		File file = new File(GlobalController.HAQQ_DATA_PATH,
+				GlobalController.AUDIO_RECORDER_FOLDER);
 
 		if (!file.exists()) {
 			file.mkdirs();
@@ -349,7 +377,7 @@ public class ReadAya extends Activity {
 	/**
 	 * TODO : Documentation
 	 */
-	private void stopRecording() {
+	private void stopRecording(boolean recorded) {
 		if (null != recorder) {
 			isRecording = false;
 
@@ -359,8 +387,9 @@ public class ReadAya extends Activity {
 			recorder = null;
 			recordingThread = null;
 		}
-
-		copyWaveFile(getTempFilename(), getFilename());
+		if (recorded) {
+			copyWaveFile(getTempFilename(), getFilename());
+		}
 		deleteTempFile();
 		// TODO
 		// recordModel.setFilePath(getFilename());
