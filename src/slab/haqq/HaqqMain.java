@@ -2,10 +2,6 @@ package slab.haqq;
 
 import java.util.Locale;
 
-import slab.haqq.api.AboutAPI;
-import slab.haqq.api.SuraAPI;
-import slab.haqq.api.record.RecordAPI;
-import slab.haqq.api.result.ResultAPI;
 import slab.haqq.lib.GlobalController;
 import android.content.Intent;
 import android.os.Bundle;

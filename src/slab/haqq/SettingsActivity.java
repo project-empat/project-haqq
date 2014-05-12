@@ -1,12 +1,16 @@
 package slab.haqq;
 
+import java.io.File;
 import java.util.List;
 
+import slab.haqq.lib.GlobalController;
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,10 +19,12 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
-import android.preference.RingtonePreference;
-import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On
@@ -39,24 +45,27 @@ public class SettingsActivity extends PreferenceActivity {
 	 * shown on tablets.
 	 */
 	private static final boolean ALWAYS_SIMPLE_PREFS = false;
+	public static Context context;
 
 	@Override
 	protected void onPostCreate(Bundle savedInstanceState) {
 		super.onPostCreate(savedInstanceState);
 		setTheme(R.style.Theme_Haqq_Light);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
+		context = this;
+		//activity = this;
 		setupSimplePreferencesScreen();
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-	    switch (item.getItemId()) {
-	    // Respond to the action bar's Up/Home button
-	    case android.R.id.home:
-	    	onBackPressed();
-	        return true;
-	    }
-	    return super.onOptionsItemSelected(item);
+		switch (item.getItemId()) {
+		// Respond to the action bar's Up/Home button
+		case android.R.id.home:
+			onBackPressed();
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 
 	/**
@@ -73,29 +82,42 @@ public class SettingsActivity extends PreferenceActivity {
 		// use the older PreferenceActivity APIs.
 
 		// Add 'general' preferences.
-		//addPreferencesFromResource(R.xml.pref_general);
+		// addPreferencesFromResource(R.xml.pref_general);
 		addPreferencesFromResource(R.xml.pref_haqq);
 
 		// Add 'notifications' preferences, and a corresponding header.
-		/*PreferenceCategory fakeHeader = new PreferenceCategory(this);
-		fakeHeader.setTitle(R.string.pref_header_notifications);
-		getPreferenceScreen().addPreference(fakeHeader);
-		addPreferencesFromResource(R.xml.pref_notification);*/
+		/*
+		 * PreferenceCategory fakeHeader = new PreferenceCategory(this);
+		 * fakeHeader.setTitle(R.string.pref_header_notifications);
+		 * getPreferenceScreen().addPreference(fakeHeader);
+		 * addPreferencesFromResource(R.xml.pref_notification);
+		 */
 
 		// Add 'data and sync' preferences, and a corresponding header.
-		/*fakeHeader = new PreferenceCategory(this);
-		fakeHeader.setTitle(R.string.pref_header_data_sync);
-		getPreferenceScreen().addPreference(fakeHeader);
-		addPreferencesFromResource(R.xml.pref_data_sync);*/
+		/*
+		 * fakeHeader = new PreferenceCategory(this);
+		 * fakeHeader.setTitle(R.string.pref_header_data_sync);
+		 * getPreferenceScreen().addPreference(fakeHeader);
+		 * addPreferencesFromResource(R.xml.pref_data_sync);
+		 */
 
 		// Bind the summaries of EditText/List/Dialog/Ringtone preferences to
 		// their values. When their values change, their summaries are updated
 		// to reflect the new value, per the Android Design guidelines.
-		//bindPreferenceSummaryToValue(findPreference("example_text"));
-		//bindPreferenceSummaryToValue(findPreference("example_list"));
-		//bindPreferenceSummaryToValue(findPreference("notifications_new_message_ringtone"));
-		//bindPreferenceSummaryToValue(findPreference("sync_frequency"));
+		// bindPreferenceSummaryToValue(findPreference("example_text"));
+		// bindPreferenceSummaryToValue(findPreference("example_list"));
+		// bindPreferenceSummaryToValue(findPreference("notifications_new_message_ringtone"));
+		// bindPreferenceSummaryToValue(findPreference("sync_frequency"));
 		bindPreferenceSummaryToValue(findPreference("arabictext_pref_list"));
+		bindPreferenceSummaryToValue(findPreference("prefix"));
+		bindPreferenceSummaryToValue(findPreference("displayNameHaqq"));
+		bindPreferenceSummaryToValue(findPreference("accountdata"));
+		findPreference("accountdata").setOnPreferenceClickListener(
+				sClickPreferenceListener);
+		findPreference("register").setOnPreferenceClickListener(
+				sClickPreferenceListener);
+		findPreference("sendresult").setOnPreferenceClickListener(
+				sClickPreferenceListener);
 	}
 
 	/** {@inheritDoc} */
@@ -134,6 +156,148 @@ public class SettingsActivity extends PreferenceActivity {
 		}
 	}
 
+	public static Preference.OnPreferenceClickListener sClickPreferenceListener = new Preference.OnPreferenceClickListener() {
+
+		@Override
+		public boolean onPreferenceClick(Preference preference) {
+			// TODO Auto-generated method stub
+			if (preference.getKey().equalsIgnoreCase("register")) {
+				Log.d("register", "Register Preference");
+				Toast.makeText(context, "Disabled. Please contact the developer", Toast.LENGTH_LONG).show();
+				return false;
+				/*final AlertDialog.Builder builder = new AlertDialog.Builder(
+						context);
+				LayoutInflater layoutInflater = LayoutInflater.from(context);
+				View vi = (View) layoutInflater.inflate(
+						R.layout.custdialog_register, null);
+				builder.setView(vi);
+				builder.setTitle("Register");
+				final EditText fullname, email, pass;
+				fullname = (EditText) vi.findViewById(R.id.fullnameEdit);
+				email = (EditText) vi.findViewById(R.id.emailedit);
+				pass = (EditText) vi.findViewById(R.id.passedit);
+				builder.setCancelable(false)
+						.setNegativeButton("Cancel",
+								new DialogInterface.OnClickListener() {
+
+									@Override
+									public void onClick(DialogInterface arg0,
+											int arg1) {
+										// TODO Auto-generated method stub
+										arg0.dismiss();
+									}
+								})
+						.setPositiveButton("Register",
+								new DialogInterface.OnClickListener() {
+
+									@Override
+									public void onClick(DialogInterface arg0,
+											int arg1) {
+										// TODO Auto-generated method stub
+										HashMap<String, Object> result = SPHINXRest
+												.Register(email.getText()
+														.toString(), pass
+														.getText().toString(),
+														fullname.getText()
+																.toString());
+										if (Integer.parseInt(String
+												.valueOf(result
+														.get("statusCode"))) == 200) {
+											Toast.makeText(context,
+													"Registration successful.",
+													Toast.LENGTH_LONG).show();
+											;
+											SharedPreferences sharePref = PreferenceManager
+													.getDefaultSharedPreferences(context);
+											sharePref.edit().putString(
+													"emailApi",
+													email.getText().toString());
+											sharePref.edit().putString(
+													"passApi",
+													pass.getText().toString());
+											sharePref.edit().commit();
+										} else {
+											Toast.makeText(
+													context,
+													"Registration unsuccessful.",
+													Toast.LENGTH_LONG).show();
+											;
+										}
+									}
+								});
+				AlertDialog dialog = builder.create();
+				dialog.show();*/
+			} else if (preference.getKey().equalsIgnoreCase("accountdata")) {
+				Log.d("accountdata", "account Preference");
+				final AlertDialog.Builder builder = new AlertDialog.Builder(
+						context);
+				LayoutInflater layoutInflater = LayoutInflater.from(context);
+				View vi = (View) layoutInflater.inflate(
+						R.layout.custdialog_login, null);
+				
+				builder.setView(vi);
+				builder.setTitle("Account Data");
+				
+				final EditText email, pass;
+				email = (EditText) vi.findViewById(R.id.emailedit);
+				pass = (EditText) vi.findViewById(R.id.passedit);
+				SharedPreferences sharePref = PreferenceManager
+						.getDefaultSharedPreferences(context);
+				Log.d("preference", sharePref.getString("emailApi", ""));
+				email.setText(sharePref.getString("emailApi", ""));
+				pass.setText(sharePref.getString("passApi", ""));
+				
+				builder.setCancelable(false)
+						.setNegativeButton("Cancel",
+								new DialogInterface.OnClickListener() {
+
+									@Override
+									public void onClick(DialogInterface arg0,
+											int arg1) {
+										// TODO Auto-generated method stub
+										arg0.dismiss();
+									}
+								})
+						.setPositiveButton("Save",
+								new DialogInterface.OnClickListener() {
+
+									@Override
+									public void onClick(DialogInterface arg0,
+											int arg1) {
+										// TODO Auto-generated method stub
+										SharedPreferences.Editor sharePref = PreferenceManager
+												.getDefaultSharedPreferences(context).edit();
+										sharePref.putString("emailApi",
+												email.getText().toString());
+										sharePref.putString("passApi",
+												pass.getText().toString());
+										sharePref.putString("accountdata", String.valueOf(System.currentTimeMillis()));
+										Log.d("email", email.getText().toString());
+										sharePref.commit();	
+										
+									}
+								});
+				AlertDialog dialog = builder.create();
+				dialog.show();
+			} else if(preference.getKey().equalsIgnoreCase("sendresult")){
+				Uri uri;
+				File file = GlobalController.resultProvider.getResultFile();
+				uri = Uri.fromFile(file);
+				SharedPreferences sharePref = PreferenceManager
+						.getDefaultSharedPreferences(context);
+				Intent emailIntent = new Intent(Intent.ACTION_SEND);
+				emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"haqqtesting@gmail.com"});
+				emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Result "+sharePref.getString("displayNameHaqq", "HAQQ"));
+				emailIntent.setType("message/rfc822");
+				emailIntent.putExtra(Intent.EXTRA_STREAM, uri);
+				context.startActivity(Intent.createChooser(emailIntent, "Choose an email client :"));
+			}else {
+				return false;
+			}
+			return false;
+		}
+	};
+
 	/**
 	 * A preference value change listener that updates the preference's summary
 	 * to reflect its new value.
@@ -147,9 +311,10 @@ public class SettingsActivity extends PreferenceActivity {
 				// For list preferences, look up the correct display value in
 				// the preference's 'entries' list.
 				ListPreference listPreference = (ListPreference) preference;
-				
-				//GlobalController.setPrefVal(preference.getKey(), ((ListPreference) preference).getValue());
-				
+
+				// GlobalController.setPrefVal(preference.getKey(),
+				// ((ListPreference) preference).getValue());
+
 				int index = listPreference.findIndexOfValue(stringValue);
 				Log.v("prefVal", String.valueOf(index));
 				// Set the summary to reflect the new value.
@@ -157,34 +322,18 @@ public class SettingsActivity extends PreferenceActivity {
 						.setSummary(index >= 0 ? listPreference.getEntries()[index]
 								: null);
 
-			} else if (preference instanceof RingtonePreference) {
-				// For ringtone preferences, look up the correct display value
-				// using RingtoneManager.
-				if (TextUtils.isEmpty(stringValue)) {
-					// Empty values correspond to 'silent' (no ringtone).
-					preference.setSummary(R.string.pref_ringtone_silent);
-
-				} else {
-					Ringtone ringtone = RingtoneManager.getRingtone(
-							preference.getContext(), Uri.parse(stringValue));
-
-					if (ringtone == null) {
-						// Clear the summary if there was a lookup error.
-						preference.setSummary(null);
-					} else {
-						// Set the summary to reflect the new ringtone display
-						// name.
-						String name = ringtone
-								.getTitle(preference.getContext());
-						preference.setSummary(name);
-					}
-				}
-
+			} else if (preference.getKey().equalsIgnoreCase("register")) {
+				Log.d("register", "Register Preference");
+			} else if (preference.getKey().equalsIgnoreCase("accountdata")) {
+				Log.d("accountdata", "account Preference");
+				SharedPreferences sharePref = PreferenceManager
+						.getDefaultSharedPreferences(context);
+				preference.setSummary(sharePref.getString("emailApi", "No saved account"));
 			} else {
 				// For all other preferences, set the summary to the value's
 				// simple string representation.
 				preference.setSummary(stringValue);
-				
+
 			}
 			return true;
 		}
@@ -222,14 +371,20 @@ public class SettingsActivity extends PreferenceActivity {
 		@Override
 		public void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);
-			addPreferencesFromResource(R.xml.pref_general);
+			addPreferencesFromResource(R.xml.pref_haqq);
 
 			// Bind the summaries of EditText/List/Dialog/Ringtone preferences
 			// to their values. When their values change, their summaries are
 			// updated to reflect the new value, per the Android Design
 			// guidelines.
-			bindPreferenceSummaryToValue(findPreference("example_text"));
-			bindPreferenceSummaryToValue(findPreference("example_list"));
+			bindPreferenceSummaryToValue(findPreference("arabictext_pref_list"));
+			bindPreferenceSummaryToValue(findPreference("prefix"));
+			bindPreferenceSummaryToValue(findPreference("displayNameHaqq"));
+			bindPreferenceSummaryToValue(findPreference("accountdata"));
+			findPreference("accountdata").setOnPreferenceClickListener(
+					sClickPreferenceListener);
+			findPreference("register").setOnPreferenceClickListener(
+					sClickPreferenceListener);
 		}
 	}
 

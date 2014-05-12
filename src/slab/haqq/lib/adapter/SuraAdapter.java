@@ -6,6 +6,7 @@ package slab.haqq.lib.adapter;
 import java.util.List;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +17,12 @@ import slab.haqq.lib.adapter.model.Sura;
 
 /**
  * @author rasxen
- * <p><h1>Sura Adapter</h1></p>
- * <p>A sura model adapter to handle its display its action(open)</p>
+ *         <p>
+ *         <h1>Sura Adapter</h1>
+ *         </p>
+ *         <p>
+ *         A sura model adapter to handle its display its action(open)
+ *         </p>
  */
 public class SuraAdapter extends BaseAdapter {
 
@@ -27,6 +32,7 @@ public class SuraAdapter extends BaseAdapter {
 
 	/**
 	 * A constructor for SuraAdapter
+	 * 
 	 * @param suraList
 	 * @param context
 	 */
@@ -82,8 +88,10 @@ public class SuraAdapter extends BaseAdapter {
 		View vi = arg1;
 		if (vi == null)
 			vi = inflater.inflate(R.layout.sura_adapter_layout, null);
-		TextView textNum = (TextView) vi.findViewById(R.id.sura_adapter_num);
-		TextView textSura = (TextView) vi.findViewById(R.id.sura_adapter_name);
+		TextView textNum = (TextView) vi
+				.findViewById(R.id.sura_adapter_num);
+		TextView textSura = (TextView) vi
+				.findViewById(R.id.sura_adapter_name);
 		TextView textVerse = (TextView) vi
 				.findViewById(R.id.sura_adapter_verse);
 
@@ -92,7 +100,7 @@ public class SuraAdapter extends BaseAdapter {
 				+ suraList.get(arg0).getArname() + ")");
 		textVerse.setText(String.valueOf(suraList.get(arg0).getAyaCount())
 				+ " Aya");
-
+		Log.d("adapter main", String.valueOf(arg0));
 		return vi;
 	}
 

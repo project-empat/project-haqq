@@ -81,17 +81,18 @@ public class ResultProvider {
 	 * @param recogText
 	 */
 	public Result addScore(Context context, String id, double p, double r,
-			double v, double recog, String recogText) {
-		Result result = new Result(id, p, r, v, recog, recogText);
+			double v, double recog, String recogText, String rstate) {
+		Result result = new Result(id, p, r, v, recog, recogText, rstate);
 		if (resultMap.containsKey(result.getRstId())) {
 			result = resultMap.get(id);
-
 			result.setScorePitch(p);
 			result.setScoreRecog(recog);
 			result.setScoreRhythm(r);
-			result.setScoreVolume(v);
-			result.setRecogText(recogText);
-
+			result.setScoreVolume(v);	
+			if(result.getResultState().equalsIgnoreCase(Result.BASIC)){
+				result.setResultState(rstate);
+				result.setRecogText(recogText);
+			}
 			resultMap.remove(result.getRstId());
 			resultMap.put(result.getRstId(), result);
 			int i = getResultPosition(result);
@@ -175,6 +176,7 @@ public class ResultProvider {
 			attrs.getNamedItem("recog").setNodeValue(
 					String.valueOf(result.getScoreRecog()));
 			attrs.getNamedItem("recogText").setNodeValue(result.getRecogText());
+			attrs.getNamedItem("resultState").setNodeValue(result.getResultState());
 
 			TransformerFactory transformerFactory = TransformerFactory
 					.newInstance();
@@ -229,7 +231,7 @@ public class ResultProvider {
 			Element rootElement = xmlDoc.getDocumentElement();
 			Element recElement = xmlDoc.createElement(RESULT_ELEMENT);
 
-			Attr id, pitch, rhythm, vol, recog, recogText;
+			Attr id, pitch, rhythm, vol, recog, recogText, resultState;
 
 			id = xmlDoc.createAttribute("id");
 			id.setValue(result.getRstId());
@@ -248,6 +250,9 @@ public class ResultProvider {
 
 			recogText = xmlDoc.createAttribute("recogText");
 			recogText.setValue(result.getRecogText());
+			
+			resultState = xmlDoc.createAttribute("resultState");
+			resultState.setValue(result.getResultState());
 
 			recElement.setAttributeNode(id);
 			recElement.setAttributeNode(pitch);
@@ -255,6 +260,7 @@ public class ResultProvider {
 			recElement.setAttributeNode(vol);
 			recElement.setAttributeNode(recog);
 			recElement.setAttributeNode(recogText);
+			recElement.setAttributeNode(resultState);
 
 			rootElement.appendChild(recElement);
 
@@ -423,11 +429,15 @@ public class ResultProvider {
 						Double.parseDouble(attributes.getValue("rhythm")),
 						Double.parseDouble(attributes.getValue("volume")),
 						Double.parseDouble(attributes.getValue("recog")),
-						attributes.getValue("recogText"));
+						attributes.getValue("recogText"),attributes.getValue("resultState"));
 				resultList.add(res);
 				resultMap.put(res.getRstId(), res);
 			}
 		}
+	}
+	
+	public File getResultFile() {
+		return new File(GlobalController.HAQQ_DATA_PATH,RESULT_RES_NAME);
 	}
 
 }

@@ -17,6 +17,7 @@ import slab.haqq.lib.adapter.model.Sura;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
 import android.os.Bundle;
@@ -245,9 +246,11 @@ public class ReadAya extends Activity {
 		@Override
 		public void onClick(View arg0) {
 			if (!isRecording) {
+				SharedPreferences share = PreferenceManager.getDefaultSharedPreferences(ReadAya.this);
+				
 				recordModel = new Record(System.currentTimeMillis(),
 						String.valueOf(suraNumber), ayaNumber,
-						GlobalController.PREFIX);
+						share.getString("prefix", GlobalController.PREFIX));
 				// TODO Start recording audio
 				startRecording();
 				//

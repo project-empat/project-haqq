@@ -18,15 +18,14 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
--dontwarn com.badlogic.gdx.utils.GdxBuild
--dontwarn com.badlogic.gdx.audio.AudioBuild
--dontwarn com.badlogic.gdx.scenes.scene2d.ui.utils.DesktopClipboard
--dontwarn org.amr.arabic.ArabicReshaper
--dontwarn com.caverock.androidsvg.SVGImageView
 
--keep class com.badlogic.gdx.**{*;}
--keep class com.caverock.**{*;}
--keep class com.ringdroid.**{*;}
--keep class org.amr.arabic.**{*;}
--keep class slab.haqq.lib.adapter.**{*;} 
--keep class slab.haqq.R.** {*;}
+-dontwarn org.apache.**
+-dontwarn com.badlogic.**
+-dontwarn com.caverock.**
+-dontwarn com.ringdroid.**
+
+-keep class org.apache.** {*;}
+-keep class com.badlogic.** {*;}
+-keep class com.caverock.** {*;}
+-keep class com.ringdroid.** {*;}
+-keep class slab.haqq.** {*;}

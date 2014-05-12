@@ -4,7 +4,7 @@
 package slab.haqq.lib.adapter;
 
 import slab.haqq.R;
-import slab.haqq.api.result.ResultDetail;
+import slab.haqq.ResultDetail;
 import slab.haqq.lib.GlobalController;
 import slab.haqq.lib.adapter.model.Result;
 import android.app.AlertDialog;

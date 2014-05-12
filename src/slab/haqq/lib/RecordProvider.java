@@ -142,10 +142,7 @@ public class RecordProvider {
 		}
 		GlobalController.recordAdapter.notifyDataSetChanged();
 		GlobalController.resultProvider.deleteScore(context,
-				GlobalController.resultProvider.resultMap.get(record
-						.getPrefix()
-						+ "_"
-						+ String.valueOf(record.getTimeStamp())));
+				GlobalController.resultProvider.resultMap.get(record.toString()));
 	}
 
 	/**

@@ -22,6 +22,10 @@ public class Result implements Parcelable {
 	private double scoreVolume;
 	private double scoreRecog;
 	private String recogText;
+	private String resultState;
+	
+	public static final String BASIC = "BASIC";
+	public static final String FULL = "FULL";
 
 	/**
 	 * A result model constructor
@@ -34,13 +38,14 @@ public class Result implements Parcelable {
 	 * @param scoreRecog
 	 */
 	public Result(String rstId, double scorePitch, double scoreRhythm,
-			double scoreVolume, double scoreRecog, String recogText) {
+			double scoreVolume, double scoreRecog, String recogText, String resultState) {
 		this.rstId = rstId;
 		this.scorePitch = scorePitch;
 		this.scoreRhythm = scoreRhythm;
 		this.scoreVolume = scoreVolume;
 		this.scoreRecog = scoreRecog;
 		this.recogText = recogText;
+		this.resultState = resultState;
 	}
 
 	/**
@@ -132,17 +137,37 @@ public class Result implements Parcelable {
 	public void setRecogText(String recogText) {
 		this.recogText = recogText;
 	}
+	
+	/**
+	 * @return the recogText
+	 */
+	public String getResultState() {
+		return resultState;
+	}
+
+	/**
+	 * @param recogText
+	 *            the recogText to set
+	 */
+	public void setResultState(String resultState) {
+		this.resultState = resultState;
+	}
 
 	/**
 	 * Return of average score of this {@link Result}
-	 * with a scale 0.5 for recog, 0.15 for pitch,
-	 * 0.25 for rhtyhm, 0.1 for volume
+	 * with a scale 0.45 for recog, 0.15 for pitch,
+	 * 0.3 for rhtyhm, 0.1 for volume (Full)
+	 * with a scale 0.5 for rhythm, 0.3 for pitch, and 0.2 for vol
 	 * 
 	 * @return average score
 	 */
 	public double getAverageScore() {
-		return Math.round((double) ((0.5 * scoreRecog) + (0.15 * scorePitch)
-				+ (0.25 * scoreRhythm) + (0.1 * scoreVolume)));
+		if(resultState.equalsIgnoreCase(BASIC)){
+			return Math.round((0.25 * scorePitch)
+				+ (0.6 * scoreRhythm) + (0.15 * scoreVolume));
+		}
+		return Math.round((double) ((0.45 * scoreRecog) + (0.15 * scorePitch)
+				+ (0.3 * scoreRhythm) + (0.1 * scoreVolume)));
 	}
 
 	/* (non-Javadoc)
@@ -164,6 +189,7 @@ public class Result implements Parcelable {
 	public Result(Parcel in) {
 		this.rstId = in.readString();
 		this.recogText = in.readString();
+		this.resultState = in.readString();
 		this.scorePitch = in.readDouble();
 		this.scoreRecog = in.readDouble();
 		this.scoreRhythm = in.readDouble();
@@ -191,6 +217,7 @@ public class Result implements Parcelable {
 		// TODO Auto-generated method stub
 		dest.writeString(rstId);
 		dest.writeString(recogText);
+		dest.writeString(resultState);
 		dest.writeDouble(scorePitch);
 		dest.writeDouble(scoreRecog);
 		dest.writeDouble(scoreRhythm);

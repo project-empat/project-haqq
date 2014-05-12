@@ -43,7 +43,7 @@ public class AyaList extends Activity {
 
 		ayaArray = new String[this.sura.getAyaCount()];
 		for (int i = 0; i < ayaArray.length; i++) {
-			ayaArray[i] = sura.getName() + " - " + String.valueOf(i + 1);
+			ayaArray[i] = sura.getName() + " - " + String.valueOf(i+1);
 		}
 
 		ayaAdapter = new ArrayAdapter<String>(this,

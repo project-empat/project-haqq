@@ -27,7 +27,7 @@
     <string name="full_eval">Full Evaluation</string>
     <string name="title_activity_result_detail">ResultDetail</string>
     <string name="prefixHaqq">Haqq</string>
-    <string name="pref_prefix_haqq">API Code</string>
+    <string name="pref_prefix_haqq">File Identifier Code</string>
 
     <string-array name="pref_haqq_arabictext">
         <item>With pause marks and diacritics(waqf and haraka)</item>
@@ -41,6 +41,6 @@
     </string-array>
 
     <string name="arabictextdisplay">Arabic Text Display</string>
-    <string name="result_id_text">Name :</string>    <string name="pitch">Pitch</string>    <string name="rhythm">Rhythm</string>    <string name="volume">Volume</string>    <string name="recog">Recognition</string>    <string name="hundred">100</string>    <string name="average">Average</string>    <string name="comment_text">Evaluation :</string>    <string name="saveimage">Save As Images</string>    <string name="action_saveImage">Save as Image</string>    <string name="dispNameHaqq">Display Name</string>    <string name="defaultDisplayNameHaqq">Haqq</string>    <string name="delete">Delete</string>
+    <string name="result_id_text">Name :</string>    <string name="result_id_text2">Result ID :</string>    <string name="pitch">Pitch</string>    <string name="rhythm">Rhythm</string>    <string name="volume">Volume</string>    <string name="recog">Recognition</string>    <string name="hundred">100</string>    <string name="average">Average</string>    <string name="comment_text">Evaluation :</string>    <string name="saveimage">Save As Images</string>    <string name="action_saveImage">Save as Image</string>    <string name="dispNameHaqq">Display Name</string>    <string name="defaultDisplayNameHaqq">Haqq</string>    <string name="delete">Delete</string>    <string name="register_api">Register</string>    <string name="email_api"></string>    <string name="account_data">Account Data</string>
 
 </resources>

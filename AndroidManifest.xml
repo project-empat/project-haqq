@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="slab.haqq"
+    android:installLocation="preferExternal"
     android:versionCode="1"
-    android:versionName="1.1.39" android:installLocation="preferExternal">
+    android:versionName="1.1.91" >
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -15,11 +16,21 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <supports-screens
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:requiresSmallestWidthDp="480"
+        android:smallScreens="false"
+        android:xlargeScreens="true" />
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@drawable/ic_haqq_rev"
         android:label="@string/app_name"
-        android:theme="@style/Theme.Haqq.Light" android:hardwareAccelerated="true">
+        android:theme="@style/Theme.Haqq.Light" >
 
         <!-- Main Activity -->
         <activity
@@ -53,20 +64,30 @@
             android:label="@string/title_activity_goto_aya" >
         </activity>
         <activity
-            android:name="slab.haqq.api.record.PlayRecord"
+            android:name="slab.haqq.PlayRecord"
             android:label="@string/title_activity_play_record" >
         </activity>
         <activity
-            android:name="slab.haqq.api.result.ResultDetail"
+            android:name="slab.haqq.ResultDetail"
             android:label="@string/title_activity_result_detail" >
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
                 android:value="slab.haqq.HaqqMain" />
         </activity>
         <activity
             android:name="slab.haqq.SettingsActivity"
             android:label="@string/title_activity_settings" >
         </activity>
-        <service android:name=".service.DefaultEvaluationService"></service>
+
+        <service android:name="slab.haqq.service.DefaultEvaluationService" >
+        </service>
+        <service android:name="slab.haqq.service.FullEvaluationService" >
+        </service>
+
+        <activity
+            android:name="slab.haqq.ASettingsActivity"
+            android:label="@string/title_activity_asettings" >
+        </activity>
     </application>
 
 </manifest>

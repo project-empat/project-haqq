@@ -3,7 +3,7 @@
  */
 package slab.haqq.service;
 
-import slab.haqq.api.result.ResultDetail;
+import slab.haqq.ResultDetail;
 import slab.haqq.lib.adapter.model.Record;
 import slab.haqq.lib.adapter.model.Result;
 import android.app.NotificationManager;

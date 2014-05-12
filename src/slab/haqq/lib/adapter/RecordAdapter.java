@@ -7,8 +7,8 @@ import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import slab.haqq.PlayRecord;
 import slab.haqq.R;
-import slab.haqq.api.record.PlayRecord;
 import slab.haqq.lib.GlobalController;
 import slab.haqq.lib.adapter.model.Record;
 import android.annotation.SuppressLint;

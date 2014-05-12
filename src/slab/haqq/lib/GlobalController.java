@@ -70,6 +70,8 @@ public final class GlobalController {
 	public final static String RES_SNAPSHOT_FOLDER = "HaqqSnapshot";
 	
 	public final static String HAQQ_DATA_PATH = Environment.getExternalStorageDirectory().getAbsolutePath()+"/HaqqData"; 
+	
+	public final static int startSuraId = 77;
 
 	// Handler list
 	public static RecordProvider recordProvider;
@@ -86,7 +88,7 @@ public final class GlobalController {
 	public static void init(SplashTask task, Context context) {
 		if (initCode != FINISHING_CODE) {
 			boolean oneTime = false;
-
+			
 			APP_EXT_PATH = context.getExternalFilesDir(null).getAbsolutePath();
 			// init xml
 			System.setProperty("org.xml.sax.driver",

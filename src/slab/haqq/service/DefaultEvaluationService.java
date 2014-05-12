@@ -6,10 +6,13 @@ package slab.haqq.service;
 import java.util.Random;
 
 import slab.haqq.R;
-import slab.haqq.api.result.ResultDetail;
+import slab.haqq.ResultDetail;
 import slab.haqq.lib.GlobalController;
 import slab.haqq.lib.adapter.model.Record;
 import slab.haqq.lib.adapter.model.Result;
+import slab.haqq.lib.scoring.DTW;
+import slab.haqq.lib.scoring.Fourier;
+import slab.haqq.lib.scoring.Skoring;
 import android.app.IntentService;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -19,9 +22,6 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.util.Log;
 
-import com.ringdroid.DTW;
-import com.ringdroid.Fourier;
-import com.ringdroid.Skoring;
 import com.ringdroid.soundfile.CheapSoundFile;
 
 /**
@@ -66,7 +66,8 @@ public class DefaultEvaluationService extends IntentService implements
 				.setContentTitle(
 						"Evaluating ... : " + record.getPrefix() + "_"
 								+ String.valueOf(record.getTimeStamp()))
-				.setContentText("Please wait");
+				.setContentText("Please wait")
+				.setOngoing(true);
 		nm.notify(id, nBuilder.build());
 	}
 
@@ -90,7 +91,7 @@ public class DefaultEvaluationService extends IntentService implements
 
 		NotificationCompat.Builder nBuilder = new NotificationCompat.Builder(
 				this).setSmallIcon(R.drawable.ic_stat_done_evaluation)
-				.setContentTitle("Evaluation done : " + result.getRstId())
+				.setContentTitle(result.getResultState()+" Evaluation done : " + result.getRstId())
 				.setContentText(result.toString())
 				.setContentIntent(pendingIntent);
 		nm.notify(id, nBuilder.build());
@@ -124,6 +125,7 @@ public class DefaultEvaluationService extends IntentService implements
 							"saadalghamidi",
 							Integer.parseInt(record.getSuraId()),
 							record.getAyaNumber()), listener);
+			Log.v("Evaluation","fileLoad");
 			CheapSoundFile fileRecord = CheapSoundFile.create(
 					record.getFilePath(), listener);
 			Log.v("Evaluation","fileLoad");
@@ -134,12 +136,12 @@ public class DefaultEvaluationService extends IntentService implements
 			int[] frameGainsSource = fileSource.getFrameGains();
 			int[] frameGainsRecord = fileRecord.getFrameGains();
 			Log.v("Evaluation","fileLoadDone");
-			int freqs = 8000;
-			fftSource.calcSpec(frameGainsSource, freqs);
-			fftRecord.calcSpec(frameGainsRecord, freqs);
-
-			double[] energySource = skoring.calcEnergy(frameGainsSource);
-			double[] energyRecord = skoring.calcEnergy(frameGainsRecord);
+			int freqs = fileSource.getSampleRate();
+			fftSource.calcSpec(frameGainsSource, freqs, fileSource.getSampleRate());
+			fftRecord.calcSpec(frameGainsRecord, freqs, fileRecord.getSampleRate());
+			double[] energySource = skoring.calcEnergy(fftSource.frameSigned);
+			double[] energyRecord = skoring.calcEnergy(fftRecord.frameSigned);
+			
 			skoring.clearArray();
 
 			DTW pitchDTW = new DTW(fftSource.getMagnitude(),
@@ -148,9 +150,10 @@ public class DefaultEvaluationService extends IntentService implements
 			fftRecord.clearMagnitude();
 			DTW volDTW = new DTW(energySource, energyRecord);
 			
-			double pitchScore = skoring.getPitchScore(pitchDTW.getDistance());
-			double volScore = skoring.getVolScore(volDTW.getDistance());
 			double rhythmScore = skoring.getRhyScore(volDTW.getInBeat());
+			double pitchScore = Math.round(skoring.getPitchScore(pitchDTW.getDistance())*(rhythmScore/100));
+			double volScore = skoring.getVolScore(volDTW.getDistance());
+			
 			
 			Log.v("pitch distance", String.valueOf(pitchDTW.getDistance()));
 			Log.v("vol distance", String.valueOf(volDTW.getDistance()));
@@ -158,14 +161,13 @@ public class DefaultEvaluationService extends IntentService implements
 
 			Result result = GlobalController.resultProvider.addScore(
 					this,
-					record.getPrefix() + "_"
-							+ String.valueOf(record.getTimeStamp()),
-					pitchScore, rhythmScore, volScore, 0.0, "");
+					record.toString(),
+					pitchScore, rhythmScore, volScore, 0.0, "", Result.BASIC);
 			NotifyDone(nm, nid, result);
 		} catch (Exception e) {
 			// TODO: handle exception
 			Log.v("Evaluation", e.toString());
-			NotifyFailed(nm, nid, e.toString());
+			NotifyFailed(nm, nid, "Error(SoundEncodingFailure/FileMissing/ConnectionReset)");
 		}
 
 		/*

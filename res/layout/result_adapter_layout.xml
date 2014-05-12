@@ -15,9 +15,10 @@
         <TextView
             android:id="@+id/resultId"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="36dp"
             android:layout_marginLeft="8dp"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="24sp" />
 
         <LinearLayout
             android:layout_width="match_parent"

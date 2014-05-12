@@ -1,9 +1,0 @@
-models/etc/an4.1000.mdef
-models/etc/an4.5000.mdef
-models/etc/an4.ci.mdef
-models/dict/an4.dic
-models/dict/an4.filler
-models/cd_continous_16gau/means
-models/cd_continous_16gau/variances
-models/cd_continous_16gau/mixture_weight
-models/cd_continous_16gau/transition_matrices
