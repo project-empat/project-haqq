@@ -8,9 +8,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jqurantree.core.resource.ResourceUtil;
 import org.jqurantree.orthography.Document;
-import org.jqurantree.tanzil.TanzilReader;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -35,6 +33,7 @@ import android.util.Log;
  */
 public class UthmaniTextProvider {
 	private static String TRANS_PATH = "xml/id.indonesian.xml";
+	private static String QURAN_UTHMANI = "xml/quran-uthmani.xml";
 	public static List<SuraData> suraList = new ArrayList<SuraData>();
 
 	/**
@@ -47,8 +46,7 @@ public class UthmaniTextProvider {
 			XMLReader xmlreader = XMLReaderFactory.createXMLReader();
 			xmlreader.setContentHandler(new UthmaniTextHandler());
 
-			InputStream stream = ResourceUtil
-					.open(TanzilReader.TANZIL_RESOURCE_PATH);
+			InputStream stream = context.getAssets().open(QURAN_UTHMANI);
 			InputSource source = new InputSource(stream);
 
 			xmlreader.parse(source);
