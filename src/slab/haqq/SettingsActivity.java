@@ -109,6 +109,7 @@ public class SettingsActivity extends PreferenceActivity {
 		// bindPreferenceSummaryToValue(findPreference("notifications_new_message_ringtone"));
 		// bindPreferenceSummaryToValue(findPreference("sync_frequency"));
 		bindPreferenceSummaryToValue(findPreference("arabictext_pref_list"));
+		bindPreferenceSummaryToValue(findPreference("scoring_pref_list"));
 		bindPreferenceSummaryToValue(findPreference("prefix"));
 		bindPreferenceSummaryToValue(findPreference("displayNameHaqq"));
 		bindPreferenceSummaryToValue(findPreference("accountdata"));

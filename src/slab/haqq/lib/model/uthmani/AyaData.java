@@ -41,8 +41,7 @@ public class AyaData {
 	 * @return the uthmanitext
 	 */
 	public String getUthmanitext() {
-		return (ayaNumber == 1) ? ((suraNumber > 1) ? bismillah + "\n"
-				+ Uthmanitext : Uthmanitext) : Uthmanitext;
+		return Uthmanitext;
 	}
 
 	/**

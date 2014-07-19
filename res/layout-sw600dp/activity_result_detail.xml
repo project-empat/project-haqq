@@ -182,14 +182,21 @@
             android:text="@string/comment_text"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
-        <TextView
+        <!-- <TextView
             android:id="@+id/comment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:text="@string/average"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:textAppearance="?android:attr/textAppearanceLarge" />-->
+            <GridView
+                android:id="@+id/comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:numColumns="3"
+                android:scrollbars="none"
+                ></GridView>
     </LinearLayout>
 
 </RelativeLayout>

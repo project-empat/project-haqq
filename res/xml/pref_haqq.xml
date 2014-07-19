@@ -27,6 +27,16 @@
         android:negativeButtonText="@null"
         android:positiveButtonText="@null"
         android:title="@string/arabictextdisplay" />
+    
+    <ListPreference
+        android:defaultValue="1"
+        android:entries="@array/pref_haqq_scoringprocess"
+        android:entryValues="@array/pref_haqq_scoringprocessval"
+        android:key="scoring_pref_list"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/scoringprocess" />
+    
     <Preference android:title="Send Result" android:key="sendresult"/>
     
     

@@ -52,6 +52,9 @@ public final class GlobalController {
 	public final static String WITH_HARAKA_WITHOUT_WAQF = "0";
 	public final static String WITHOUT_ALL = "-1";
 	
+	public final static String NOTIFICATION = "1";
+	public final static String DIRECT = "0";
+	
 
 	public static String APP_EXT_PATH;
 
@@ -173,7 +176,6 @@ public final class GlobalController {
 					initTag = BUILDING_MODEL;
 					initCode = BULDING_MODEL_CODE;
 					oneTime = true;
-
 				}
 				Log.v("init",
 						QuranPropertiesProvider.sProperties.get(

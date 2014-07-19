@@ -17,6 +17,7 @@ import slab.haqq.lib.adapter.model.Sura;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
@@ -92,7 +93,7 @@ public class ReadAya extends Activity {
 		 * 
 		 * arText.loadData(textAR, "text/html", "utf-8")
 		 */;
-		confirmSaveRecord = new AlertDialog.Builder(this).setTitle("Create record")
+		confirmSaveRecord = new AlertDialog.Builder(this).setTitle("Create record or directly goto record detail start evaluation process")
 				.setNegativeButton("No", new DialogInterface.OnClickListener() {
 					
 					@Override
@@ -103,6 +104,22 @@ public class ReadAya extends Activity {
 						//GlobalController.recordProvider.add(recordModel, ReadAya.this);
 						recordBtn.setBackgroundResource(R.drawable.ic_record);
 						isRecording = false;
+					}
+				})
+				.setNeutralButton("GoTo Record Detail", new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+						stopRecording(true);
+						recordModel.setFilePath(getFilename());
+						GlobalController.recordProvider.add(recordModel, ReadAya.this);
+						recordBtn.setBackgroundResource(R.drawable.ic_record);
+						isRecording = false;
+						Intent intent = new Intent(ReadAya.this, PlayRecord.class);
+						intent.putExtra("recordParsel",
+								recordModel);
+						ReadAya.this.startActivity(intent);
 					}
 				})
 				.setPositiveButton("Yes", new DialogInterface.OnClickListener() {

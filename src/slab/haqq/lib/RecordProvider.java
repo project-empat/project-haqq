@@ -119,11 +119,12 @@ public class RecordProvider {
 	 * @param record
 	 * @param context
 	 */
-	public void add(Record record, Context context) {
+	public Record add(Record record, Context context) {
 		recordList.add(record);
 		recordMap.put(record.toString(), record);
 		writeToXML(context, record);
 		GlobalController.recordAdapter.notifyDataSetChanged();
+		return record;
 	}
 
 	/**

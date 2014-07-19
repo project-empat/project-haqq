@@ -38,9 +38,9 @@
         <item>1</item>
         <item>0</item>
         <item>-1</item>
-    </string-array>
+    </string-array>        <string-array name="pref_haqq_scoringprocess">        <item>Notification(Background)</item>        <item>Direct(Wait)</item>    </string-array>    <string-array name="pref_haqq_scoringprocessval">        <item>1</item>        <item>0</item>    </string-array>
 
-    <string name="arabictextdisplay">Arabic Text Display</string>
+    <string name="arabictextdisplay">Arabic Text Display</string>    <string name="scoringprocess">Scoring Process Display</string>
     <string name="result_id_text">Name :</string>    <string name="result_id_text2">Result ID :</string>    <string name="pitch">Pitch</string>    <string name="rhythm">Rhythm</string>    <string name="volume">Volume</string>    <string name="recog">Recognition</string>    <string name="hundred">100</string>    <string name="average">Average</string>    <string name="comment_text">Evaluation :</string>    <string name="saveimage">Save As Images</string>    <string name="action_saveImage">Save as Image</string>    <string name="dispNameHaqq">Display Name</string>    <string name="defaultDisplayNameHaqq">Haqq</string>    <string name="delete">Delete</string>    <string name="register_api">Register</string>    <string name="email_api"></string>    <string name="account_data">Account Data</string>
 
 </resources>
